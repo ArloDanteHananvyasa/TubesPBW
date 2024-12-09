@@ -35,15 +35,19 @@ body {
 .header button {
   height: 30px;
   width: 100px;
-  background-color: #fee052;
+  background-color: #0466c8;
+  color: white;
   border: none;
   font-weight: 600;
   border-radius: 8px;
   font-family: "Montserrat", sans-serif;
 }
 
-button:hover {
+button:hover,
+.register-input button:hover {
   cursor: pointer;
+  background-color: transparent;
+  border: 1px solid white;
 }
 
 .movie-carousel img {
@@ -93,8 +97,9 @@ button:hover {
   padding: 10px;
   border-radius: 8px;
   border: none;
+  color: white;
   font-weight: 600;
-  background-color: #fee052;
+  background-color: #0466c8;
 }
 
 .features {
@@ -119,7 +124,7 @@ button:hover {
 .feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #fee052;
+  color: #0466c8;
 }
 
 .feature-card img {
@@ -129,7 +134,7 @@ button:hover {
 .what-can-you-do {
   padding: 50px 20px;
   text-align: center;
-  background-color: #1d1c22;
+  background-color: #000a1c;
 }
 
 .what-can-you-do h2 {
@@ -156,7 +161,7 @@ button:hover {
 .activity-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #fee052;
+  color: #0466c8;
 }
 
 .activity-card p {
@@ -192,7 +197,7 @@ button:hover {
 }
 
 .tutorial-step {
-  background-color: #1d1c22;
+  background-color: #000a1c;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -200,7 +205,7 @@ button:hover {
 
 .tutorial-step h3 {
   font-size: 1.6rem;
-  color: #fee052;
+  color: #0466c8;
   margin-bottom: 10px;
 }
 
