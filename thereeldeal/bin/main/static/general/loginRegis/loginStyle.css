@@ -1,0 +1,88 @@
+body {
+  margin: 0px;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("/general/loginRegister/Log_in.png");
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+.login-container {
+  display: flex;
+  width: 700px;
+  height: 300px;
+  color: white;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.message-section {
+  width: 300px;
+}
+
+.message-section h1 {
+  font-weight: 600;
+  color: #fee505;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 4px 4px 18px -5px rgba(231, 228, 232, 0.8);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-header {
+  display: flex;
+  column-gap: 10px;
+}
+
+.form-section button {
+  color: #1a0b28;
+  background-color: #fee505;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 30px;
+}
+
+.form-section input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#signup {
+  color: #fee505;
+}
+
+#signup:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: #fee505;
+}
+
+a:hover {
+  text-decoration: underline;
+}
