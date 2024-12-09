@@ -1,0 +1,150 @@
+body {
+  margin: 0px;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.header {
+  height: 400px;
+  width: 100%;
+}
+
+.movie-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.nav-search {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  padding: 10px 20px;
+  column-gap: 100px;
+  top: 0;
+  z-index: 1;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: transparent; /* Initial transparent background */
+}
+
+.navigation.blurred {
+  backdrop-filter: blur(5px); /* Apply blur when scrolling */
+}
+
+.left-nav {
+  display: flex;
+  column-gap: 30px;
+  height: 50px;
+  align-items: center;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navigation img {
+  width: 200px;
+  height: 50px;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+  column-gap: 10px;
+}
+
+.right-nav img {
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar {
+  height: 25px;
+  width: 250px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+::placeholder {
+  color: white;
+  padding-left: 10px;
+  opacity: 1;
+}
+
+.movie-description {
+  margin-top: 100px;
+  width: 500px;
+  padding: 40px;
+}
+
+.play-button {
+  display: flex;
+  background-color: #0466c8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  column-gap: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.latest-release,
+.all-movies,
+.tv-shows {
+  padding: 0px 40px;
+}
+
+.movies-container {
+  display: flex;
+  column-gap: 50px;
+}
+
+.latest-movies img {
+  width: 200px;
+  border-radius: 20px;
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.genre {
+  margin-top: 0px;
+  color: #0466c8;
+  font-weight: 600;
+}
+
+.movies img {
+  width: 250px;
+  border-radius: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  position: relative;
+  bottom: 0;
+}
