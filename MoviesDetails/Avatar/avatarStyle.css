@@ -1,0 +1,166 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0px;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.header {
+  height: 400px;
+  width: 100%;
+}
+
+.movie-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.nav-search {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  padding: 10px 20px;
+  column-gap: 100px;
+  top: 0;
+  z-index: 1;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: transparent; /* Initial transparent background */
+}
+
+.navigation.blurred {
+  backdrop-filter: blur(5px); /* Apply blur when scrolling */
+}
+
+.left-nav {
+  display: flex;
+  column-gap: 30px;
+  height: 50px;
+  align-items: center;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navigation img {
+  width: 200px;
+  height: 50px;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+  column-gap: 10px;
+}
+
+.right-nav img {
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar {
+  height: 25px;
+  width: 250px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+::placeholder {
+  color: white;
+  padding-left: 10px;
+  opacity: 1;
+}
+
+.movie-description {
+  margin-top: 100px;
+  width: 500px;
+  padding: 40px;
+}
+
+.button-container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.play-button {
+  display: flex;
+  background-color: #0466c8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  column-gap: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.detail-button {
+  display: flex;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  column-gap: 20px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.detail-button:hover {
+  background-color: #023e7d;
+  border: none;
+}
+
+.details-container {
+  padding: 10px 40px;
+}
+
+.details-container h1 {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.details-container h2 {
+  font-size: 40px;
+}
+
+.details-group h3 {
+  color: #0466c8;
+}
+
+.details-group-container {
+  display: flex;
+  column-gap: 50px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  position: relative;
+  bottom: 0;
+}
