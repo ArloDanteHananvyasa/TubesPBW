@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=
+    , initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+  <link rel="stylesheet" href="/General/loginStyle.css" />
+  <title>Login Page</title>
+</head>
+
+<body>
+  <div class="page-container">
+    <div class="login-container">
+      <div class="message-section">
+        <h1>MOVIEPLEX</h1>
+        <h2>The best option for movie rentals</h2>
+        <p>
+          Rent your favorite movies at affordable prices. Enjoy a vast
+          collection of titles anytime, anywhere!
+        </p>
+      </div>
+      <div class="form-section">
+        <div class="form-header">
+          <h1>Login</h1>
+          <h1>|</h1>
+          <h1 id="signup"> <a th:href="@{/register}">Sign Up</a></h1>
+        </div>
+        <p style="text-align: center">
+          Log in to rental your favourite shows
+        </p>
+
+        <form action="/login" method="POST">
+          <div class="input-group">
+            <input type="text" id="username" name="username" placeholder="example@gmail.com" required />
+          </div>
+          <div class="input-group">
+            <input type="password" id="password" name="password" placeholder="*********" required />
+          </div>
+          <input type="submit" class="login-btn" value="Login">
+          <p class="signup-link">
+            Don't have an account? <a th:href="@{/register}">Sign up here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

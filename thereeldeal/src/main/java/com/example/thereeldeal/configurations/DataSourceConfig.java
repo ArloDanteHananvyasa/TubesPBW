@@ -1,4 +1,4 @@
-package com.example.configurations;
+package com.example.thereeldeal.configurations;
 
 import javax.sql.DataSource;
 
