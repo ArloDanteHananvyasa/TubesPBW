@@ -77,7 +77,7 @@ CREATE TABLE transactions (
     due_date DATE NOT NULL,
 	return_date DATE,
     transaction_date DATE NOT NULL,
-	days INT NOT NULL;
+	days INT NOT NULL,
 	late_fee NUMERIC DEFAULT 0,
     FOREIGN KEY (phone) REFERENCES users(phone) ON DELETE CASCADE
 );
@@ -96,15 +96,15 @@ CREATE TABLE transaction_details (
 
 
 -- Dummy Data
-INSERT INTO users (phone, username, email, password, deleted) VALUES
--- ('0812987328', 'd8Ty', 'john.doe@example.com', 'd8ty', FALSE),
-('08781827391', 'jeyii', 'jeyii@example.com', 'jeyii', FALSE),
-('080981233125', 'Ska', 'ska@example.com', 'ska', FALSE),
-('08158092834', 'AirPls', 'airpls@example.com', 'airpls', FALSE),
+INSERT INTO users (phone, username, name, email, password, deleted) VALUES
+-- ('0812987328', 'd8Ty', 'Arlo', 'john.doe@example.com', 'd8ty', FALSE),
+('08781827391', 'jeyii', 'Junita', 'jeyii@example.com', 'jeyii', FALSE),
+('080981233125', 'Ska', 'Renggana', 'ska@example.com', 'ska', FALSE),
+('08158092834', 'AirPls', 'Radif', 'airpls@example.com', 'airpls', FALSE);
 
 INSERT INTO admins (phone, username, email, password, deleted) VALUES
 ('0812387123', 'admin_1', 'admin.one@example.com', 'adminpass1', FALSE),
-('0812937918', 'admin_2', 'admin.two@example.com', 'adminpass2', FALSE)08129873289 ,
+('0812937918', 'admin_2', 'admin.two@example.com', 'adminpass2', FALSE);
 
 INSERT INTO genres (genre_id, name) VALUES
 (1, 'Action'),
@@ -536,9 +536,9 @@ INSERT INTO movie_actors (movie_id, actor_id) VALUES
 
 
 INSERT INTO transactions (transaction_id, phone, base_fee, pickup_date, isPickedUp, due_date, return_date, transaction_date, days, late_fee) VALUES
-(1, '0812987328', 84000,'2024-01-01', true, '2024-01-04', '2024-01-04', '2024-01-01', 4,0), --1, tepat waktu
+(1,'08781827391', 84000,'2024-01-01', true, '2024-01-04', '2024-01-04', '2024-01-01', 4,0), --1, tepat waktu
 (2,'080981233125', 46000, '2024-02-03', true, '2024-02-04', '2024-02-04','2024-01-02', 1, 0),--2,3; multiple films, tepat waktu
-(3,'080981233125', 25000, '2024-01-02', true,'2024-01-04','2024-01-0', '2024-01-02',1,10000),--4, late
+(3,'080981233125', 25000, '2024-01-02', true,'2024-01-04','2024-01-05', '2024-01-02',1,10000),--4, late
 (4,'08158092834', 58000,'2024-03-01', true, '2024-03-03','2024-03-02', '2024-02-29',2,0 ), --5, early
 (5,'08158092834', 21000, '2024-03-01', true, '2024-03-02', null,'2024-03-01',1, null);--1, not returned, late
 
