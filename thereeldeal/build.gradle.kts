@@ -18,18 +18,22 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.0.0")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("org.postgresql:postgresql")
+	implementation("com.zaxxer:HikariCP:5.0.1")
+	implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 
 tasks.withType<Test> {
