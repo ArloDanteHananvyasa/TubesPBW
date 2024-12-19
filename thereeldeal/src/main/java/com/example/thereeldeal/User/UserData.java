@@ -9,24 +9,26 @@ import lombok.Data;
 @Data
 public class UserData {
 
-    @NotEmpty(message = "Nama tidak boleh kosong")
-    private String nama;
+    @NotEmpty(message = "Phone number cannot be empty")
+    private String phone;
 
-    @NotEmpty(message = "NIK tidak boleh kosong")
-    @Size(min = 16, max = 16, message = "NIK harus 16 karakter")
-    private String nik;
+    @NotEmpty(message = "Username cannot be empty")
+    private String username;
 
-    @NotEmpty(message = "Email tidak boleh kosong")
+    @NotEmpty(message = "Name cannot be empty")
+    private String name;
+
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
+    @NotEmpty(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must be at least 6 characters long")
+    private String password;
     
+    
+    private String role; 
 
-    @NotEmpty(message = "Kata sandi tidak boleh kosong")
-    @Size(min = 6, max = 20, message = "Kata sandi harus 6-20 karakter")
-    private String kata_sandi;
-    
-    private String jenis_kelamin;
-    private String peran;
+    private boolean deleted;
 
     @Transient
     private String confpassword;
