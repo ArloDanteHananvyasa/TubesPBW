@@ -14,15 +14,6 @@ body {
   width: 100%;
 }
 
-.movie-carousel img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
 .nav-search {
   display: flex;
   width: 100%;
@@ -42,7 +33,7 @@ body {
 }
 
 .navigation.blurred {
-  backdrop-filter: blur(5px); /* Apply blur when scrolling */
+  background-color: rgba(0, 0, 0, 0.8); /* Apply blur when scrolling */
 }
 
 .left-nav {
@@ -83,86 +74,75 @@ a:hover {
   border-radius: 8px;
 }
 
-::placeholder {
+.search-bar::placeholder {
   color: white;
   padding-left: 10px;
   opacity: 1;
 }
 
-.movie-description {
-  margin-top: 100px;
-  width: 500px;
+.rent-container {
+  margin-top: 30px;
   padding: 40px;
 }
 
-.button-container {
+.sub-header {
   display: flex;
-  column-gap: 10px;
+  column-gap: 30px;
+  align-items: center;
 }
 
-.play-button {
-  display: flex;
+.rent-container h1:first-child {
+  color: #0466c8;
+  text-decoration: underline;
+}
+
+.rent-container h1:nth-child(2) {
+  color: rgb(158, 158, 158);
+}
+
+.rent-container h1:nth-child(2):hover {
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  background-color: #0466c8;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid white;
+  background-color: black;
+}
+
+.history-container {
+  display: none;
+}
+
+.history-container {
+  display: none; /* Awalnya disembunyikan */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th,
+td {
+  border: 1px solid white;
+  padding: 10px;
+  text-align: left;
+}
+th {
   background-color: #0466c8;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  column-gap: 20px;
-  align-items: center;
-  cursor: pointer;
 }
-
-.play-button:hover {
-  background-color: transparent;
-  border: 1px solid white;
-}
-
-.detail-button {
-  display: flex;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  column-gap: 20px;
-  align-items: center;
-  cursor: pointer;
-}
-
-.detail-button:hover {
-  background-color: #023e7d;
-  border: none;
-}
-
-.latest-release,
-.all-movies,
-.tv-shows {
-  padding: 0px 40px;
-}
-
-.movies-container {
-  display: flex;
-  column-gap: 50px;
-}
-
-.latest-movies img {
-  width: 200px;
-  border-radius: 20px;
-}
-
-.title {
-  margin-bottom: 0px;
-}
-
-.genre {
-  margin-top: 0px;
-  color: #0466c8;
-  font-weight: 600;
-}
-
-.movies img {
-  width: 250px;
-  border-radius: 20px;
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 footer {

@@ -134,35 +134,26 @@ a:hover {
   border: none;
 }
 
-.latest-release,
-.all-movies,
-.tv-shows {
-  padding: 0px 40px;
+.details-container {
+  padding: 10px 40px;
 }
 
-.movies-container {
+.details-container h1 {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.details-container h2 {
+  font-size: 40px;
+}
+
+.details-group h3 {
+  color: #0466c8;
+}
+
+.details-group-container {
   display: flex;
   column-gap: 50px;
-}
-
-.latest-movies img {
-  width: 200px;
-  border-radius: 20px;
-}
-
-.title {
-  margin-bottom: 0px;
-}
-
-.genre {
-  margin-top: 0px;
-  color: #0466c8;
-  font-weight: 600;
-}
-
-.movies img {
-  width: 250px;
-  border-radius: 20px;
 }
 
 footer {
