@@ -1,0 +1,232 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  color: white;
+}
+
+.header-container {
+  height: 400px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  width: 100%;
+}
+
+.header.scrolled {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header img {
+  width: 200px;
+  height: 50px;
+}
+
+.header button {
+  height: 30px;
+  width: 100px;
+  background-color: #0466c8;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+button:hover,
+.register-input button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.movie-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.register-frame {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.register-frame h1 {
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.register-frame p {
+  margin-top: 0px;
+  font-weight: 500;
+}
+
+.register-frame span {
+  font-weight: 500;
+}
+
+.register-input {
+  display: flex;
+  column-gap: 10px;
+}
+
+.register-input input {
+  width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.register-input button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  background-color: #0466c8;
+}
+
+.features {
+  margin-top: 30px;
+  padding: 20px 20px;
+  text-align: center;
+  background-color: black;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0px;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #0466c8;
+}
+
+.feature-card img {
+  width: 600px;
+}
+
+.what-can-you-do {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #000a1c;
+}
+
+.what-can-you-do h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.activity-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.activity-card {
+  max-width: 300px;
+  text-align: center;
+  background-color: black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0);
+}
+
+.activity-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #0466c8;
+}
+
+.activity-card p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.activity-card img {
+  width: 70px;
+}
+
+.tutorial {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: black;
+}
+
+.tutorial h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.tutorial p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.tutorial-steps {
+  display: flex;
+  gap: 20px;
+}
+
+.tutorial-step {
+  background-color: #000a1c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tutorial-step h3 {
+  font-size: 1.6rem;
+  color: #0466c8;
+  margin-bottom: 10px;
+}
+
+.tutorial-step p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.tutorial-step i {
+  font-style: italic;
+}
+
+.tutorial-step img {
+  height: 50px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  position: relative;
+  bottom: 0;
+}
