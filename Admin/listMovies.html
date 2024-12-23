@@ -1,60 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manage Movies</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/Admin/ListMovies/listMoviesStyle.css"
-    />
-  </head>
-  <body>
-    <header>
-      <h1>Manage Movies</h1>
-    </header>
-    <div class="container">
-      <aside>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Movies</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/AdminStyle/listMoviesStyle.css" />
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="logo">
+      <img src="/Assets/logo-dark.png">
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+      <p class="dashboard-header">Manage Movies</p>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <div class="navigation">
         <div class="nav-group" id="nav-dashboard">
-          <img src="/src/main/resources/static/Assets/home-20.svg" />
-          <a href="#">Dashboard</a>
+          <img src="/Assets/nav-dashboard-gray.svg" />
+          <a th:href="@{/admin/dashboard}">Dashboard</a>
         </div>
 
         <div class="nav-group" id="nav-movies">
-          <img src="/src/main/resources/static/Assets/nav-movies.svg" />
-          <a href="#">Movies</a>
+          <img src="/Assets/nav-movies-blue.svg" />
+          <a th:href="@{/admin/movies}">Movies</a>
         </div>
 
         <div class="nav-group" id="nav-actors">
-          <img src="/src/main/resources/static/Assets/nav-actors.png" />
-          <a href="#">Actors</a>
+          <img src="/Assets/nav-actors.png" />
+          <a th:href="@{/admin/actors}">Actors</a>
         </div>
 
         <div class="nav-group" id="nav-genres">
-          <img src="/src/main/resources/static/Assets/nav-genre.svg" />
-          <a href="#">Genres</a>
+          <img src="/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
         <div class="nav-group" id="nav-sales">
-          <img src="/src/main/resources/static/Assets/nav-sales.svg" />
-          <a href="#">Sales Report</a>
+          <img src="/Assets/nav-sales.svg" />
+          <a th:href="@{/admin/sales-report}">Sales Report</a>
         </div>
 
         <div class="nav-group" id="nav-log-out">
-          <img src="/src/main/resources/static/Assets/nav-logout.svg" />
-          <a href="#">Log Out</a>
+          <img src="/Assets/nav-logout.svg" />
+          <a th:href="@{/logout}">Log Out</a>
         </div>
-      </aside>
-      <main>
-        <h1>Welcome Admin [name]!</h1>
-      </main>
+      </div>
     </div>
-    <footer>
-      <p>ⓒ All Rights Reserved. 2024 The Reel Deal</p>
-    </footer>
-  </body>
+
+    <div class="main-content">
+      <div class="cari-add-produk">
+        <div class="cari-produk">
+          <form>
+            <input type="text" name="filter" placeholder="Search movie" />
+          </form>
+        </div>
+        <button type="button" class="blue-button add-produk" onclick="window.location.href='/admin/movies/add-movies';">
+          (+) Add Movie
+        </button>
+      </div>
+      <div class="list-movies">
+        <table>
+          <tr>
+            <th>No.</th>
+            <th>Title</th>
+            <th>Detail</th>
+            <th>Update</th>
+            <th>Remove</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <a><button>Detail</button></a>
+            </td>
+            <td>
+              <a><button>Update</button></a>
+            </td>
+            <td>
+              <a><button class="remove-button">Remove</button></a>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="page-navigation-container">
+        <div class="page-navigation">
+          <p class="_1">1</p>
+          <p class="_2">2</p>
+          <p class="_3">3</p>
+          <p class="_4">4</p>
+          <p class="next">Next</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div th:if="${umkDetail != null}" class="modal">
+      <div class="modal-content">
+        <h2>Detail Movie</h2>
+        <div class="modal-container">
+          <div class="left-modal">
+            <p>
+              <strong>Title:</strong><br />
+              <span th:text="${umkDetail.namaUMK}"></span>
+            </p>
+
+            <p>
+              <strong>Description:</strong><br />
+              <span th:text="${umkDetail.deskripsi}"></span>
+            </p>
+            <p>
+              <strong>Duration:</strong><br />
+              <span th:text="${umkDetail.status}"></span>
+            </p>
+            <p>
+              <strong>Genres:</strong><br />
+              <span th:text="${umkDetail.tanggal}"></span>
+            </p>
+
+            <p>
+              <strong>Cast:</strong><br />
+              <span th:text="${umkDetail.namaUMK}"></span>
+            </p>
+
+            <p>
+              <strong>Stock:</strong><br />
+              <span th:text="${umkDetail.namaUMK}"></span>
+            </p
+
+            <p>
+              <strong>Price:</strong><br />
+              <span th:text="${umkDetail.namaUMK}"></span>
+            </p
+          </div>
+
+          <div class="right-modal">
+            <p>
+              <strong>Poster:</strong><br />
+              <img th:src="@{${umkDetail.logo}}" alt="Movie Poster" />
+            </p>
+          </div>
+        </div>
+        <a href="/admin/umk" class="close-button"><button>Close</button></a>
+      </div>
+    </div> -->
+  </div>
+
+</body>
+
 </html>
