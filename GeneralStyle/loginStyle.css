@@ -66,6 +66,11 @@ body {
   cursor: pointer;
 }
 
+.form-section button:hover {
+  background-color: black;
+  border: 1px solid white;
+}
+
 .form-section input {
   width: 300px;
   padding: 10px;
@@ -82,10 +87,6 @@ body {
   color: #0466c8;
 }
 
-#signup:hover {
-  text-decoration: underline;
-}
-
 a {
   text-decoration: none;
   color: #2290ff;
@@ -93,4 +94,25 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.password-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+
+}
+
+.password-toggle input[type="checkbox"] {
+  accent-color: #0466c8;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.password-toggle label {
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
 }

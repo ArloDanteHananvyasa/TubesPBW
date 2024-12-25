@@ -46,7 +46,7 @@ body {
 button:hover,
 .register-input button:hover {
   cursor: pointer;
-  background-color: transparent;
+  background-color: black;
   border: 1px solid white;
 }
 
