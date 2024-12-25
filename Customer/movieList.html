@@ -1,127 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Movies</title>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/Customer/Movies/moviesListStyle.css"
-    />
-  </head>
-  <body>
-    <div class="page-container">
-      <div class="navigation">
-        <img src="/src/main/resources/static/Assets/logo.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Movies</title>
 
-        <div class="nav-search">
-          <div class="left-nav">
-            <a>Home</a>
-            <a>Movies</a>
-            <a>My Rentals</a>
-            <a>Profile</a>
-          </div>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/CustomerStyle/moviesListStyle.css" />
+</head>
 
-          <div class="right-nav">
-            <img src="/src/main/resources/static/Assets/search-icon.png" />
-            <input
-              type="text"
-              class="search-bar"
-              placeholder="Search movies title, actors, genres"
-            />
-          </div>
-        </div>
-      </div>
+<body>
+  <div class="page-container">
+    <div class="navigation">
+      <img src="/Assets/logo.png" />
 
-      <div class="movie-container">
-        <div class="sub-header">
-          <button type="button" class="blue-button" id="all-movies-button">
-            All Movies
-          </button>
-
-          <button type="button" class="black-button" id="crime-movies-button">
-            Crime
-          </button>
-
-          <button type="button" class="black-button" id="romance-movies-button">
-            Romance
-          </button>
-
-          <button type="button" class="black-button" id="action-movies-button">
-            Action
-          </button>
-
-          <button type="button" class="black-button" id="horror-movies-button">
-            Horror
-          </button>
+      <div class="nav-search">
+        <div class="left-nav">
+          <a th href="/customer/homepage">Home</a>
+          <a th href="/customer/movies">Movies</a>
+          <a th href="/customer/cart">My Cart</a>
+          <a th href="/customer/myRentals">My Rentals</a>
+          <a th href="/customer/profile">Profile</a>
+          <a th href="/landing">Log Out</a>
         </div>
 
-        <div class="movie" id="superhero-movies">
-          <h2>Superhero Movies</h2>
-          <div class="movies-container">
-            <div class="latest-movies">
-              <img
-                src="/src/main/resources/static/Assets/Movies Poster/Vertical/avengers-endgame.jpg"
-              />
-              <p class="title">Avengers: Endgame</p>
-            </div>
-
-            <div class="latest-movies">
-              <img
-                src="/src/main/resources/static/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg"
-              />
-              <p class="title">Spider-Man: Homecoming</p>
-            </div>
-
-            <div class="latest-movies">
-              <img
-                src="/src/main/resources/static/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg"
-              />
-              <p class="title">Aquaman and the Lost Kingdom</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="movie" id="crime-movies">
-          <h2>Crime Movies</h2>
-          <div class="movies-container">
-            <div class="latest-movies">
-              <img
-                src="/src/main/resources/static/Assets/Movies Poster/Vertical/joker.jpg"
-              />
-              <p class="title">Joker</p>
-            </div>
-
-            <div class="latest-movies">
-              <img
-                src="/src/main/resources/static/Assets/Movies Poster/Vertical/unlocked.png"
-              />
-              <p class="title">Unlocked</p>
-            </div>
-          </div>
+        <div class="right-nav">
+          <img src="/Assets/search-icon.png" />
+          <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
         </div>
       </div>
     </div>
 
-    <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
-  </body>
+    <div class="movie-container">
+      <div class="sub-header">
+        <button type="button" class="blue-button" id="all-movies-button">
+          All Movies
+        </button>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navigation = document.querySelector(".navigation");
+        <button type="button" class="black-button" id="comedy-movies-button">
+          Comedy
+        </button>
 
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 50) {
-          navigation.classList.add("blurred"); // Add blur effect when scrolling
-        } else {
-          navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
-        }
-      });
+        <button type="button" class="black-button" id="Adventure-movies-button">
+          Adventure
+        </button>
+
+        <button type="button" class="black-button" id="action-movies-button">
+          Action
+        </button>
+
+        <button type="button" class="black-button" id="horror-movies-button">
+          Horror
+        </button>
+
+        <button type="button" class="black-button" id="drama-movies-button">
+          Drama
+        </button>
+
+        <button type="button" class="black-button" id="thriller-movies-button">
+          Thriller
+        </button>
+
+        <button type="button" class="black-button" id="scifi-movies-button">
+          Sci-Fi
+        </button>
+
+        <button type="button" class="black-button" id="fantasy-movies-button">
+          Fantasy
+        </button>
+
+        <button type="button" class="black-button" id="animation-movies-button">
+          Animation
+        </button>
+      </div>
+
+      <div class="movie" id="superhero-movies">
+        <h2>Superhero Movies</h2>
+        <div class="movies-container">
+          <div class="latest-movies">
+            <img src="/Assets/Movies Poster/Vertical/avengers-endgame.jpg" />
+            <p class="title">Avengers: Endgame</p>
+          </div>
+
+          <div class="latest-movies">
+            <img src="/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
+            <p class="title">Spider-Man: Homecoming</p>
+          </div>
+
+          <div class="latest-movies">
+            <img src="/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
+            <p class="title">Aquaman and the Lost Kingdom</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="movie" id="comedy-movies">
+        <h2>comedy Movies</h2>
+        <div class="movies-container">
+          <div class="latest-movies">
+            <img src="/Assets/Movies Poster/Vertical/joker.jpg" />
+            <p class="title">Joker</p>
+          </div>
+
+          <div class="latest-movies">
+            <img src="/Assets/Movies Poster/Vertical/unlocked.png" />
+            <p class="title">Unlocked</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navigation = document.querySelector(".navigation");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        navigation.classList.add("blurred"); // Add blur effect when scrolling
+      } else {
+        navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
+      }
     });
-  </script>
+  });
+</script>
+
 </html>

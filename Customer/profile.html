@@ -1,85 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/src/main/resources/static/Customer/Profile/profileStyle.css"
-    />
-  </head>
-  <body>
-    <div class="page-container">
-      <div class="header">
-        <div class="navigation">
-          <img src="/src/main/resources/static/Assets/logo.png" />
 
-          <div class="nav-search">
-            <div class="left-nav">
-              <a href="../Homepage/homepage.html">Home</a>
-              <a href="">Movies</a>
-              <a href="">TV Shows</a>
-              <a href="../MyRentals/myRentals.html">My Rentals</a>
-              <a href="../Profile/profile.html">Profile</a>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/CustomerStyle/profileStyle.css" />
+</head>
 
-            <div class="right-nav">
-              <img src="/src/main/resources/static/Assets/search-icon.png" />
-              <input
-                type="text"
-                class="search-bar"
-                placeholder="Search movies, tv shows"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+<body>
+  <div class="page-container">
+    <div class="header">
+      <div class="navigation">
+        <img src="/Assets/logo.png" />
 
-      <div class="profile-container">
-        <div class="sub-header">
-          <h1>Profile</h1>
-        </div>
-
-        <div class="profile-details">
-          <div class="right-profile">
-            <div class="profile-item">
-              <label>Username</label>
-              <p th:text="${namaPem}">john_doe</p>
-            </div>
-
-            <div class="profile-item">
-              <label>Email</label>
-              <p th:text="${namaPem}">johndoe@gmail.com</p>
-            </div>
-
-            <div class="profile-item">
-              <label>Password</label>
-              <p th:text="${email}">johnDoe1234</p>
-            </div>
-          </div>
-          <div class="left-profile">
-            <div class="profile-item">
-              <label>Profile Pict</label>
-              <img th:src="${logo}" class="umk-logo" />
-            </div>
+        <div class="nav-search">
+          <div class="left-nav">
+            <a th href="/customer/homepage">Home</a>
+            <a th href="/customer/movies">Movies</a>
+            <a th href="/customer/cart">My Cart</a>
+            <a th href="/customer/myRentals">My Rentals</a>
+            <a th href="/customer/profile">Profile</a>
+            <a th href="/landing">Log Out</a>
           </div>
 
-          <div class="edit-profile-btn">
-            <a th:href="@{/umk/profile/edit}"
-              ><button type="button" class="submit-button">
-                Edit Profile
-              </button></a
-            >
+          <div class="right-nav">
+            <img src="/Assets/search-icon.png" />
+            <input type="text" class="search-bar" placeholder="Search movies, tv shows" />
           </div>
         </div>
       </div>
     </div>
 
-    <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
-  </body>
+    <div class="profile-container">
+      <div class="sub-header">
+        <h1>Profile</h1>
+      </div>
+
+      <div class="profile-details">
+        <div class="right-profile">
+          <div class="profile-item">
+            <label>Username</label>
+            <p th:text="${namaPem}">john_doe</p>
+          </div>
+
+          <div class="profile-item">
+            <label>Email</label>
+            <p th:text="${namaPem}">johndoe@gmail.com</p>
+          </div>
+
+          <div class="profile-item">
+            <label>Password</label>
+            <p th:text="${email}">johnDoe1234</p>
+          </div>
+        </div>
+        <div class="left-profile">
+          <div class="profile-item">
+            <label>Profile Pict</label>
+            <img th:src="${logo}" class="umk-logo" />
+          </div>
+        </div>
+
+        <div class="edit-profile-btn">
+          <a th:href="@{/umk/profile/edit}"><button type="button" class="submit-button">
+              Edit Profile
+            </button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+</body>
+
 </html>
