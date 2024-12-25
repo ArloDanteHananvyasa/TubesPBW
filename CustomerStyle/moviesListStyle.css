@@ -29,11 +29,13 @@ body {
   top: 0;
   z-index: 1;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-  background-color: transparent; /* Initial transparent background */
+  background-color: transparent;
+  /* Initial transparent background */
 }
 
 .navigation.blurred {
-  background-color: rgba(0, 0, 0, 0.8); /* Apply blur when scrolling */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Apply blur when scrolling */
 }
 
 .left-nav {
@@ -43,9 +45,17 @@ body {
   align-items: center;
 }
 
-a:hover {
+.left-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.left-nav a:visited {
+  color: white;
+}
+
+.left-nav a:hover {
   text-decoration: underline;
-  cursor: pointer;
 }
 
 .navigation img {
@@ -100,6 +110,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .blue-button {
   background-color: #0466c8;
   border: none;
