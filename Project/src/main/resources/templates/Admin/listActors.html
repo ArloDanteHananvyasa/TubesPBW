@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Actors</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/AdminStyle/listActorsStyle.css" />
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="logo">
+      <img src="/Assets/logo-dark.png">
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+      <p class="dashboard-header">Manage Actors</p>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <div class="navigation">
+        <div class="nav-group" id="nav-dashboard">
+          <img src="/Assets/nav-dashboard-gray.svg" />
+          <a th:href="@{/admin/dashboard}">Dashboard</a>
+        </div>
+
+        <div class="nav-group" id="nav-movies">
+          <img src="/Assets/nav-movies.svg" />
+          <a a th:href="@{/admin/movies}">Movies</a>
+        </div>
+
+        <div class="nav-group" id="nav-actors">
+          <img src="/Assets/nav-actors-blue.svg" />
+          <a a th:href="@{/admin/actors}">Actors</a>
+        </div>
+
+        <div class="nav-group" id="nav-genres">
+          <img src="/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/genres}">Genres</a>
+        </div>
+
+        <div class="nav-group" id="nav-sales">
+          <img src="/Assets/nav-sales.svg" />
+          <a th:href="@{/admin/sales-report}">Sales Report</a>
+        </div>
+
+        <div class="nav-group" id="nav-log-out">
+          <img src="/Assets/nav-logout.svg" />
+          <a th:href="@{/logout}">Log Out</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="cari-add-produk">
+        <div class="cari-produk">
+          <form>
+            <input type="text" name="filter" placeholder="Search actor" />
+          </form>
+        </div>
+        <button type="button" class="blue-button add-produk" onclick="window.location.href='/admin/actors/add-actors';">
+          (+) Add Actor
+        </button>
+      </div>
+
+      <div class="list-actors">
+        <table>
+          <tr>
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Filmography</th>
+            <th>Update</th>
+            <th>Remove</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <a><button>Update</button></a>
+            </td>
+            <td>
+              <a><button class="remove-button">Remove</button></a>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="page-navigation-container">
+        <div class="page-navigation">
+          <p class="_1">1</p>
+          <p class="_2">2</p>
+          <p class="_3">3</p>
+          <p class="_4">4</p>
+          <p class="next">Next</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div th:if="${umkDetail != null}" class="modal">
+      <div class="modal-content">
+        <h2>Detail UMK</h2>
+        <div class="modal-container">
+          <div class="left-modal">
+            <p>
+              <strong>No. HP:</strong><br /><span th:text="${umkDetail.hp}"></span>
+            </p>
+            <strong>Nama UMK:</strong><br />
+            <span th:text="${umkDetail.namaUMK}"></span>
+            <p>
+              <strong>Deskripsi:</strong><br />
+              <span th:text="${umkDetail.deskripsi}"></span>
+            </p>
+            <p>
+              <strong>Status:</strong><br />
+              <span th:text="${umkDetail.status}"></span>
+            </p>
+            <p>
+              <strong>Tanggal:</strong><br />
+              <span th:text="${umkDetail.tanggal}"></span>
+            </p>
+            <p>
+              <strong>Saldo:</strong><br />
+              <span th:text="${umkDetail.saldo}"></span>
+            </p>
+          </div>
+
+          <div class="right-modal">
+            <p>
+              <strong>Nama Pemilik:</strong><br />
+              <span th:text="${umkDetail.namaPem}"></span>
+            </p>
+            <p>
+              <strong>Email:</strong><br />
+              <span th:text="${umkDetail.email}"></span>
+            </p>
+            <p>
+              <strong>Alamat:</strong><br />
+              <span th:text="${umkDetail.alamat}"></span>
+            </p>
+            <p>
+              <strong>Logo:</strong><br />
+              <img th:src="@{${umkDetail.logo}}" alt="Logo UMK" />
+            </p>
+          </div>
+        </div>
+        <a href="/admin/umk" class="close-button"><button>Close</button></a>
+      </div>
+    </div> -->
+  </div>
+
+</body>
+
+</html>
