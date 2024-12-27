@@ -1,0 +1,170 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0px;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.header {
+  height: 400px;
+  width: 100%;
+}
+
+.nav-search {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  padding: 10px 20px;
+  column-gap: 100px;
+  top: 0;
+  z-index: 1;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: transparent;
+  /* Initial transparent background */
+}
+
+.navigation.blurred {
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Apply blur when scrolling */
+}
+
+.left-nav {
+  display: flex;
+  column-gap: 30px;
+  height: 50px;
+  align-items: center;
+}
+
+.left-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.left-nav a:visited {
+  color: white;
+}
+
+.left-nav a:hover {
+  text-decoration: underline;
+}
+
+.navigation img {
+  width: 200px;
+  height: 50px;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+  column-gap: 10px;
+}
+
+.right-nav img {
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar {
+  height: 25px;
+  width: 250px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.search-bar::placeholder {
+  color: white;
+  padding-left: 10px;
+  opacity: 1;
+}
+
+.rent-container {
+  margin-top: 30px;
+  padding: 40px;
+}
+
+.sub-header {
+  display: flex;
+  column-gap: 30px;
+  align-items: center;
+}
+
+.rent-container h1:first-child {
+  color: #0466c8;
+  text-decoration: underline;
+}
+
+.rent-container h1:nth-child(2) {
+  color: rgb(158, 158, 158);
+}
+
+.rent-container h1:nth-child(2):hover {
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  background-color: #0466c8;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid white;
+  background-color: black;
+}
+
+.history-container {
+  display: none;
+}
+
+.history-container {
+  display: none;
+  /* Awalnya disembunyikan */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid white;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #0466c8;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  position: relative;
+  bottom: 0;
+}

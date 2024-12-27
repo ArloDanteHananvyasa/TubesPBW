@@ -1,0 +1,118 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0px;
+  background-image: url("/Assets/Log\ in.png");
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+.login-container {
+  display: flex;
+  width: 700px;
+  height: 300px;
+  color: white;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.message-section {
+  width: 300px;
+}
+
+.message-section img {
+  width: 100%;
+}
+
+.message-section h2 {
+  color: #0466c8;
+  font-weight: 600;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 4px 4px 18px -5px #001233;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-header {
+  display: flex;
+  column-gap: 10px;
+}
+
+.form-section button {
+  color: white;
+  background-color: #0466c8;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.form-section button:hover {
+  background-color: black;
+  border: 1px solid white;
+}
+
+.form-section input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#signup {
+  color: #0466c8;
+}
+
+a {
+  text-decoration: none;
+  color: #2290ff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.password-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+
+}
+
+.password-toggle input[type="checkbox"] {
+  accent-color: #0466c8;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.password-toggle label {
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}

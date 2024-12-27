@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/CustomerStyle/cartStyle.css" />
+</head>
+
+<body>
+
+    <div class="page-container">
+        <div class="navigation">
+            <img src="/Assets/logo.png" />
+
+            <div class="nav-search">
+                <div class="left-nav">
+                    <a th href="/customer/homepage">Home</a>
+                    <a th href="/customer/movies">Movies</a>
+                    <a th href="/customer/cart">My Cart</a>
+                    <a th href="/customer/myRentals">My Rentals</a>
+                    <a th href="/customer/profile">Profile</a>
+                    <a th href="/landing">Log Out</a>
+                </div>
+
+                <div class="right-nav">
+                    <img src="/Assets/search-icon.png" />
+                    <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-container">
+            <h1>My Cart</h1>
+
+            <div class="cart-checkout">
+                <div class="cart-group-container">
+                    <div class="cart-group">
+                        <img src="/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
+
+                        <div class="cart-text">
+                            <p>Aquaman: Lost Kingdom</p>
+                            <p><strong>Price:</strong> Rp20.000</p>
+                            <button class="remove-btn">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-group">
+                        <img src="/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
+
+                        <div class="cart-text">
+                            <p>Spider-Man: Homecoming</p>
+                            <p><strong>Price:</strong> Rp20.000</p>
+                            <button class="remove-btn">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-container">
+                    <p><strong>Total:</strong> Rp40.000</p>
+                    <button class="checkout-btn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+
+</body>
+
+</html>

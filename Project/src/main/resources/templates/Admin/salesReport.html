@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/AdminStyle/salesReportStyle.css" />
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="logo">
+      <img src="/Assets/logo-dark.png">
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+      <p class="dashboard-header">Sales Report</p>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <div class="navigation">
+        <div class="nav-group" id="nav-dashboard">
+          <img src="/Assets/nav-dashboard-gray.svg" />
+          <a th:href="@{/admin/dashboard}">Dashboard</a>
+        </div>
+
+        <div class="nav-group" id="nav-movies">
+          <img src="/Assets/nav-movies.svg" />
+          <a th:href="@{/admin/movies}">Movies</a>
+        </div>
+
+        <div class="nav-group" id="nav-actors">
+          <img src="/Assets/nav-actors.png" />
+          <a th:href="@{/admin/actors}">Actors</a>
+        </div>
+
+        <div class="nav-group" id="nav-genres">
+          <img src="/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/genres}">Genres</a>
+        </div>
+
+        <div class="nav-group" id="nav-sales">
+          <img src="/Assets/nav-sales-blue.svg" />
+          <a th:href="@{/admin/sales-report}">Sales Report</a>
+        </div>
+
+        <div class="nav-group" id="nav-log-out">
+          <img src="/Assets/nav-logout.svg" />
+          <a th:href="@{/logout}">Log Out</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+
+      <div class="filter">
+        <h2>Filter Sales Report</h2>
+        <form>
+          <div class="form-container">
+            <div class="left-group">
+              <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate">
+              </div>
+
+              <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate">
+              </div>
+
+            </div>
+            <div class="right-group">
+              <div class="form-group">
+                <label for="movieTitle">Movie Title:</label>
+                <input type="text" id="movieTitle" name="movieTitle" placeholder="Enter movie title">
+              </div>
+
+              <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName" placeholder="Enter customer name">
+              </div>
+
+
+            </div>
+
+            <div class="button">
+              <button type="submit">Apply Filter</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="sales-detail">
+        <h2>Sales Details</h2>
+        <table id="salesTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Movie Title</th>
+              <th>Customer Name</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2024-12-20</td>
+              <td>Avengers: End Game</td>
+              <td>John Doe</td>
+              <td>2</td>
+              <td>40.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button id="downloadBtn">Download Report</button>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+
+      // Get table data
+      pdf.autoTable({
+        html: '#salesTable',
+        startY: 20,
+        theme: 'grid',
+        headStyles: { fillColor: [54, 162, 235] },
+      });
+
+      // Add a title
+      pdf.setFontSize(16);
+      pdf.text('Sales Report', 14, 15);
+
+      // Save the PDF
+      pdf.save('sales_report.pdf');
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rent a Movie</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/CustomerStyle/rentMovieStyle.css" />
+</head>
+
+<body>
+  <div class="page-container">
+    <div class="navigation">
+      <img src="/Assets/logo.png" />
+
+      <div class="nav-search">
+        <div class="left-nav">
+          <a th href="/customer/homepage">Home</a>
+          <a th href="/customer/movies">Movies</a>
+          <a th href="/customer/cart">My Cart</a>
+          <a th href="/customer/myRentals">My Rentals</a>
+          <a th href="/customer/profile">Profile</a>
+          <a th href="/landing">Log Out</a>
+        </div>
+
+        <div class="right-nav">
+          <img src="/Assets/search-icon.png" />
+          <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
+        </div>
+      </div>
+    </div>
+
+    <div class="rent-container">
+      <h1>Movie Rental</h1>
+
+      <div class="input-container">
+        <div class="input-left">
+          <div class="input-group">
+            <label for="customer-name">Username</label>
+            <input type="text" id="customer-name" name="customer-name" required placeholder="Enter your username" />
+          </div>
+          <div class="input-group">
+            <label for="choose-movie">Movie Title</label>
+            <select id="choose-movie" name="choose-movie" required>
+              <option value="" disabled selected>Choose a movie</option>
+              <option>Avatar:The way of water</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="jumlah">Rent duration (days)</label>
+            <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Ex : 5" required />
+          </div>
+        </div>
+
+        <div class="input-right">
+          <div class="input-group">
+            <label for="tanggal">Rent date</label>
+            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
+          </div>
+          <div class="input-group">
+            <label for="tanggal">Pick up date</label>
+            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
+          </div>
+
+          <div class="input-group">
+            <label for="hargaTotal">Total</label>
+            <div class="total-group">
+              <span>Rp. </span><input type="text" id="hargaTotal" name="hargaTotal" readonly />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <button type="submit">Confirm Order</button>
+    </div>
+
+    <div class="table">
+      <h1>Order Summary</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Movie Title</th>
+            <th>Rent Duration</th>
+            <th>Return Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navigation = document.querySelector(".navigation");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        navigation.classList.add("blurred"); // Add blur effect when scrolling
+      } else {
+        navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
+      }
+    });
+  });
+</script>
+
+</html>
