@@ -15,14 +15,7 @@ CREATE TABLE users (
 	name VARCHAR (50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    deleted BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE admins (
-    phone VARCHAR(20) PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+	role VARCHAR(255) NOT NULL,
     deleted BOOLEAN DEFAULT FALSE
 );
 
@@ -96,15 +89,13 @@ CREATE TABLE transaction_details (
 
 
 -- Dummy Data
-INSERT INTO users (phone, username, name, email, password, deleted) VALUES
--- ('0812987328', 'd8Ty', 'Arlo', 'john.doe@example.com', 'd8ty', FALSE),
-('08781827391', 'jeyii', 'Junita', 'jeyii@example.com', 'jeyii', FALSE),
-('080981233125', 'Ska', 'Renggana', 'ska@example.com', 'ska', FALSE),
-('08158092834', 'AirPls', 'Radif', 'airpls@example.com', 'airpls', FALSE);
-
-INSERT INTO admins (phone, username, email, password, deleted) VALUES
-('0812387123', 'admin_1', 'admin.one@example.com', 'adminpass1', FALSE),
-('0812937918', 'admin_2', 'admin.two@example.com', 'adminpass2', FALSE);
+INSERT INTO users (phone, username, name, email, password, role, deleted) VALUES
+-- ('0812987328', 'd8Ty', 'Arlo', 'john.doe@example.com', 'd8ty', 'user', FALSE),
+('08781827391', 'jeyii', 'Junita', 'jeyii@example.com', 'jeyii', 'user', FALSE),
+('080981233125', 'Ska', 'Renggana', 'ska@example.com', 'ska', 'user', FALSE),
+('08158092834', 'AirPls', 'Radif', 'airpls@example.com', 'airpls', 'user', FALSE),
+('0812387123', 'admin_1', 'ADMIN1', 'admin.one@example.com', 'adminpass1', 'admin', FALSE),
+('0812937918', 'admin_2', 'ADMIN2', 'admin.two@example.com', 'adminpass2', 'admin', FALSE);
 
 INSERT INTO genres (genre_id, name) VALUES
 (1, 'Action'),
@@ -550,6 +541,3 @@ INSERT INTO transaction_details(transaction_id, movie_id) VALUES
 (3,4),
 (4,5),
 (5,1);
-
-
-
