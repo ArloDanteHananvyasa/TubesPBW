@@ -28,37 +28,86 @@
 
           <div class="right-nav">
             <img src="/Assets/search-icon.png" />
-            <input type="te xt" class="search-bar" placeholder="Search movies, tv shows" />
+            <input type="text" class="search-bar" placeholder="Search movies, tv shows" />
           </div>
         </div>
       </div>
 
-      <div class="movie-description">
-        <p>2022</p>
-        <h1>Avatar: The Way of Water</h1>
-        <p><b>3 hr 12 min • Action • Fantasy • Adventure • Sci-Fi</b></p>
-        <p>
-          Several years after the Na'vi repelled the RDA invasion Jake Sully
-          and his family are living on Pandora. Things seem peaceful but the
-          RDA has other plans, invading and capturing Pandora. Sully forms a
-          guerrilla group to try to expel the invaders.
-        </p>
-        <div class="button-container">
-          <button type="button" class="play-button">
-            <img src="/Assets/play-button.png" />
-            <b>Rent Now</b>
-          </button>
+      <div class="movie-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide">
+            <div class="slide">
+              <img src="/Assets/Movies Poster/Horizontal/avatar-gradient.png">
+              <div class="slide-description">
+                <p>2022</p>
+                <h1>Avatar: The Way of Water</h1>
+                <p><b>3 hr 12 min • Action • Fantasy • Adventure • Sci-Fi</b></p>
+                <p>
+                  Several years after the Na'vi repelled the RDA invasion, Jake Sully
+                  and his family are living on Pandora. Things seem peaceful but the
+                  RDA has other plans, invading and capturing Pandora.
+                </p>
 
-          <button type="button" class="detail-button">
-            <img src="/Assets/info-square-02-contained-filled.svg" />
-            <b>More Details</b>
-          </button>
+                <div class="button-container">
+                  <button type="button" class="play-button">
+                    <b>Rent Now</b>
+                  </button>
+
+                  <button type="button" class="detail-button">
+                    <b>More Details</b>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="/Assets/Movies Poster/Horizontal/interstellar-gradient.png">
+              <div class="slide-description">
+
+                <p>2014</p>
+                <h1>Interstellar</h1>
+                <p><b>2 hr 49 min • Drama • Sci-Fi</b></p>
+                <p>
+                  A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
+                </p>
+
+                <div class="button-container">
+                  <button type="button" class="play-button">
+                    <b>Rent Now</b>
+                  </button>
+
+                  <button type="button" class="detail-button">
+                    <b>More Details</b>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="/Assets/Movies Poster/Horizontal/oppenheimer-gradient.png">
+              <div class="slide-description">
+                <p>2023</p>
+                <h1>Oppenheimer</h1>
+                <p><b>3 hr • Drama • Thriller</b></p>
+                <p>
+                  The story of J. Robert Oppenheimer and the creation of the atomic bomb during World War II.
+                </p>
+
+                <div class="button-container">
+                  <button type="button" class="play-button">
+                    <b>Rent Now</b>
+                  </button>
+
+                  <button type="button" class="detail-button">
+                    <b>More Details</b>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="prev">❮</button>
+          <button class="next">❯</button>
         </div>
       </div>
 
-      <div class="movie-carousel">
-        <img src="/Assets/Movies Poster/Horizontal/avatar-gradient.png" />
-      </div>
     </div>
 
     <div class="latest-release">
@@ -170,6 +219,35 @@
       }
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+    const carouselSlide = document.querySelector(".carousel-slide");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    let counter = 0;
+
+    function updateSlide() {
+      const size = slides[0].clientWidth;
+      carouselSlide.style.transform = `translateX(${-size * counter}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (counter >= slides.length - 1) return;
+      counter++;
+      updateSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (counter <= 0) return;
+      counter--;
+      updateSlide();
+    });
+
+    window.addEventListener("resize", updateSlide); // Adjust for responsive design
+  });
+
 </script>
 
 </html>
