@@ -30,6 +30,7 @@ public class UserData {
     @Size(min = 6, message = "Password must be at least 6 characters long")
     private String password;
 
+    private String role;
     private String deleted;
 
     @Transient

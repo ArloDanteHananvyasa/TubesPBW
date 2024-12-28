@@ -23,7 +23,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.0.0")
-	implementation("org.springframework.boot:spring-boot-starter-security")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -36,6 +35,10 @@ dependencies {
 	implementation("com.zaxxer:HikariCP:5.0.1")
 	implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.hibernate.validator:hibernate-validator:6.2.0.Final")
+	implementation("javax.validation:validation-api:2.0.1.Final")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
 }
 
 tasks.withType<Test> {
