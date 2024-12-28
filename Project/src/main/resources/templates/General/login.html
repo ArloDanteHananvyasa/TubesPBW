@@ -32,9 +32,13 @@
           Log in to rental your favourite shows
         </p>
 
+        <div th:if="${error}" style="color: red;">
+          <p th:text="${error}"></p>
+        </div>
+
         <form action="/login" method="POST">
           <div class="input-group">
-            <input type="text" id="username" name="username" placeholder="example@gmail.com" required />
+            <input type="text" id="email" name="email" placeholder="example@gmail.com" required />
           </div>
           <div class="input-group">
             <input type="password" id="input-password" name="password" placeholder="*********" required />

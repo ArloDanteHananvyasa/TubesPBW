@@ -23,4 +23,15 @@ public class UserService {
             return false;
         }
     }
+
+    public UserData login(String email, String password){
+        if(userRepository.findByEmail(email).isPresent()){
+            UserData user = userRepository.findByEmail(email).get();
+
+            if(passwordEncoder.matches(password, user.getPassword())){
+                return user;
+            }
+        }
+        return null;
+    }
 }
