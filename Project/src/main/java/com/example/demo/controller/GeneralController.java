@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class GeneralController {
 
-    @GetMapping("/landing")
+    @GetMapping("")
     public String landing() {
         return "General/landingPage";
     }
@@ -19,6 +19,11 @@ public class GeneralController {
     @GetMapping("/register")
     public String register() {
         return "General/register";
+    }
+    
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        
     }
 
 }
