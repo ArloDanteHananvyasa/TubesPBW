@@ -59,12 +59,17 @@
 
           <div class="input-group">
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" placeholder="*********" required />
+            <input type="text" id="input-password" name="password" placeholder="*********" required />
           </div>
 
           <div class="input-group">
             <label for="confpassword">Confirm Password</label>
             <input type="text" id="confpassword" name="confpassword" placeholder="*********" required />
+          </div>
+
+          <div class="input-group password-toggle">
+            <input id="show-password" type="checkbox" />
+            <label for="show-password">Show Password</label>
           </div>
 
           <button type="submit" class="login-btn">Sign Up</button>
@@ -75,6 +80,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const inputPass = document.getElementById("input-password")
+    const showPass = document.getElementById("show-password")
+    const confPass = document.getElementById("confpassword")
+
+    showPass.addEventListener("input", (e) => {
+      if (e.target.checked) {
+        inputPass.setAttribute("type", "text")
+        confPass.setAttribute("type", "text")
+      } else {
+        inputPass.setAttribute("type", "password")
+        confPass.setAttribute("type", "password")
+      }
+    })
+  </script>
 </body>
 
 </html>
