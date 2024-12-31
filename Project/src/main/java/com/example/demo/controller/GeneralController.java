@@ -24,6 +24,9 @@ public class GeneralController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("")
     public String landing() {
         return "General/landingPage";
@@ -65,6 +68,12 @@ public class GeneralController {
         
         if(bindingResult.hasErrors()){
             model.addAttribute("error", "Please correct the highlighted errors.");
+            return "General/register";
+        }
+
+        //Check Phone Number
+        if(userRepository.findByPhone(userData.getPhone()).isPresent()){
+            model.addAttribute("error", "Number already exists.");
             return "General/register";
         }
 

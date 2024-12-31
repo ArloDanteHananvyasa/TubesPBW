@@ -113,92 +113,40 @@
     <div class="latest-release">
       <h2>Latest Release</h2>
       <div class="movies-container">
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/deadpool-wolverine.png" />
-          <p class="title">Deadpool & Wolverine</p>
-          <p class="genre">Action • Sci-fi</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/fastX.png" />
-          <p class="title">Fast X</p>
-          <p class="genre">Action • Thriller</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/johnWick.png" />
-          <p class="title">John Wick chapter 4</p>
-          <p class="genre">Action • Thriller</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/dune-part2.png" />
-          <p class="title">Dune Part II</p>
-          <p class="genre">Adventure • Sci-fi</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/tlou.png" />
-          <p class="title">The Last Of Us</p>
-          <p class="genre">Thriller • Drama</p>
+        <div th:each="movie : ${latestMovies}">
+          <div class="latest-movies">
+            <!-- MASIH DUMMY POSTER -->
+            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png" /> 
+            <p class="title" th:text="${movie.title}">Movie Title</p>
+            <p class="genre" th:text="${movie.genres_names}">Genre</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="all-movies">
-      <h2>Movies</h2>
+      <h2>Adventure</h2>
       <div class="movies-container">
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/interstellar.png" />
-          <p class="title">Interstellar</p>
-          <p class="genre">Drama • Sci-fi</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/oppenheimer.png" />
-          <p class="title">Oppenheimer</p>
-          <p class="genre">Drama • Thriller</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/batman-vs-superman.png" />
-          <p class="title">Batman Vs Superman</p>
-          <p class="genre">Action • Sci-fi</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/lord-of-the-rings.png" />
-          <p class="title">Lord Of The Rings</p>
-          <p class="genre">Drama • Fantasy</p>
+        <div th:each="adventureMovie : ${adventureMovies}">
+          <div class="movies">
+            <!-- MASIH DUMMY POSTER -->
+            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
+            <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
+            <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="tv-shows">
-      <h2>TV Shows</h2>
+      <h2>Sci-Fi</h2>
       <div class="movies-container">
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/peaky-blinders.png" />
-          <p class="title">Peaky Blinders</p>
-          <p class="genre">Drama • History</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/loki.png" />
-          <p class="title">Loki</p>
-          <p class="genre">Action • Superhero</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/chainsaw-man.png" />
-          <p class="title">Chainsaw Man</p>
-          <p class="genre">Comedy • Horror</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/breaking-bad.png" />
-          <p class="title">Breaking Bad</p>
-          <p class="genre">Drama • Crime Film</p>
+        <div th:each="scifiMovie : ${scifiMovies}">
+          <div class="movies">
+            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
+            <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
+            <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
+          </div>
         </div>
       </div>
     </div>
