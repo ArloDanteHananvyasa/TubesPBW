@@ -18,6 +18,9 @@ public class CustomerController {
     
     @GetMapping("/customer/homepage")
     public String homepage(Model model) {
+        List<HomePageData> wheelMovies = userRepository.getMovieWheel();
+        model.addAttribute("wheelMovies", wheelMovies);
+
         List<HomePageData> latestMovies = userRepository.getMoviesFromLast5Years();
         model.addAttribute("latestMovies", latestMovies);
 

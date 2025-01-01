@@ -1,8 +1,10 @@
+DROP VIEW IF EXISTS view_homepage;
+
 CREATE VIEW view_homepage AS
 SELECT 
     movies.movie_id,
     movies.title,
-    STRING_AGG(genres.name, ', ') AS genres_names,
+    STRING_AGG(genres.name, ' • ') AS genres_names,
     movies.release_year,
     movies.landscapeposter,
     movies.portraitposter

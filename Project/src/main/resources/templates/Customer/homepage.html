@@ -36,69 +36,27 @@
       <div class="movie-carousel">
         <div class="carousel-container">
           <div class="carousel-slide">
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/avatar-gradient.png">
-              <div class="slide-description">
-                <p>2022</p>
-                <h1>Avatar: The Way of Water</h1>
-                <p><b>3 hr 12 min • Action • Fantasy • Adventure • Sci-Fi</b></p>
-                <p>
-                  Several years after the Na'vi repelled the RDA invasion, Jake Sully
-                  and his family are living on Pandora. Things seem peaceful but the
-                  RDA has other plans, invading and capturing Pandora.
-                </p>
-
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
-
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/interstellar-gradient.png">
-              <div class="slide-description">
-
-                <p>2014</p>
-                <h1>Interstellar</h1>
-                <p><b>2 hr 49 min • Drama • Sci-Fi</b></p>
-                <p>
-                  A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
-                </p>
-
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
-
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/oppenheimer-gradient.png">
-              <div class="slide-description">
-                <p>2023</p>
-                <h1>Oppenheimer</h1>
-                <p><b>3 hr • Drama • Thriller</b></p>
-                <p>
-                  The story of J. Robert Oppenheimer and the creation of the atomic bomb during World War II.
-                </p>
-
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
-
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
+            <div th:each="wheelMovie : ${wheelMovies}">
+              <div class="slide">
+                <!-- MASIH DUMMY POSTER -->
+                <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
+                <div class="slide-description">
+                  <p th:text="${wheelMovie.release_year}">Year</p>
+                  <h1 th:text="${wheelMovie.title}">Title</h1>
+                  <p th:text="${wheelMovie.duration} + ' min • ' + ${wheelMovie.genres_names}"><b>duration • genre</b></p>
+                  <p th:text="${wheelMovie.description}">
+                    Description
+                  </p>
+  
+                  <div class="button-container">
+                    <button type="button" class="play-button">
+                      <b>Rent Now</b>
+                    </button>
+  
+                    <button type="button" class="detail-button">
+                      <b>More Details</b>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

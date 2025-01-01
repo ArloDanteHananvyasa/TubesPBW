@@ -10,4 +10,5 @@ public interface UserRepository {
     List<HomePageData> getMoviesFromLast5Years();
     List<HomePageData> getAdventureMovies();
     List<HomePageData> getScifiMovies();
+    List<HomePageData> getMovieWheel();
 }

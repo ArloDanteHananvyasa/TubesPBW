@@ -70,4 +70,10 @@ public class UserJdbc implements UserRepository {
         String sql = "SELECT * FROM view_homepage WHERE genres_names LIKE '%Sci-Fi%'";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
+
+    @Override
+    public List<HomePageData> getMovieWheel(){
+        String sql = "SELECT * FROM view_homepage ORDER BY RANDOM() LIMIT 5";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
+    }
 }
