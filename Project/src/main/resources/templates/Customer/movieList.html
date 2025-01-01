@@ -14,20 +14,20 @@
 <body>
   <div class="page-container">
     <div class="navigation">
-      <img src="/Assets/logo.png" />
+      <img src="/static/Assets/logo.png" />
 
       <div class="nav-search">
         <div class="left-nav">
-          <a th href="/customer/homepage">Home</a>
-          <a th href="/customer/movies">Movies</a>
-          <a th href="/customer/cart">My Cart</a>
-          <a th href="/customer/myRentals">My Rentals</a>
-          <a th href="/customer/profile">Profile</a>
-          <a th href="/landing">Log Out</a>
+          <a th:href="@{/customer/homepage}">Home</a>
+          <a th:href="@{/customer/movies}">Movies</a>
+          <a th:href="@{/customer/cart}">My Cart</a>
+          <a th:href="@{/customer/myRentals}">My Rentals</a>
+          <a th:href="@{/customer/profile}">Profile</a>
+          <a th:href="@{/logout}">Log Out</a>
         </div>
 
         <div class="right-nav">
-          <img src="/Assets/search-icon.png" />
+          <img src="/static/Assets/search-icon.png" />
           <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
         </div>
       </div>
@@ -80,17 +80,17 @@
         <h2>Superhero Movies</h2>
         <div class="movies-container">
           <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/avengers-endgame.jpg" />
+            <img src="/static/Assets/Movies Poster/Vertical/avengers-endgame.jpg" />
             <p class="title">Avengers: Endgame</p>
           </div>
 
           <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
+            <img src="/static/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
             <p class="title">Spider-Man: Homecoming</p>
           </div>
 
           <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
+            <img src="/static/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
             <p class="title">Aquaman and the Lost Kingdom</p>
           </div>
         </div>
@@ -100,12 +100,12 @@
         <h2>comedy Movies</h2>
         <div class="movies-container">
           <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/joker.jpg" />
+            <img src="/static/Assets/Movies Poster/Vertical/joker.jpg" />
             <p class="title">Joker</p>
           </div>
 
           <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/unlocked.png" />
+            <img src="/static/Assets/Movies Poster/Vertical/unlocked.png" />
             <p class="title">Unlocked</p>
           </div>
         </div>
