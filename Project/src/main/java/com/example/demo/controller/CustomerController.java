@@ -7,18 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.user.HomePageData;
 import com.example.demo.user.MovieDetailData;
 import com.example.demo.user.UserRepository;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
     private UserRepository userRepository;
-    
-    @GetMapping("/customer/homepage")
+
+    @GetMapping("/homepage")
     public String homepage(Model model) {
         List<HomePageData> wheelMovies = userRepository.getMovieWheel();
         model.addAttribute("wheelMovies", wheelMovies);
@@ -34,7 +36,7 @@ public class CustomerController {
         return "Customer/homepage"; // Mengarahkan ke halaman utama customer
     }
 
-    @GetMapping("/customer/details/{title}")
+    @GetMapping("/details/{title}")
     public String details(@PathVariable String title, Model model) {
         HomePageData movieGenre = userRepository.getMovieByTitle(title);
         model.addAttribute("movieGenre", movieGenre);
@@ -44,27 +46,27 @@ public class CustomerController {
         return "Customer/MoviesDetails/Avatar/avatar";
     }
 
-    @GetMapping("/customer/profile")
+    @GetMapping("/profile")
     public String profile() {
         return "Customer/profile"; // Mengarahkan ke halaman profil customer
     }
 
-    @GetMapping("/customer/myRentals")
+    @GetMapping("/myRentals")
     public String myRentals() {
         return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
     }
 
-    @GetMapping("/customer/movies")
+    @GetMapping("/movies")
     public String movieList() {
         return "Customer/movieList"; // Mengarahkan ke halaman daftar film
     }
 
-    @GetMapping("/customer/rentMovie")
+    @GetMapping("/rentMovie")
     public String rentMovie() {
         return "Customer/rentMovie"; // Mengarahkan ke halaman sewa film
     }
 
-    @GetMapping("/customer/cart")
+    @GetMapping("/cart")
     public String cart() {
         return "Customer/Cart"; // Mengarahkan ke halaman keranjang
     }
