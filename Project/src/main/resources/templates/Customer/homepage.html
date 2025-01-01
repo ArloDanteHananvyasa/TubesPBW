@@ -36,69 +36,29 @@
       <div class="movie-carousel">
         <div class="carousel-container">
           <div class="carousel-slide">
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/avatar-gradient.png">
-              <div class="slide-description">
-                <p>2022</p>
-                <h1>Avatar: The Way of Water</h1>
-                <p><b>3 hr 12 min • Action • Fantasy • Adventure • Sci-Fi</b></p>
-                <p>
-                  Several years after the Na'vi repelled the RDA invasion, Jake Sully
-                  and his family are living on Pandora. Things seem peaceful but the
-                  RDA has other plans, invading and capturing Pandora.
-                </p>
+            <div th:each="wheelMovie : ${wheelMovies}">
+              <div class="slide">
+                <!-- MASIH DUMMY POSTER -->
+                <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
+                <div class="slide-description">
+                  <p th:text="${wheelMovie.release_year}">Year</p>
+                  <h1 th:text="${wheelMovie.title}">Title</h1>
+                  <p th:text="${wheelMovie.duration} + ' min • ' + ${wheelMovie.genres_names}"><b>duration • genre</b>
+                  </p>
+                  <p th:text="${wheelMovie.description}">
+                    Description
+                  </p>
 
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
+                  <div class="button-container">
+                    <button type="button" class="play-button">
+                      <b>Rent Now</b>
+                    </button>
 
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/interstellar-gradient.png">
-              <div class="slide-description">
-
-                <p>2014</p>
-                <h1>Interstellar</h1>
-                <p><b>2 hr 49 min • Drama • Sci-Fi</b></p>
-                <p>
-                  A group of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
-                </p>
-
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
-
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="/Assets/Movies Poster/Horizontal/oppenheimer-gradient.png">
-              <div class="slide-description">
-                <p>2023</p>
-                <h1>Oppenheimer</h1>
-                <p><b>3 hr • Drama • Thriller</b></p>
-                <p>
-                  The story of J. Robert Oppenheimer and the creation of the atomic bomb during World War II.
-                </p>
-
-                <div class="button-container">
-                  <button type="button" class="play-button">
-                    <b>Rent Now</b>
-                  </button>
-
-                  <button type="button" class="detail-button">
-                    <b>More Details</b>
-                  </button>
+                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}"
+                      onclick="redirectToDetails(this)">
+                      <b>More Details</b>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,95 +72,65 @@
 
     <div class="latest-release">
       <h2>Latest Release</h2>
-      <div class="movies-container">
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/deadpool-wolverine.png" />
-          <p class="title">Deadpool & Wolverine</p>
-          <p class="genre">Action • Sci-fi</p>
+      <div class="carousel">
+        <!-- Tombol panah kiri -->
+        <button class="carousel-button prevButton" onclick="moveSlide(-1)">&#10094;</button>
+        <!-- Container untuk film -->
+        <div class="movies-container">
+          <div th:each="movie : ${latestMovies}" class="latest-movies">
+            <!-- MASIH DUMMY POSTER -->
+            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png" th:attr="data-title=${movie.title}"
+              onclick="redirectToDetails(this)" />
+            <p class="title" th:text="${movie.title}">Movie Title</p>
+            <p class="genre" th:text="${movie.genres_names}">Genre</p>
+          </div>
         </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/fastX.png" />
-          <p class="title">Fast X</p>
-          <p class="genre">Action • Thriller</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/johnWick.png" />
-          <p class="title">John Wick chapter 4</p>
-          <p class="genre">Action • Thriller</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/dune-part2.png" />
-          <p class="title">Dune Part II</p>
-          <p class="genre">Adventure • Sci-fi</p>
-        </div>
-
-        <div class="latest-movies">
-          <img src="/Assets/Movies Poster/Vertical/tlou.png" />
-          <p class="title">The Last Of Us</p>
-          <p class="genre">Thriller • Drama</p>
-        </div>
+        <!-- Tombol panah kanan -->
+        <button class="carousel-button nextButton" onclick="moveSlide(1)">&#10095;</button>
       </div>
     </div>
 
     <div class="all-movies">
-      <h2>Movies</h2>
-      <div class="movies-container">
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/interstellar.png" />
-          <p class="title">Interstellar</p>
-          <p class="genre">Drama • Sci-fi</p>
+      <h2>Adventure</h2>
+      <div class="carousel">
+        <!-- Tombol panah kiri -->
+        <button class="carousel-button prevButton" onclick="moveAdventureSlide(-1)">&#10094;</button>
+        <!-- Container untuk film -->
+        <div class="movies-container">
+          <div th:each="adventureMovie : ${adventureMovies}">
+            <div class="movies">
+              <!-- MASIH DUMMY POSTER -->
+              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg"
+                th:attr="data-title=${adventureMovie.title}" onclick="redirectToDetails(this)" />
+              <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
+              <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
+            </div>
+          </div>
         </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/oppenheimer.png" />
-          <p class="title">Oppenheimer</p>
-          <p class="genre">Drama • Thriller</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/batman-vs-superman.png" />
-          <p class="title">Batman Vs Superman</p>
-          <p class="genre">Action • Sci-fi</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/lord-of-the-rings.png" />
-          <p class="title">Lord Of The Rings</p>
-          <p class="genre">Drama • Fantasy</p>
-        </div>
+        <!-- Tombol panah kanan -->
+        <button class="carousel-button nextButton" onclick="moveAdventureSlide(1)">&#10095;</button>
       </div>
     </div>
 
     <div class="tv-shows">
-      <h2>TV Shows</h2>
-      <div class="movies-container">
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/peaky-blinders.png" />
-          <p class="title">Peaky Blinders</p>
-          <p class="genre">Drama • History</p>
+      <h2>Sci-Fi</h2>
+      <div class="carousel">
+        <button class="carousel-button prevButton" onclick="moveAdventureSlide(-1)">&#10094;</button>
+
+        <div class="movies-container">
+          <div th:each="scifiMovie : ${scifiMovies}">
+            <div class="movies">
+              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${scifiMovie.title}"
+                onclick="redirectToDetails(this)" />
+              <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
+              <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
+            </div>
+          </div>
         </div>
 
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/loki.png" />
-          <p class="title">Loki</p>
-          <p class="genre">Action • Superhero</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/chainsaw-man.png" />
-          <p class="title">Chainsaw Man</p>
-          <p class="genre">Comedy • Horror</p>
-        </div>
-
-        <div class="movies">
-          <img src="/Assets/Movies Poster/Horizontal/breaking-bad.png" />
-          <p class="title">Breaking Bad</p>
-          <p class="genre">Drama • Crime Film</p>
-        </div>
+        <button class="carousel-button nextButton" onclick="moveAdventureSlide(1)">&#10095;</button>
       </div>
+
     </div>
   </div>
 
@@ -247,6 +177,54 @@
 
     window.addEventListener("resize", updateSlide); // Adjust for responsive design
   });
+
+  function redirectToDetails(button) {
+    const title = button.getAttribute('data-title');
+    const encodedTitle = encodeURIComponent(title);
+    const url = `/customer/details/${encodedTitle}`;
+    window.location.href = url;
+  }
+
+  let slideIndex = 0;
+
+  function moveSlide(n) {
+    const moviesContainer = document.querySelector('.movies-container');
+    const movies = document.querySelectorAll('.latest-movies');
+    const movieWidth = movies[0].offsetWidth + 20; // Lebar film + margin
+    const totalMovies = movies.length;
+
+    slideIndex += n;
+
+    // Batasi indeks agar tidak melebihi jumlah film
+    const maxIndex = Math.ceil(totalMovies - (moviesContainer.offsetWidth / movieWidth));
+    if (slideIndex < 0) slideIndex = 0;
+    if (slideIndex > maxIndex) slideIndex = maxIndex;
+
+    // Hitung offset
+    const offset = -(movieWidth * slideIndex);
+    moviesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+  let adventureSlideIndex = 0;
+
+  function moveAdventureSlide(n) {
+    const moviesContainer = document.querySelector('.all-movies .movies-container');
+    const movies = document.querySelectorAll('.all-movies .movies');
+    const movieWidth = movies[0].offsetWidth + 20; // Lebar film + margin
+    const totalMovies = movies.length;
+
+    adventureSlideIndex += n;
+
+    // Batasi indeks agar tidak melebihi jumlah film
+    const maxIndex = Math.ceil(totalMovies - (moviesContainer.offsetWidth / movieWidth));
+    if (adventureSlideIndex < 0) adventureSlideIndex = 0;
+    if (adventureSlideIndex > maxIndex) adventureSlideIndex = maxIndex;
+
+    // Hitung offset
+    const offset = -(movieWidth * adventureSlideIndex);
+    moviesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
 
 </script>
 
