@@ -111,61 +111,59 @@ INSERT INTO genres (genre_id, name) VALUES
 
 
 INSERT INTO movies (movie_id, title, description, release_year, duration, base_price, landscapePoster, portraitPoster, stock, deleted) VALUES
-(1, 'Red Notice', 'A globetrotting heist film starring Dwayne Johnson, Gal Gadot, and Ryan Reynolds.', '2021', 118, 21000, NULL, NULL, 3, FALSE),
-(2, 'Wonder Woman 1984', 'Wonder Woman faces new threats in the 1980s, including the villainous Cheetah.', '2020', 151, 21000, NULL, NULL, 3, FALSE),
-(3, 'Deadpool', 'A former Special Forces operative becomes the antihero Deadpool after being subjected to a dangerous experiment.', '2016', 108, 25000, NULL, NULL, 3, FALSE),
-(4, 'Deadpool & Wolverine', 'Deadpool unites with his would-be pal, Wolverine, to complete the mission and save his world from an existential threat.', '2024', 127, 25000, NULL, NULL, 3, FALSE),
-(5, 'The Terminator', 'A cyborg assassin from the future is sent to kill Sarah Connor, whose son will lead a resistance movement.', '1984', 107, 29000, NULL, NULL, 3, FALSE),
-(6, 'Aliens', 'The crew of a space station must fight for survival after encountering alien creatures.', '1986', 137, 24000, NULL, NULL, 3, FALSE),
-(7, 'The Matrix', 'A hacker discovers that reality as we know it is a simulated construct controlled by machines.', '1999', 136, 24000, NULL, NULL, 3, FALSE),
-(8, 'Coco', 'An aspiring young guitar player, whose family has a classic hate for music, tries to find answers of his great Grandfather.', '2017', 109, 24000, NULL, NULL, 3, FALSE),
-(9, 'Annabelle', 'A doll with a sinister presence terrorizes a young couple after being brought into their home.', '2014', 99, 20000, NULL, NULL, 3, FALSE),
-(10, 'Annabelle: Creation', 'A prequel to Annabelle, showing the origins of the possessed doll.', '2017', 109, 20000, NULL, NULL, 3, FALSE),
-(11, 'Annabelle Comes Home', 'The doll wreaks havoc when it is brought into the home of a paranormal investigator.', '2019', 106, 20000, NULL, NULL, 3, FALSE),
-(12, 'The Nun', 'A priest and a novice must confront a malevolent force that manifests itself as a nun.', '2018', 96, 20000, NULL, NULL, 3, FALSE),
-(13, 'The Nun II', 'The terrifying sequel to The Nun, set in the 1950s with an even darker evil force.', '2023', 110, 25000, NULL, NULL, 3, FALSE),
-(14, 'The Conjuring', 'Paranormal investigators Ed and Lorraine Warren tackle one of their most horrifying cases in a haunted house.', '2013', 112, 25000, NULL, NULL, 3, FALSE),
-(15, 'The Conjuring 2', 'The Warrens travel to England to investigate a haunting in a family home.', '2016', 134, 25000, NULL, NULL, 3, FALSE),
-(16, 'Chucky', 'A serial killer transfers his soul into a doll, leading to a terrifying killing spree.', '1988', 87, 25000, NULL, NULL, 3, FALSE),
-(17, 'IT Chapter One', 'A group of outcast children battle a malevolent entity that takes the form of a terrifying clown.', '2017', 135, 25000, NULL, NULL, 3, FALSE),
-(18, 'IT Chapter Two', 'The now-adult group of outcasts must face their childhood fears when the evil clown returns.', '2019', 169, 30000, NULL, NULL, 3, FALSE),
-(19, 'Avengers: Endgame', 'The Avengers attempt to reverse the damage caused by Thanos and save the universe.', '2019', 181, 40000, NULL, NULL, 3, FALSE),
-(20, 'Star Wars: The Empire Strikes Back', 'The Rebel Alliance faces off against the Empire in one of the greatest battles in galactic history.', '1980', 124, 30000, NULL, NULL, 3, FALSE),
-(21, 'John Wick', 'A retired hitman comes out of retirement to avenge the death of his dog.', '2014', 101, 25000, NULL, NULL, 3, FALSE),
-(22, 'Jumanji: Welcome to the Jungle', 'Four teenagers are transported into a video game world where they must work together to survive.', '2017', 119, 30000, NULL, NULL, 3, FALSE),
-(23, 'The Lord of the Rings: The Fellowship of the Ring', 'A young hobbit sets out on a perilous journey to destroy a powerful ring and save Middle-earth.', '2001', 178, 35000, NULL, NULL, 3, FALSE),
-(24, 'Iron Man', 'The story of a genius billionaire who builds a suit of armor and becomes the superhero Iron Man.', '2008', 126, 30000, NULL, NULL, 3, FALSE),
-(25, 'Iron Man 2', 'Tony Stark faces new challenges and enemies while coming to terms with his newfound fame as Iron Man.', '2010', 124, 30000, NULL, NULL, 3, FALSE),
-(26, 'Thor', 'The story of the Norse god Thor, who is banished to Earth and must prove himself worthy of his powers.', '2011', 115, 30000, NULL, NULL, 3, FALSE),
-(27, 'Captain America: The First Avenger', 'The origin story of Captain America, from his transformation into a super soldier to his battle against Hydra.', '2011', 124, 30000, NULL, NULL, 3, FALSE),
-(28, 'The Avengers', 'Earth''s mightiest heroes must unite to defeat an alien invasion led by the villain Loki.', '2012', 143, 35000, NULL, NULL, 3, FALSE),
-(29, 'Iron Man 3', 'Tony Stark faces a new villain and must confront the consequences of the events from The Avengers.', '2013', 130, 30000, NULL, NULL, 3, FALSE),
-(30, 'Captain America: The Winter Soldier', 'Captain America teams up with Black Widow to uncover a conspiracy while battling a mysterious assassin.', '2014', 136, 35000, NULL, NULL, 3, FALSE),
-(31, 'Guardians of the Galaxy', 'A group of intergalactic misfits come together to stop a warlord from taking over the galaxy.', '2014', 121, 35000, NULL, NULL, 3, FALSE),
-(32, 'Avengers: Age of Ultron', 'The Avengers face a new threat in the form of Ultron, an artificial intelligence bent on human extinction.', '2015', 141, 35000, NULL, NULL, 3, FALSE),
-(33, 'Ant-Man', 'A thief must use a shrinking suit to stop a former mentor from destroying the world.', '2015', 117, 30000, NULL, NULL, 3, FALSE),
-(34, 'Captain America: Civil War', 'The Avengers are divided over a new law regulating their actions, leading to a battle between Iron Man and Captain America.', '2016', 147, 35000, NULL, NULL, 3, FALSE),
-(35, 'Doctor Strange', 'A brilliant surgeon discovers a hidden world of magic after a life-changing accident.', '2016', 115, 30000, NULL, NULL, 3, FALSE),
-(36, 'Guardians of the Galaxy Vol. 2', 'The Guardians struggle to understand the true nature of their leader Star-Lord''s parentage.', '2017', 136, 35000, NULL, NULL, 3, FALSE),
-(37, 'Spider-Man: Homecoming', 'A young Spider-Man must face a new villain while balancing high school life and superhero duties.', '2017', 133, 30000, NULL, NULL, 3, FALSE),
-(38, 'Thor: Ragnarok', 'Thor must escape from a distant planet and prevent the end of Asgard in a showdown with his sister, Hela.', '2017', 130, 30000, NULL, NULL, 3, FALSE),
-(39, 'Black Panther', 'The newly crowned king of Wakanda must protect his people from a dangerous foe seeking to exploit the nation''s resources.', '2018', 134, 35000, NULL, NULL, 3, FALSE),
-(40, 'Avengers: Infinity War', 'The Avengers team up with the Guardians of the Galaxy to stop Thanos from collecting the Infinity Stones.', '2018', 149, 40000, NULL, NULL, 3, FALSE),
-(41, 'Captain Marvel', 'Carol Danvers becomes the superhero Captain Marvel and joins the fight against an alien invasion.', '2019', 123, 30000, NULL, NULL, 3, FALSE),
-(42, 'Avengers: Endgame', 'The Avengers mount a final attempt to undo the damage done by Thanos in the previous movie.', '2019', 181, 40000, NULL, NULL, 3, FALSE),
-(43, 'Spider-Man: Far From Home', 'Peter Parker goes on a European school trip while trying to balance his life as Spider-Man.', '2019', 129, 30000, NULL, NULL, 3, FALSE),
-(44, 'Black Widow', 'Black Widow faces her past while fighting new enemies after the events of Avengers: Endgame.', '2021', 134, 30000, NULL, NULL, 3, FALSE),
-(45, 'Shang-Chi and the Legend of the Ten Rings', 'Shang-Chi must confront his father and the deadly Ten Rings organization.', '2021', 132, 30000, NULL, NULL, 3, FALSE),
-(46, 'Eternals', 'A group of immortal heroes must come together to stop a threat that has been hidden from humanity for centuries.', '2021', 157, 30000, NULL, NULL, 3, FALSE),
-(47, 'Spider-Man: No Way Home', 'Peter Parker must deal with the consequences of his secret identity being revealed.', '2021', 148, 40000, NULL, NULL, 3, FALSE),
-(48, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange must navigate alternate realities to stop a multiverse-threatening villain.', '2022', 126, 30000, NULL, NULL, 3, FALSE),
-(49, 'Black Panther: Wakanda Forever', 'The people of Wakanda fight to protect their nation after the death of their king.', '2022', 161, 40000, NULL, NULL, 3, FALSE),
-(50, 'The Lord of the Rings: The Two Towers', 'The journey continues as Frodo and Sam trek towards Mount Doom while Aragorn, Legolas, and Gimli battle the forces of Saruman.', '2002', 179, 35000, NULL, NULL, 3, FALSE),
-(51, 'The Lord of the Rings: The Return of the King', 'The final battle for Middle-earth begins as Frodo and Sam approach Mount Doom to destroy the One Ring.', '2003', 201, 35000, NULL, NULL, 3, FALSE),
-(52, 'Indiana Jones and the Raiders of the Lost Ark', 'Archaeologist Indiana Jones races against the Nazis to find the Ark of the Covenant.', '1981', 115, 23000, NULL, NULL, 3, FALSE),
-(53, 'Indiana Jones and the Temple of Doom', 'Indiana Jones must rescue a group of children from an evil cult in India.', '1984', 118, 25000, NULL, NULL, 3, FALSE),
-(54, 'Indiana Jones and the Last Crusade', 'Indiana Jones teams up with his father to find the Holy Grail before the Nazis can get to it.', '1989', 127, 24000, NULL, NULL, 3, FALSE),
-(55, 'Indiana Jones and the Kingdom of the Crystal Skull', 'Indiana Jones discovers a mysterious crystal skull with extraordinary powers.', '2008', 122, 27000, NULL, NULL, 3, FALSE);
+(1, 'Red Notice', 'A globetrotting heist film starring Dwayne Johnson, Gal Gadot, and Ryan Reynolds.', '2021', 118, 21000, '/Horizontal/red-notice-h.jpg', '/Vertical/red-notice-v.jpg', 3, FALSE),
+(2, 'Wonder Woman 1984', 'Wonder Woman faces new threats in the 1980s, including the villainous Cheetah.', '2020', 151, 21000, '/Horizontal/wonder-woman-1984-h.jpg', '/Vertical/wonder-woman-1984-v.jpg', 3, FALSE),
+(3, 'Deadpool', 'A former Special Forces operative becomes the antihero Deadpool after being subjected to a dangerous experiment.', '2016', 108, 25000, '/Horizontal/deadpool-h.jpg', '/Vertical/deadpool-v.jpg', 3, FALSE),
+(4, 'Deadpool & Wolverine', 'Deadpool unites with his would-be pal, Wolverine, to complete the mission and save his world from an existential threat.', '2024', 127, 25000, '/Horizontal/deadpool-wolverine-h.jpg', '/Vertical/deadpool-wolverine.png', 3, FALSE),
+(5, 'The Terminator', 'A cyborg assassin from the future is sent to kill Sarah Connor, whose son will lead a resistance movement.', '1984', 107, 29000, '/Horizontal/terminator-h.png', '/Vertical/terminator-v.jpg', 3, FALSE),
+(6, 'Aliens', 'The crew of a space station must fight for survival after encountering alien creatures.', '1986', 137, 24000, '/Horizontal/aliens-h.jpg', '/Vertical/aliens-v.jpg', 3, FALSE),
+(7, 'The Matrix', 'A hacker discovers that reality as we know it is a simulated construct controlled by machines.', '1999', 136, 24000, '/Horizontal/the-matrix-h.jpg', '/Vertical/the-matrix-v.jpg', 3, FALSE),
+(8, 'Coco', 'An aspiring young guitar player, whose family has a classic hate for music, tries to find answers of his great Grandfather.', '2017', 109, 24000, '/Horizontal/coco-h.jpg', '/Vertical/coco-v.jpg', 3, FALSE),
+(9, 'Annabelle', 'A doll with a sinister presence terrorizes a young couple after being brought into their home.', '2014', 99, 20000, '/Horizontal/annabelle-h.png', '/Vertical/annabelle-v.png', 3, FALSE),
+(10, 'Annabelle: Creation', 'A prequel to Annabelle, showing the origins of the possessed doll.', '2017', 109, 20000, '/Horizontal/annabelle-creation-h.jpg', '/Vertical/annabelle-creation-v.png', 3, FALSE),
+(11, 'Annabelle Comes Home', 'The doll wreaks havoc when it is brought into the home of a paranormal investigator.', '2019', 106, 20000, '/Horizontal/annabelle-comes-home-h.jpg', '/Vertical/annabelle-comes-home-v.png', 3, FALSE),
+(12, 'The Nun', 'A priest and a novice must confront a malevolent force that manifests itself as a nun.', '2018', 96, 20000, '/Horizontal/the-nun-h.jpg', '/Vertical/the-nun-v.jpg', 3, FALSE),
+(13, 'The Nun II', 'The terrifying sequel to The Nun, set in the 1950s with an even darker evil force.', '2023', 110, 25000, '/Horizontal/the-nun-2-h.jpg', '/Vertical/the-nun-2-v.jpg', 3, FALSE),
+(14, 'The Conjuring', 'Paranormal investigators Ed and Lorraine Warren tackle one of their most horrifying cases in a haunted house.', '2013', 112, 25000, '/Horizontal/the-conjuring-h.jpg', '/Vertical/the-conjuring-v.jpg', 3, FALSE),
+(15, 'The Conjuring 2', 'The Warrens travel to England to investigate a haunting in a family home.', '2016', 134, 25000, '/Horizontal/the-conjuring-2-h.jpg', '/Vertical/the-conjuring-2-v.jpg', 3, FALSE),
+(16, 'IT Chapter One', 'A group of outcast children battle a malevolent entity that takes the form of a terrifying clown.', '2017', 135, 25000, '/Horizontal/it-1-h.jpg', '/Vertical/it-1-v.jpg', 3, FALSE),
+(17, 'IT Chapter Two', 'The now-adult group of outcasts must face their childhood fears when the evil clown returns.', '2019', 169, 30000, '/Horizontal/it-2-h.jpg', '/Vertical/it-2-v.jpg', 3, FALSE),
+(18, 'The Incredible Hulk', 'The Avengers attempt to reverse the damage caused by Thanos and save the universe.', '2019', 181, 40000, '', '', 3, TRUE),
+(19, 'Star Wars: The Empire Strikes Back', 'The Rebel Alliance faces off against the Empire in one of the greatest battles in galactic history.', '1980', 124, 30000, '/Horizontal/star-wars-empire-h.png', '/Vertical/star-wars-empire-v.jpg', 3, FALSE),
+(20, 'John Wick', 'A retired hitman comes out of retirement to avenge the death of his dog.', '2014', 101, 25000, '/Horizontal/john-wick-h.jpg', '/Vertical/john-wick-v.jpg', 3, FALSE),
+(21, 'Jumanji: Welcome to the Jungle', 'Four teenagers are transported into a video game world where they must work together to survive.', '2017', 119, 30000, '/Horizontal/jumanji-h.jpg', '/Vertical/jumanji-v.jpg', 3, FALSE),
+(22, 'The Lord of the Rings: The Fellowship of the Ring', 'A young hobbit sets out on a perilous journey to destroy a powerful ring and save Middle-earth.', '2001', 178, 35000, '/Horizontal/the-lord-of-the-rings-h.jpg', '/Vertical/the-lord-of-the-rings-v.jpg', 3, FALSE),
+(23, 'Iron Man', 'The story of a genius billionaire who builds a suit of armor and becomes the superhero Iron Man.', '2008', 126, 30000, '/Horizontal/iron-man-1-h.jpg', '/Vertical/iron-man-1-v.jpg', 3, FALSE),
+(24, 'Iron Man 2', 'Tony Stark faces new challenges and enemies while coming to terms with his newfound fame as Iron Man.', '2010', 124, 30000, '/Horizontal/iron-man-2-h.jpg', '/Vertical/iron-man-2-v.jpg', 3, FALSE),
+(25, 'Thor', 'The story of the Norse god Thor, who is banished to Earth and must prove himself worthy of his powers.', '2011', 115, 30000, '/Horizontal/thor-h.jpg', '/Vertical/thor-v.jpg', 3, FALSE),
+(26, 'Captain America: The First Avenger', 'The origin story of Captain America, from his transformation into a super soldier to his battle against Hydra.', '2011', 124, 30000, '/Horizontal/captain-america-h.jpg', '/Vertical/captain-america-v.jpg', 3, FALSE),
+(27, 'The Avengers', 'Earth''s mightiest heroes must unite to defeat an alien invasion led by the villain Loki.', '2012', 143, 35000, '/Horizontal/the-avengers-h.png', '/Vertical/the-avengers-v.jpg', 3, FALSE),
+(28, 'Iron Man 3', 'Tony Stark faces a new villain and must confront the consequences of the events from The Avengers.', '2013', 130, 30000, '/Horizontal/iron-man-3-h.jpg', '/Vertical/iron-man-3-v.jpg', 3, FALSE),
+(29, 'Captain America: The Winter Soldier', 'Captain America teams up with Black Widow to uncover a conspiracy while battling a mysterious assassin.', '2014', 136, 35000, '/Horizontal/captain-america-winter-soldier-h.jpg', '/Vertical/captain-america-winter-soldier-v.jpg', 3, FALSE),
+(30, 'Guardians of the Galaxy', 'A group of intergalactic misfits come together to stop a warlord from taking over the galaxy.', '2014', 121, 35000, '/Horizontal/guardians-of-the-galaxy-h.jpg', '/Vertical/guardians-of-the-galaxy-v.jpg', 3, FALSE),
+(31, 'Avengers: Age of Ultron', 'The Avengers face a new threat in the form of Ultron, an artificial intelligence bent on human extinction.', '2015', 141, 35000, '/Horizontal/avengers-age-of-ultron-h.jpg', '/Vertical/avengers-age-of-ultron-v.jpg', 3, FALSE),
+(32, 'Ant-Man', 'A thief must use a shrinking suit to stop a former mentor from destroying the world.', '2015', 117, 30000, '/Horizontal/ant-man-h.jpg', '/Vertical/ant-man-v.jpg', 3, FALSE),
+(33, 'Captain America: Civil War', 'The Avengers are divided over a new law regulating their actions, leading to a battle between Iron Man and Captain America.', '2016', 147, 35000, '/Horizontal/captain-america-civil-war-h.jpg', '/Vertical/captain-america-civil-war-v.jpg', 3, FALSE),
+(34, 'Doctor Strange', 'A brilliant surgeon discovers a hidden world of magic after a life-changing accident.', '2016', 115, 30000, '/Horizontal/doctor-strange-h.jpg', '/Vertical/doctor-strange-v.jpg', 3, FALSE),
+(35, 'Guardians of the Galaxy Vol. 2', 'The Guardians struggle to understand the true nature of their leader Star-Lord''s parentage.', '2017', 136, 35000, '/Horizontal/guardians-of-the-galaxy-2-h.jpg', '/Vertical/guardians-of-the-galaxy-2-v.jpg', 3, FALSE),
+(36, 'Spider-Man: Homecoming', 'A young Spider-Man must face a new villain while balancing high school life and superhero duties.', '2017', 133, 30000, '/Horizontal/spiderman-homecoming-h.jpg', '/Vertical/spiderman-homecoming.jpg', 3, FALSE),
+(37, 'Thor: Ragnarok', 'Thor must escape from a distant planet and prevent the end of Asgard in a showdown with his sister, Hela.', '2017', 130, 30000, '/Horizontal/thor-ragnarok-h.jpg', '/Vertical/thor-ragnarok-v.jpg', 3, FALSE),
+(38, 'Black Panther', 'The newly crowned king of Wakanda must protect his people from a dangerous foe seeking to exploit the nation''s resources.', '2018', 134, 35000, '/Horizontal/black-panther-h.jpg', '/Vertical/black-panther-v.jpg', 3, FALSE),
+(40, 'Captain Marvel', 'Carol Danvers becomes the superhero Captain Marvel and joins the fight against an alien invasion.', '2019', 123, 30000, '/Horizontal/captain-marvel-h.jpg', '/Vertical/captain-marvel-v.jpg', 3, FALSE),
+(41, 'Spider-Man: Far From Home', 'Peter Parker goes on a European school trip while trying to balance his life as Spider-Man.', '2019', 129, 30000, '/Horizontal/spiderman-far-from-home-h.jpg', '/Vertical/spiderman-far-from-home-v.jpg', 3, FALSE),
+(42, 'Black Widow', 'Black Widow faces her past while fighting new enemies after the events of Avengers: Endgame.', '2021', 134, 30000, '/Horizontal/black-widow-h.jpg', '/Vertical/black-widow-v.jpg', 3, FALSE),
+(43, 'Shang-Chi and the Legend of the Ten Rings', 'Shang-Chi must confront his father and the deadly Ten Rings organization.', '2021', 132, 30000, '/Horizontal/shangchi-h.jpg', '/Vertical/shangchi-v.jpg', 3, FALSE),
+(44, 'Eternals', 'A group of immortal heroes must come together to stop a threat that has been hidden from humanity for centuries.', '2021', 157, 30000, '/Horizontal/eternals-h.png', '/Vertical/eternals-v.jpg', 3, FALSE),
+(45, 'Spider-Man: No Way Home', 'Peter Parker must deal with the consequences of his secret identity being revealed.', '2021', 148, 40000, '/Horizontal/spiderman-no-way-home-h.jpg', '/Vertical/spiderman-no-way-home-v.jpg', 3, FALSE),
+(46, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange must navigate alternate realities to stop a multiverse-threatening villain.', '2022', 126, 30000, '/Horizontal/doctor-strange-mom-h.jpg', '/Vertical/doctor-strange-mom-v.jpg', 3, FALSE),
+(47, 'Black Panther: Wakanda Forever', 'The people of Wakanda fight to protect their nation after the death of their king.', '2022', 161, 40000, '/Horizontal/black-panther-wakanda-forever-h.jpg', '/Vertical/black-panther-wakanda-forever-v.jpg', 3, FALSE),
+(48, 'The Lord of the Rings: The Two Towers', 'The journey continues as Frodo and Sam trek towards Mount Doom while Aragorn, Legolas, and Gimli battle the forces of Saruman.', '2002', 179, 35000, '/Horizontal/the-lord-of-the-rings-two-towers-h.jpg', '/Vertical/the-lord-of-the-rings-two-towers-v.jpg', 3, FALSE),
+(49, 'The Lord of the Rings: The Return of the King', 'The final battle for Middle-earth begins as Frodo and Sam approach Mount Doom to destroy the One Ring.', '2003', 201, 35000, '/Horizontal/the-lord-of-the-rings-return-of-kings-h.jpg', 'D:/Codes/TubesPBW/TheReelDeal/Vertical/the-lord-of-the-rings-return-of-kings-v.jpg', 3, FALSE),
+(50, 'Indiana Jones and the Raiders of the Lost Ark', 'Archaeologist Indiana Jones races against the Nazis to find the Ark of the Covenant.', '1981', 115, 23000, '/Horizontal/indiana-jones-lost-ark-h.jpg', '/Vertical/indiana-jones-lost-ark-v.jpg', 3, FALSE),
+(51, 'Indiana Jones and the Temple of Doom', 'Indiana Jones must rescue a group of children from an evil cult in India.', '1984', 118, 25000, '/Horizontal/indiana-jones-temple-of-doom-h.jpg', '/Vertical/indiana-jones-temple-of-doom-v.jpg', 3, FALSE),
+(52, 'Indiana Jones and the Last Crusade', 'Indiana Jones teams up with his father to find the Holy Grail before the Nazis can get to it.', '1989', 127, 24000, '/Horizontal/indiana-jones-last-crusade-h.jpg', '/Vertical/indiana-jones-last-crusade-v.jpg', 3, FALSE),
+(53, 'Indiana Jones and the Kingdom of the Crystal Skull', 'Indiana Jones discovers a mysterious crystal skull with extraordinary powers.', '2008', 122, 27000, '/Horizontal/indiana-jones-crystal-skull-h.jpg', '/Vertical/indiana-jones-crystal-skull-v.jpg', 3, FALSE);
+(54, 'Avengers: Infinity War', 'The Avengers team up with the Guardians of the Galaxy to stop Thanos from collecting the Infinity Stones.', '2018', 149, 40000, '/Horizontal/avengers-infinity-war-h.jpg', '/Vertical/avengers-infinity-war-v.jpg', 3, FALSE),
 
 INSERT INTO movie_genres (movie_id, genre_id) VALUES
 (1, 1), -- Red Notice: Action, Thriller
@@ -203,109 +201,104 @@ INSERT INTO movie_genres (movie_id, genre_id) VALUES
 (14, 5),
 (15, 8), -- The Conjuring 2: Horror, Thriller
 (15, 5),
-(16, 8), -- Chucky: Horror, Thriller
+(16, 8), -- IT Chapter One: Horror, Thriller
 (16, 5),
-(17, 8), -- IT Chapter One: Horror, Thriller
+(17, 8), -- IT Chapter Two: Horror, Thriller
 (17, 5),
-(18, 8), -- IT Chapter Two: Horror, Thriller
-(18, 5),
-(19, 1), -- Avengers: Endgame: Action, Adventure, Sci-Fi
+(18, 1), -- The Incredible Hulk: Action, Adventure, Sci-Fi
+(18, 3),
+(18, 6),
+(19, 1), -- Star Wars: The Empire Strikes Back: Action, Adventure, Sci-Fi
 (19, 3),
 (19, 6),
-(20, 1), -- Star Wars: The Empire Strikes Back: Action, Adventure, Sci-Fi
-(20, 3),
-(20, 6),
-(21, 1), -- John Wick: Action, Thriller
-(21, 5),
-(22, 1), -- Jumanji: Welcome to the Jungle: Action, Adventure, Comedy
+(20, 1), -- John Wick: Action, Thriller
+(20, 5),
+(21, 1), -- Jumanji: Welcome to the Jungle: Action, Adventure, Comedy
+(21, 3),
+(21, 2),
+(22, 1), -- The Lord of the Rings: The Fellowship of the Ring: Action, Adventure, Fantasy
 (22, 3),
-(22, 2),
-(23, 1), -- The Lord of the Rings: The Fellowship of the Ring: Action, Adventure, Fantasy
-(23, 3),
-(23, 7),
-(24, 1), -- Iron Man: Action, Sci-Fi
+(22, 7),
+(23, 1), -- Iron Man: Action, Sci-Fi
+(23, 6),
+(24, 1), -- Iron Man 2: Action, Sci-Fi
 (24, 6),
-(25, 1), -- Iron Man 2: Action, Sci-Fi
-(25, 6),
-(26, 1), -- Thor: Action, Adventure, Fantasy
+(25, 1), -- Thor: Action, Adventure, Fantasy
+(25, 3),
+(25, 7),
+(26, 1), -- Captain America: The First Avenger: Action, Adventure
 (26, 3),
-(26, 7),
-(27, 1), -- Captain America: The First Avenger: Action, Adventure
+(27, 1), -- The Avengers: Action, Adventure, Sci-Fi
 (27, 3),
-(28, 1), -- The Avengers: Action, Adventure, Sci-Fi
-(28, 3),
+(27, 6),
+(28, 1), -- Iron Man 3: Action, Sci-Fi
 (28, 6),
-(29, 1), -- Iron Man 3: Action, Sci-Fi
-(29, 6),
-(30, 1), -- Captain America: The Winter Soldier: Action, Thriller
-(30, 5),
-(31, 1), -- Guardians of the Galaxy: Action, Adventure, Sci-Fi
+(29, 1), -- Captain America: The Winter Soldier: Action, Thriller
+(29, 5),
+(30, 1), -- Guardians of the Galaxy: Action, Adventure, Sci-Fi
+(30, 3),
+(30, 6),
+(31, 1), -- Avengers: Age of Ultron: Action, Adventure, Sci-Fi
 (31, 3),
 (31, 6),
-(32, 1), -- Avengers: Age of Ultron: Action, Adventure, Sci-Fi
+(32, 1), -- Ant-Man: Action, Adventure, Sci-Fi
 (32, 3),
 (32, 6),
-(33, 1), -- Ant-Man: Action, Adventure, Sci-Fi
+(33, 1), -- Captain America: Civil War: Action, Adventure, Sci-Fi
 (33, 3),
 (33, 6),
-(34, 1), -- Captain America: Civil War: Action, Adventure, Sci-Fi
+(34, 1), -- Doctor Strange: Action, Adventure, Sci-Fi
 (34, 3),
 (34, 6),
-(35, 1), -- Doctor Strange: Action, Adventure, Sci-Fi
+(35, 1), -- Guardians of the Galaxy Vol. 2: Action, Adventure, Sci-Fi
 (35, 3),
 (35, 6),
-(36, 1), -- Guardians of the Galaxy Vol. 2: Action, Adventure, Sci-Fi
+(36, 1), -- Spider-Man: Homecoming: Action, Adventure
 (36, 3),
-(36, 6),
-(37, 1), -- Spider-Man: Homecoming: Action, Adventure
+(37, 1), -- Thor: Ragnarok: Action, Adventure, Fantasy
 (37, 3),
-(38, 1), -- Thor: Ragnarok: Action, Adventure, Fantasy
-(38, 3),
-(38, 7),
-(39, 1), -- Black Panther: Action, Drama, Sci-Fi
-(39, 4),
-(39, 6),
-(40, 1), -- Avengers: Infinity War: Action, Adventure, Sci-Fi
+(37, 7),
+(38, 1), -- Black Panther: Action, Drama, Sci-Fi
+(38, 4),
+(38, 6),
+(54, 1), -- Avengers: Infinity War: Action, Adventure, Sci-Fi
+(54, 3),
+(54, 6),
+(40, 1), -- Captain Marvel: Action, Adventure, Sci-Fi
 (40, 3),
 (40, 6),
-(41, 1), -- Captain Marvel: Action, Adventure, Sci-Fi
+(41, 1), -- Spider-Man: Far From Home: Action, Adventure
 (41, 3),
-(41, 6),
-(42, 1), -- Avengers: Endgame: Action, Adventure, Sci-Fi
-(42, 3),
-(42, 6),
-(43, 1), -- Spider-Man: Far From Home: Action, Adventure
+(42, 1), -- Black Widow: Action, Thriller
+(42, 5),
+(43, 1), -- Shang-Chi and the Legend of the Ten Rings: Action, Adventure, Fantasy
 (43, 3),
-(44, 1), -- Black Widow: Action, Thriller
-(44, 5),
-(45, 1), -- Shang-Chi and the Legend of the Ten Rings: Action, Adventure, Fantasy
+(43, 7),
+(44, 1), -- Eternals: Action, Adventure, Sci-Fi
+(44, 3),
+(44, 6),
+(45, 1), -- Spider-Man: No Way Home: Action, Adventure
 (45, 3),
-(45, 7),
-(46, 1), -- Eternals: Action, Adventure, Sci-Fi
+(46, 1), -- Doctor Strange in the Multiverse of Madness: Action, Adventure, Sci-Fi
 (46, 3),
 (46, 6),
-(47, 1), -- Spider-Man: No Way Home: Action, Adventure
-(47, 3),
-(48, 1), -- Doctor Strange in the Multiverse of Madness: Action, Adventure, Sci-Fi
+(47, 1), -- Black Panther: Wakanda Forever: Action, Drama, Sci-Fi
+(47, 4),
+(47, 6),
+(48, 1), -- The Lord of the Rings: The Two Towers: Action, Adventure, Fantasy
 (48, 3),
-(48, 6),
-(49, 1), -- Black Panther: Wakanda Forever: Action, Drama, Sci-Fi
-(49, 4),
-(49, 6),
-(50, 1), -- The Lord of the Rings: The Two Towers: Action, Adventure, Fantasy
+(48, 7),
+(49, 1), -- The Lord of the Rings: The Return of the King: Action, Adventure, Fantasy
+(49, 3),
+(49, 7),
+(50, 1), -- Indiana Jones and the Raiders of the Lost Ark: Action, Adventure
 (50, 3),
-(50, 7),
-(51, 1), -- The Lord of the Rings: The Return of the King: Action, Adventure, Fantasy
+(51, 1), -- Indiana Jones and the Temple of Doom: Action, Adventure
 (51, 3),
-(51, 7),
-(52, 1), -- Indiana Jones and the Raiders of the Lost Ark: Action, Adventure
+(52, 1), -- Indiana Jones and the Last Crusade: Action, Adventure
 (52, 3),
-(53, 1), -- Indiana Jones and the Temple of Doom: Action, Adventure
-(53, 3),
-(54, 1), -- Indiana Jones and the Last Crusade: Action, Adventure
-(54, 3),
-(55, 1), -- Indiana Jones and the Kingdom of the Crystal Skull: Action, Adventure
-(55, 3);
+(53, 1), -- Indiana Jones and the Kingdom of the Crystal Skull: Action, Adventure
+(53, 3);
 
 -- Inserting actors
 INSERT INTO actors (actor_id, name, deleted) VALUES
@@ -413,7 +406,7 @@ INSERT INTO movie_actors (movie_id, actor_id) VALUES
 -- IT Chapter Two
 (17, 20), (17, 23), (17, 24),
 
--- Avengers: Endgame
+-- Incredible Hulk
 (18, 5), (18, 6), (18, 7), (18, 8), (18, 9),
 
 -- Star Wars: The Empire Strikes Back
@@ -478,7 +471,7 @@ INSERT INTO movie_actors (movie_id, actor_id) VALUES
 (38, 12), (38, 8), (38, 14),
 
 -- Avengers: Infinity War
-(39, 5), (39, 6), (39, 7), (39, 8),
+(54, 5), (54, 6), (54, 7), (54, 8),
 
 -- Captain Marvel
 (40, 48), -- Brie Larson (added to actors)

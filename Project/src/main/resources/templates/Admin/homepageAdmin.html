@@ -17,7 +17,7 @@
 
   <div class="page-container">
     <div class="logo">
-      <img src="/Assets/logo-dark.png">
+      <img src="/static/Assets/logo-dark.png">
     </div>
 
     <!-- Header Section -->
@@ -29,32 +29,32 @@
     <div class="sidebar">
       <div class="navigation">
         <div class="nav-group" id="nav-dashboard">
-          <img src="/Assets/home-20.svg" />
+          <img src="/static/Assets/home-20.svg" />
           <a th:href="@{/admin/dashboard}">Dashboard</a>
         </div>
 
         <div class="nav-group" id="nav-movies">
-          <img src="/Assets/nav-movies.svg" />
+          <img src="/static/Assets/nav-movies.svg" />
           <a th:href="@{/admin/movies}">Movies</a>
         </div>
 
         <div class="nav-group" id="nav-actors">
-          <img src="/Assets/nav-actors.png" />
+          <img src="/static/Assets/nav-actors.png" />
           <a th:href="@{/admin/actors}">Actors</a>
         </div>
 
         <div class="nav-group" id="nav-genres">
-          <img src="/Assets/nav-genre.svg" />
+          <img src="/static/Assets/nav-genre.svg" />
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
         <div class="nav-group" id="nav-sales">
-          <img src="/Assets/nav-sales.svg" />
+          <img src="/static/Assets/nav-sales.svg" />
           <a th:href="@{/admin/sales-report}">Sales Report</a>
         </div>
 
         <div class="nav-group" id="nav-log-out">
-          <img src="/Assets/nav-logout.svg" />
+          <img src="/static/Assets/nav-logout.svg" />
           <a th:href="@{/logout}">Log Out</a>
         </div>
       </div>
@@ -64,19 +64,19 @@
       <div class="statistics">
         <div class="stat-card">
           <h2>Total Movies</h2>
-          <p>150</p>
+          <p th:text="${totalMovies}"></p>
         </div>
         <div class="stat-card">
           <h2>Total Users</h2>
-          <p>500</p>
+          <p th:text="${totalUsers}"></p>
         </div>
         <div class="stat-card">
           <h2>Total Rentals</h2>
-          <p>300</p>
+          <p th:text="${totalRentals}"></p>
         </div>
         <div class="stat-card">
           <h2>Total Sales</h2>
-          <p>$10,000</p>
+          <p th:text="${totalSales}"></p>
         </div>
       </div>
 
