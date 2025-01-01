@@ -53,7 +53,7 @@
                       <b>Rent Now</b>
                     </button>
   
-                    <button type="button" class="detail-button">
+                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}" onclick="redirectToDetails(this)">
                       <b>More Details</b>
                     </button>
                   </div>
@@ -74,7 +74,7 @@
         <div th:each="movie : ${latestMovies}">
           <div class="latest-movies">
             <!-- MASIH DUMMY POSTER -->
-            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png" /> 
+            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png"  th:attr="data-title=${movie.title}" onclick="redirectToDetails(this)"/> 
             <p class="title" th:text="${movie.title}">Movie Title</p>
             <p class="genre" th:text="${movie.genres_names}">Genre</p>
           </div>
@@ -88,7 +88,7 @@
         <div th:each="adventureMovie : ${adventureMovies}">
           <div class="movies">
             <!-- MASIH DUMMY POSTER -->
-            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
+            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${adventureMovie.title}" onclick="redirectToDetails(this)"/>
             <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
             <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
           </div>
@@ -101,7 +101,7 @@
       <div class="movies-container">
         <div th:each="scifiMovie : ${scifiMovies}">
           <div class="movies">
-            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
+            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${scifiMovie.title}" onclick="redirectToDetails(this)"/>
             <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
             <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
           </div>
@@ -153,6 +153,13 @@
 
     window.addEventListener("resize", updateSlide); // Adjust for responsive design
   });
+
+  function redirectToDetails(button){
+    const title = button.getAttribute('data-title');
+    const encodedTitle = encodeURIComponent(title);
+    const url = `/customer/details/${encodedTitle}`;
+    window.location.href = url;
+  }
 
 </script>
 

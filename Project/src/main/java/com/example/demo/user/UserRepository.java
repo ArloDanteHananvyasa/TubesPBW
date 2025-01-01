@@ -11,4 +11,6 @@ public interface UserRepository {
     List<HomePageData> getAdventureMovies();
     List<HomePageData> getScifiMovies();
     List<HomePageData> getMovieWheel();
+    HomePageData getMovieByTitle(String title);
+    MovieDetailData getActorsByTitle(String title);
 }

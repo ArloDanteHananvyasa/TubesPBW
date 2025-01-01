@@ -55,25 +55,39 @@ public class UserJdbc implements UserRepository {
 
     @Override
     public List<HomePageData> getMoviesFromLast5Years(){
-        String sql = "SELECT * FROM view_homepage WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5)";
+        String sql = "SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5)";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getAdventureMovies(){
-        String sql = "SELECT * FROM view_homepage WHERE genres_names LIKE '%Adventure%'";
+        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%'";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getScifiMovies(){
-        String sql = "SELECT * FROM view_homepage WHERE genres_names LIKE '%Sci-Fi%'";
+        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%'";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getMovieWheel(){
-        String sql = "SELECT * FROM view_homepage ORDER BY RANDOM() LIMIT 5";
+        String sql = "SELECT * FROM view_moviegenres ORDER BY RANDOM() LIMIT 5";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
+    }
+
+    @Override
+    public HomePageData getMovieByTitle(String title){
+        String sql = "SELECT * FROM view_moviegenres WHERE title = ?";
+        List<HomePageData> movies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class), title);
+        return movies.isEmpty() ? null : movies.get(0);
+    }
+
+    @Override
+    public MovieDetailData getActorsByTitle(String title){
+        String sql = "SELECT * FROM view_movieactors WHERE title = ?";
+        List<MovieDetailData> movies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(MovieDetailData.class), title);
+        return movies.isEmpty() ? null : movies.get(0);
     }
 }

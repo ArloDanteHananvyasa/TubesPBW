@@ -7,14 +7,14 @@
   <title>Avatar: The Way of Water</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/src/main/resources/static/CustomerStyle/MoviesDetails/Avatar/avatarStyle.css" />
+  <link rel="stylesheet" href="/CustomerStyle/MoviesDetails/Avatar/avatarStyle.css" />
 </head>
 
 <body>
   <div class="page-container">
     <div class="header">
       <div class="navigation">
-        <img src="/src/main/resources/static/Assets/logo.png" />
+        <img src="/Assets/logo.png" />
 
         <div class="nav-search">
           <div class="left-nav">
@@ -27,76 +27,84 @@
           </div>
 
           <div class="right-nav">
-            <img src="/src/main/resources/static/Assets/search-icon.png" />
+            <img src="/Assets/search-icon.png" />
             <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
           </div>
         </div>
       </div>
 
-      <div class="movie-description">
-        <p>2022</p>
-        <h1>Avatar: The Way of Water</h1>
-        <div class="duration-genre">
-          <p><b>111m</b></p>
-          <p><b>Action • Fantasy • Adventure • Sci-Fi</b></p>
-        </div>
-        <p>
-          Several years after the Na'vi repelled the RDA invasion Jake Sully
-          and his family are living on Pandora. Things seem peaceful but the
-          RDA has other plans, invading and capturing Pandora. Sully forms a
-          guerrilla group to try to expel the invaders.
-        </p>
-        <div class="button-container">
-          <input type="submit" class="play-button" value="Rent Now" />
-        </div>
-      </div>
-      <div class="movie-carousel">
-        <img src="/src/main/resources/static/Assets/Movies Poster/Horizontal/avatar-gradient.png" />
-      </div>
-    </div>
-
-    <div class="details-container">
-      <h1>Movie Details</h1>
-      <h2>More Info</h2>
-
-      <div class="details-group-container">
-        <div class="left-details">
-          <div class="details-group">
-            <h3>IMDB Rating</h3>
-            <p>⭐ 7.5/10</p>
+      <div th:object="${movieGenre}">
+        <div class="movie-description">
+          <p th:text="${movieGenre.release_year}">Year</p>
+          <h1 th:text="${movieGenre.title}">Title</h1>
+          <div class="duration-genre">
+            <p th:text="${movieGenre.duration} + ' min'"><b>Duration</b></p>
+            <p th:text="${movieGenre.genres_names}"><b>Genres</b></p>
           </div>
-
-          <div class="details-group">
-            <h3>Motion Picture Rating (MPA)</h3>
-            <p>PG-13</p>
+          <p th:text="${movieGenre.description}">
+            Description
+          </p>
+          <div class="button-container">
+            <input type="submit" class="play-button" value="Rent Now" />
           </div>
         </div>
-
-        <div class="mid-detail">
-          <div class="details-group">
-            <h3>Director</h3>
-            <p>James Cameron</p>
-          </div>
-
-          <div class="details-group">
-            <h3>Cast</h3>
-            <p>Sam Worthington • Zoe Saldana • Sigourney Weaver</p>
-          </div>
-        </div>
-
-        <div class="right-detail">
-          <div class="details-group">
-            <h3>Writers</h3>
-            <p>James Cameron • Rick Jaffa • Amanda Silver</p>
-          </div>
-
-          <div class="details-group">
-            <h3>Achievements</h3>
-            <p>Won 1 Oscar 75 wins & 152 nominations total</p>
-          </div>
+        <div class="movie-carousel">
+          <!-- DUMMY POSTER -->
+          <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
         </div>
       </div>
     </div>
+
+    <div th:object="${movieActor}">
+      <div class="details-container">
+        <h1>Movie Details</h1>
+        <h2>More Info</h2>
+  
+        <div class="details-group-container">
+          <div class="left-details">
+            <!-- GK ADA DI DB -->
+            <div class="details-group">
+              <h3>IMDB Rating</h3>
+              <p>⭐ 7.5/10</p>
+            </div>
+  
+            <!-- GK ADA DI DB -->
+            <div class="details-group">
+              <h3>Motion Picture Rating (MPA)</h3>
+              <p>PG-13</p>
+            </div>
+          </div>
+  
+          <!-- GK ADA DI DB -->
+          <div class="mid-detail">
+            <div class="details-group">
+              <h3>Director</h3>
+              <p>James Cameron</p>
+            </div>
+  
+            <div class="details-group">
+              <h3>Cast</h3>
+              <p th:text="${movieActor.actors_names}">Actors</p>
+            </div>
+          </div>
+  
+          <div class="right-detail">
+            <!-- GK ADA DI DB -->
+            <div class="details-group">
+              <h3>Writers</h3>
+              <p>James Cameron • Rick Jaffa • Amanda Silver</p>
+            </div>
+  
+            <!-- GK ADA DI DB -->
+            <div class="details-group">
+              <h3>Achievements</h3>
+              <p>Won 1 Oscar 75 wins & 152 nominations total</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
   <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 </body>
