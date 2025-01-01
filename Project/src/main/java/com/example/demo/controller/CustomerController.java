@@ -1,14 +1,47 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.example.demo.user.HomePageData;
+import com.example.demo.user.MovieDetailData;
+import com.example.demo.user.UserRepository;
 
 @Controller
 public class CustomerController {
 
+    @Autowired
+    private UserRepository userRepository;
+    
     @GetMapping("/customer/homepage")
-    public String homepage() {
+    public String homepage(Model model) {
+        List<HomePageData> wheelMovies = userRepository.getMovieWheel();
+        model.addAttribute("wheelMovies", wheelMovies);
+
+        List<HomePageData> latestMovies = userRepository.getMoviesFromLast5Years();
+        model.addAttribute("latestMovies", latestMovies);
+
+        List<HomePageData> adventureMovies = userRepository.getAdventureMovies();
+        model.addAttribute("adventureMovies", adventureMovies);
+
+        List<HomePageData> scifiMovies = userRepository.getScifiMovies();
+        model.addAttribute("scifiMovies", scifiMovies);
         return "Customer/homepage"; // Mengarahkan ke halaman utama customer
+    }
+
+    @GetMapping("/customer/details/{title}")
+    public String details(@PathVariable String title, Model model) {
+        HomePageData movieGenre = userRepository.getMovieByTitle(title);
+        model.addAttribute("movieGenre", movieGenre);
+
+        MovieDetailData movieActor = userRepository.getActorsByTitle(title);
+        model.addAttribute("movieActor", movieActor);
+        return "Customer/MoviesDetails/Avatar/avatar";
     }
 
     @GetMapping("/customer/profile")
