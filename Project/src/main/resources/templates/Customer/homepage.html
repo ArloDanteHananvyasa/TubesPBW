@@ -14,20 +14,20 @@
   <div class="page-container">
     <div class="header">
       <div class="navigation">
-        <img src="/Assets/logo.png" />
+        <img src="/static/Assets/logo.png" />
 
         <div class="nav-search">
           <div class="left-nav">
-            <a th href="/customer/homepage">Home</a>
-            <a th href="/customer/movies">Movies</a>
-            <a th href="/customer/cart">My Cart</a>
-            <a th href="/customer/myRentals">My Rentals</a>
-            <a th href="/customer/profile">Profile</a>
-            <a th href="/landing">Log Out</a>
+            <a th:href="@{/customer/homepage}">Home</a>
+            <a th:href="@{/customer/movies}">Movies</a>
+            <a th:href="@{/customer/cart}">My Cart</a>
+            <a th:href="@{/customer/myRentals}">My Rentals</a>
+            <a th:href="@{/customer/profile}">Profile</a>
+            <a th:href="@{/logout}">Log Out</a>
           </div>
 
           <div class="right-nav">
-            <img src="/Assets/search-icon.png" />
+            <img src="/static/Assets/search-icon.png" />
             <input type="text" class="search-bar" placeholder="Search movies, tv shows" />
           </div>
         </div>
@@ -39,21 +39,23 @@
             <div th:each="wheelMovie : ${wheelMovies}">
               <div class="slide">
                 <!-- MASIH DUMMY POSTER -->
-                <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
+                <img src="/static/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
                 <div class="slide-description">
                   <p th:text="${wheelMovie.release_year}">Year</p>
                   <h1 th:text="${wheelMovie.title}">Title</h1>
-                  <p th:text="${wheelMovie.duration} + ' min • ' + ${wheelMovie.genres_names}"><b>duration • genre</b></p>
+                  <p th:text="${wheelMovie.duration} + ' min • ' + ${wheelMovie.genres_names}"><b>duration • genre</b>
+                  </p>
                   <p th:text="${wheelMovie.description}">
                     Description
                   </p>
-  
+
                   <div class="button-container">
                     <button type="button" class="play-button">
                       <b>Rent Now</b>
                     </button>
-  
-                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}" onclick="redirectToDetails(this)">
+
+                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}"
+                      onclick="redirectToDetails(this)">
                       <b>More Details</b>
                     </button>
                   </div>
@@ -74,7 +76,8 @@
         <div th:each="movie : ${latestMovies}">
           <div class="latest-movies">
             <!-- MASIH DUMMY POSTER -->
-            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png"  th:attr="data-title=${movie.title}" onclick="redirectToDetails(this)"/> 
+            <img th:src="${movie.portraitposter}" th:attr="data-title=${movie.title}"
+              onclick="redirectToDetails(this)" />
             <p class="title" th:text="${movie.title}">Movie Title</p>
             <p class="genre" th:text="${movie.genres_names}">Genre</p>
           </div>
@@ -88,7 +91,8 @@
         <div th:each="adventureMovie : ${adventureMovies}">
           <div class="movies">
             <!-- MASIH DUMMY POSTER -->
-            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${adventureMovie.title}" onclick="redirectToDetails(this)"/>
+            <img th:src="${adventureMovie.landscapeposter}" th:attr="data-title=${adventureMovie.title}"
+              onclick="redirectToDetails(this)" />
             <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
             <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
           </div>
@@ -101,7 +105,8 @@
       <div class="movies-container">
         <div th:each="scifiMovie : ${scifiMovies}">
           <div class="movies">
-            <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${scifiMovie.title}" onclick="redirectToDetails(this)"/>
+            <img th:src="${scifiMovie.landscapeposter}" th:attr="data-title=${scifiMovie.title}"
+              onclick="redirectToDetails(this)" />
             <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
             <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
           </div>
@@ -154,7 +159,7 @@
     window.addEventListener("resize", updateSlide); // Adjust for responsive design
   });
 
-  function redirectToDetails(button){
+  function redirectToDetails(button) {
     const title = button.getAttribute('data-title');
     const encodedTitle = encodeURIComponent(title);
     const url = `/customer/details/${encodedTitle}`;
