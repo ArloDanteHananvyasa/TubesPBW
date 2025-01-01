@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.user.HomePageData;
 import com.example.demo.user.MovieDetailData;
@@ -44,6 +46,22 @@ public class CustomerController {
         return "Customer/MoviesDetails/Avatar/avatar";
     }
 
+    @GetMapping("/customer/movies")
+    public String movieList(Model model) {
+        List<HomePageData> movies = userRepository.getAllMovies();
+        model.addAttribute("movies", movies);
+        return "Customer/movieList"; // Mengarahkan ke halaman daftar film
+    }
+
+    @GetMapping("/customer/movies/filter")
+    @ResponseBody
+    public List<HomePageData> filterMovies(@RequestParam(required = false) List<String> genres){
+        if (genres == null || genres.isEmpty() || genres.contains("All")) {
+            return userRepository.getAllMovies();
+        }
+        return userRepository.getMoviesByGenres(genres.toArray(new String[0]));
+    }
+
     @GetMapping("/customer/profile")
     public String profile() {
         return "Customer/profile"; // Mengarahkan ke halaman profil customer
@@ -52,11 +70,6 @@ public class CustomerController {
     @GetMapping("/customer/myRentals")
     public String myRentals() {
         return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
-    }
-
-    @GetMapping("/customer/movies")
-    public String movieList() {
-        return "Customer/movieList"; // Mengarahkan ke halaman daftar film
     }
 
     @GetMapping("/customer/rentMovie")
