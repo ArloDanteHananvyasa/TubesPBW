@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avatar: The Way of Water</title>
+  <title th:text="${movieGenre.title}"></title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/CustomerStyle/MoviesDetails/Avatar/avatarStyle.css" />
@@ -45,7 +45,11 @@
             Description
           </p>
           <div class="button-container">
-            <input type="submit" class="play-button" value="Rent Now" />
+            <a th:href="@{'/customer/rentMovie/' + ${movieGenre.title}}">
+              <button type="button" class="play-button">
+                <b>Rent Now</b>
+              </button>
+            </a>
           </div>
         </div>
         <div class="movie-carousel">
@@ -59,7 +63,7 @@
       <div class="details-container">
         <h1>Movie Details</h1>
         <h2>More Info</h2>
-  
+
         <div class="details-group-container">
           <div class="left-details">
             <!-- GK ADA DI DB -->
@@ -67,34 +71,34 @@
               <h3>IMDB Rating</h3>
               <p>⭐ 7.5/10</p>
             </div>
-  
+
             <!-- GK ADA DI DB -->
             <div class="details-group">
               <h3>Motion Picture Rating (MPA)</h3>
               <p>PG-13</p>
             </div>
           </div>
-  
+
           <!-- GK ADA DI DB -->
           <div class="mid-detail">
             <div class="details-group">
               <h3>Director</h3>
               <p>James Cameron</p>
             </div>
-  
+
             <div class="details-group">
               <h3>Cast</h3>
               <p th:text="${movieActor.actors_names}">Actors</p>
             </div>
           </div>
-  
+
           <div class="right-detail">
             <!-- GK ADA DI DB -->
             <div class="details-group">
               <h3>Writers</h3>
               <p>James Cameron • Rick Jaffa • Amanda Silver</p>
             </div>
-  
+
             <!-- GK ADA DI DB -->
             <div class="details-group">
               <h3>Achievements</h3>
@@ -104,7 +108,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
   <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 </body>

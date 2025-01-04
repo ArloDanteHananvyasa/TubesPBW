@@ -49,9 +49,11 @@
                   </p>
   
                   <div class="button-container">
-                    <button type="button" class="play-button">
-                      <b>Rent Now</b>
-                    </button>
+                    <a th:href="@{'/customer/rentMovie/' + ${wheelMovie.title}}">
+                      <button type="button" class="play-button">
+                        <b>Rent Now</b>
+                      </button>
+                    </a>
   
                     <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}" onclick="redirectToDetails(this)">
                       <b>More Details</b>

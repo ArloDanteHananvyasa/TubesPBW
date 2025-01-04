@@ -12,4 +12,5 @@ public class HomePageData {
     private int duration;
     private String landscapeposter;
     private String portraitposter;
+    private int base_price;
 }

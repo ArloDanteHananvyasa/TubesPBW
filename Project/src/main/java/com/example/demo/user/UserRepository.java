@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +14,5 @@ public interface UserRepository {
     List<HomePageData> getMovieWheel();
     HomePageData getMovieByTitle(String title);
     MovieDetailData getActorsByTitle(String title);
+    void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice);
 }

@@ -34,48 +34,63 @@
 
     <div class="rent-container">
       <h1>Movie Rental</h1>
+      <form th:action="@{/customer/rentMovie/{title}}" method="post">
+        <div class="input-container">
+          <div class="input-left">
+            <div class="input-group">
+              <!-- username ngambil dari session -->
+              <!-- <label for="customer-name">Username</label>
+              <input type="text" id="customer-name" name="customer-name" required placeholder="Enter your username" /> -->
+            </div>
+            <div class="input-group">
+              <span>Movie Title</span>
+              <!-- ambil dari database -->
+              <p th:text="${movie.title}"></p>
+              <input type="hidden" id="titleInput" name="titleInput" th:value="${movie.title}">
+            </div>
 
-      <div class="input-container">
-        <div class="input-left">
-          <div class="input-group">
-            <label for="customer-name">Username</label>
-            <input type="text" id="customer-name" name="customer-name" required placeholder="Enter your username" />
-          </div>
-          <div class="input-group">
-            <label for="choose-movie">Movie Title</label>
-            <select id="choose-movie" name="choose-movie" required>
-              <option value="" disabled selected>Choose a movie</option>
-              <option>Avatar:The way of water</option>
-            </select>
-          </div>
+            <!-- gajadi dipake, karna mendingan pake pickupdate + return date, terus durationnya ntar ngitung dari situ (cuma dipake buat calculate harga lagian) -->
+            <!-- <div class="input-group">
+              <label for="jumlah">Rent duration (days)</label>
+              <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Ex : 5" required />
+            </div> -->
 
-          <div class="input-group">
-            <label for="jumlah">Rent duration (days)</label>
-            <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Ex : 5" required />
-          </div>
-        </div>
-
-        <div class="input-right">
-          <div class="input-group">
-            <label for="tanggal">Rent date</label>
-            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
-          </div>
-          <div class="input-group">
-            <label for="tanggal">Pick up date</label>
-            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
-          </div>
-
-          <div class="input-group">
-            <label for="hargaTotal">Total</label>
-            <div class="total-group">
-              <span>Rp. </span><input type="text" id="hargaTotal" name="hargaTotal" readonly />
+            <!-- KENAPA RP. NYA JADI DIATAS WOII, PADAHAL DIPINDAHIN KE BAGIAN KIRI DOANG -->
+            <div class="input-group">
+              <label for="hargaTotal">Total</label>
+              <div class="total-group">
+                <span>Rp. </span><input type="text" id="hargaTotal" name="hargaTotal" readonly />
+              </div>
             </div>
           </div>
+
+          <div class="input-right">
+            <!-- <div class="input-group">
+              <label for="tanggal">Rent date</label>
+              <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
+            </div> -->
+            <div class="input-group">
+              <label for="pickUpDate">Pick up date</label>
+              <input type="date" id="pickUpDate" name="pickUpDate" th:value="${[pickUpDate]}" required />
+            </div>
+
+            <div class="input-group">
+              <label for="returnDate">Return date</label>
+              <input type="date" id="returnDate" name="returnDate" th:value="${[returnDate]}" required />
+            </div>
+
+            <div th:if="${error}" style="color: red;">
+              <p th:text="${error}"></p>
+            </div>
+
+
+          </div>
+
+
         </div>
+        <button type="submit">Add to Cart</button>
+      </form>
 
-
-      </div>
-      <button type="submit">Confirm Order</button>
     </div>
 
     <div class="table">
@@ -85,7 +100,7 @@
           <tr>
             <th>No.</th>
             <th>Movie Title</th>
-            <th>Rent Duration</th>
+            <th>Pick Up Date</th>
             <th>Return Date</th>
           </tr>
         </thead>

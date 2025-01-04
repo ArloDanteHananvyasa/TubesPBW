@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,5 +90,22 @@ public class UserJdbc implements UserRepository {
         String sql = "SELECT * FROM view_movieactors WHERE title = ?";
         List<MovieDetailData> movies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(MovieDetailData.class), title);
         return movies.isEmpty() ? null : movies.get(0);
+    }
+
+
+    @Override
+    public void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice){
+        String sql = """
+                INSERT INTO cart (user_phone, movie_id, pickup_date, due_date, total_price) VALUES
+                (?, ?, ?, ?, ?)
+                """;
+        jdbcTemplate.update(
+            sql, 
+            phoneNum,
+            movieId,
+            pickUpDate,
+            returnDate,
+            totalPrice
+            );
     }
 }
