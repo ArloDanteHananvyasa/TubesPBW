@@ -14,5 +14,7 @@ public interface UserRepository {
     List<HomePageData> getMovieWheel();
     HomePageData getMovieByTitle(String title);
     MovieDetailData getActorsByTitle(String title);
+    List<HomePageData> getMoviesByGenres(String[] genres);
+    List<HomePageData> getAllMovies();
     void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice);
 }

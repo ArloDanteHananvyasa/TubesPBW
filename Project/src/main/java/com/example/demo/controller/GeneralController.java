@@ -20,7 +20,7 @@ import java.text.ParseException;
 
 @Controller
 public class GeneralController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -28,8 +28,16 @@ public class GeneralController {
     private UserRepository userRepository;
 
     @GetMapping("")
-    public String landing() {
+    public String landing(HttpSession session) {
+        session.setAttribute("user", null);
+        session.setAttribute("role", null);
+
         return "General/landingPage";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -38,10 +46,11 @@ public class GeneralController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String email, @RequestParam String password, HttpSession session, Model model){
-        
+    public String loginUser(@RequestParam String email, @RequestParam String password, HttpSession session,
+            Model model) {
+
         UserData user = userService.login(email, password);
-        if(user != null){
+        if (user != null) {
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());
 
@@ -62,35 +71,36 @@ public class GeneralController {
     public String register() {
         return "General/register";
     }
-    
+
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute UserData userData, Model model, BindingResult bindingResult) throws ParseException {
-        
-        if(bindingResult.hasErrors()){
+    public String registerUser(@Valid @ModelAttribute UserData userData, Model model, BindingResult bindingResult)
+            throws ParseException {
+
+        if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Please correct the highlighted errors.");
             return "General/register";
         }
 
-        //Check Phone Number
-        if(userRepository.findByPhone(userData.getPhone()).isPresent()){
+        // Check Phone Number
+        if (userRepository.findByPhone(userData.getPhone()).isPresent()) {
             model.addAttribute("error", "Number already exists.");
             return "General/register";
         }
 
-        //Check Email
-        if(!userData.getEmail().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+        // Check Email
+        if (!userData.getEmail().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
             model.addAttribute("error", "Please enter a valid email address");
             return "General/register";
         }
 
-        //Check Passwords
-        if(!userData.getPassword().equals(userData.getConfpassword())){
+        // Check Passwords
+        if (!userData.getPassword().equals(userData.getConfpassword())) {
             model.addAttribute("error", "Passwords do not Match!");
             return "General/register";
         }
 
         boolean isRegistered = userService.register(userData);
-        if(!isRegistered){
+        if (!isRegistered) {
             model.addAttribute("error", "Registration failed. Please try again.");
             return "General/register";
         }

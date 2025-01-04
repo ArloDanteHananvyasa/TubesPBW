@@ -14,20 +14,20 @@
 <body>
   <div class="page-container">
     <div class="navigation">
-      <img src="/Assets/logo.png" />
+      <img src="/static/Assets/logo.png" />
 
       <div class="nav-search">
         <div class="left-nav">
-          <a th href="/customer/homepage">Home</a>
-          <a th href="/customer/movies">Movies</a>
-          <a th href="/customer/cart">My Cart</a>
-          <a th href="/customer/myRentals">My Rentals</a>
-          <a th href="/customer/profile">Profile</a>
-          <a th href="/landing">Log Out</a>
+          <a th:href="@{/customer/homepage}">Home</a>
+          <a th:href="@{/customer/movies}">Movies</a>
+          <a th:href="@{/customer/cart}">My Cart</a>
+          <a th:href="@{/customer/myRentals}">My Rentals</a>
+          <a th:href="@{/customer/profile}">Profile</a>
+          <a th:href="@{/logout}">Log Out</a>
         </div>
 
         <div class="right-nav">
-          <img src="/Assets/search-icon.png" />
+          <img src="/static/Assets/search-icon.png" />
           <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
         </div>
       </div>
@@ -35,78 +35,56 @@
 
     <div class="movie-container">
       <div class="sub-header">
-        <button type="button" class="blue-button" id="all-movies-button">
+        <button type="button" class="black-button" id="all-movies-button" value="All" name="genre" onclick="selectGenre(this)">
           All Movies
         </button>
 
-        <button type="button" class="black-button" id="comedy-movies-button">
+        <button type="button" class="black-button" id="comedy-movies-button" value="Comedy" name="genre" onclick="selectGenre(this)">
           Comedy
         </button>
 
-        <button type="button" class="black-button" id="Adventure-movies-button">
+        <button type="button" class="black-button" id="Adventure-movies-button" value="Adventure" name="genre" onclick="selectGenre(this)">
           Adventure
         </button>
 
-        <button type="button" class="black-button" id="action-movies-button">
+        <button type="button" class="black-button" id="action-movies-button" value="Action" name="genre" onclick="selectGenre(this)">
           Action
         </button>
 
-        <button type="button" class="black-button" id="horror-movies-button">
+        <button type="button" class="black-button" id="horror-movies-button" value="Horror" name="genre" onclick="selectGenre(this)">
           Horror
         </button>
 
-        <button type="button" class="black-button" id="drama-movies-button">
+        <button type="button" class="black-button" id="drama-movies-button" value="Drama" name="genre" onclick="selectGenre(this)">
           Drama
         </button>
 
-        <button type="button" class="black-button" id="thriller-movies-button">
+        <button type="button" class="black-button" id="thriller-movies-button" value="Thriller" name="genre" onclick="selectGenre(this)">
           Thriller
         </button>
 
-        <button type="button" class="black-button" id="scifi-movies-button">
+        <button type="button" class="black-button" id="scifi-movies-button" value="Sci-Fi" name="genre" onclick="selectGenre(this)">
           Sci-Fi
         </button>
 
-        <button type="button" class="black-button" id="fantasy-movies-button">
+        <button type="button" class="black-button" id="fantasy-movies-button" value="Fantasy" name="genre" onclick="selectGenre(this)">
           Fantasy
         </button>
 
-        <button type="button" class="black-button" id="animation-movies-button">
+        <button type="button" class="black-button" id="animation-movies-button" value="Animation" name="genre" onclick="selectGenre(this)">
           Animation
         </button>
       </div>
 
       <div class="movie" id="superhero-movies">
-        <h2>Superhero Movies</h2>
+        <h2>Movies</h2>
         <div class="movies-container">
-          <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/avengers-endgame.jpg" />
-            <p class="title">Avengers: Endgame</p>
-          </div>
-
-          <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
-            <p class="title">Spider-Man: Homecoming</p>
-          </div>
-
-          <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
-            <p class="title">Aquaman and the Lost Kingdom</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="movie" id="comedy-movies">
-        <h2>comedy Movies</h2>
-        <div class="movies-container">
-          <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/joker.jpg" />
-            <p class="title">Joker</p>
-          </div>
-
-          <div class="latest-movies">
-            <img src="/Assets/Movies Poster/Vertical/unlocked.png" />
-            <p class="title">Unlocked</p>
+          <div th:each="movie : ${movies}">
+            <div class="latest-movies">
+              <img th:src="${movie.portraitposter}" />
+              <p class="title" th:text="${movie.title}">Title</p>
+              <p class="genre" th:text="${movie.genres_names}">Title</p>
+            </div>
           </div>
         </div>
       </div>
@@ -117,6 +95,68 @@
 </body>
 
 <script>
+  const selectedGenres = new Set();
+
+  function selectGenre(button){
+    const genre = button.value;
+    
+    if (genre === "All") {
+      selectedGenres.clear(); // Hapus semua genre yang dipilih
+      document.querySelectorAll(".sub-header button").forEach((btn) => {
+        btn.classList.remove("blue-button");
+        btn.classList.add("black-button");
+      });
+      selectedGenres.add(genre); // Tambahkan kembali "All"
+      button.classList.remove("black-button");
+      button.classList.add("blue-button");
+    } else {
+      // Jika tombol selain "All Movies" dipilih
+      if (selectedGenres.has("All")) {
+        selectedGenres.delete("All"); // Hapus "All" jika genre spesifik dipilih
+        const allButton = document.getElementById("all-movies-button");
+        allButton.classList.remove("blue-button");
+        allButton.classList.add("black-button");
+      }
+
+      if (selectedGenres.has(genre)) {
+        selectedGenres.delete(genre);
+        button.classList.remove("blue-button");
+        button.classList.add("black-button");
+      } else {
+        selectedGenres.add(genre);
+        button.classList.remove("black-button");
+        button.classList.add("blue-button");
+      }
+    }
+    filterByGenre();
+  }
+
+  async function filterByGenre() {
+    const genres = Array.from(selectedGenres);
+
+    try {
+      const response = await fetch(`/customer/movies/filter?genres=${genres.join(",")}`);
+      const movies = await response.json();
+
+      const moviesContainer = document.querySelector(".movies-container");
+      moviesContainer.innerHTML = "";
+
+      movies.forEach((movie) => {
+        const movieElement = `
+          <div class="latest-movies">
+            <img src="${movie.portraitposter}" />
+            <p class="title">${movie.title}</p>
+            <p class="genre">${movie.genres_names}</p>
+          </div>
+        `;
+        moviesContainer.innerHTML += movieElement;
+      });
+    } catch (error) {
+      console.error("Failed to fetch movies:", error);
+    }
+    
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const navigation = document.querySelector(".navigation");
 
@@ -127,7 +167,15 @@
         navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
       }
     });
+
+    //By Default show all movie
+    const allMoviesButton = document.getElementById("all-movies-button");
+    allMoviesButton.classList.add("blue-button");
+    selectedGenres.add("All");
+    filterByGenre();
   });
+
+  
 </script>
 
 </html>

@@ -92,6 +92,23 @@ public class UserJdbc implements UserRepository {
         return movies.isEmpty() ? null : movies.get(0);
     }
 
+    @Override
+    public List<HomePageData> getMoviesByGenres(String[] genres){
+        String sql = "SELECT * FROM view_moviegenres WHERE 1=1";
+
+        for(String genre : genres){
+            sql += " AND genres_names LIKE '%" + genre + "%'";
+        }
+
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
+    }
+
+    @Override
+    public List<HomePageData> getAllMovies(){
+        String sql = "SELECT * FROM view_moviegenres";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
+    }
+
 
     @Override
     public void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice){

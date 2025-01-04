@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.user.HomePageData;
 import com.example.demo.user.MovieDetailData;
@@ -31,8 +32,8 @@ public class CustomerController {
 
     @Autowired
     private UserRepository userRepository;
-    
-    @GetMapping("/customer/homepage")
+
+    @GetMapping("/homepage")
     public String homepage(Model model) {
         List<HomePageData> wheelMovies = userRepository.getMovieWheel();
         model.addAttribute("wheelMovies", wheelMovies);
@@ -48,7 +49,7 @@ public class CustomerController {
         return "Customer/homepage"; // Mengarahkan ke halaman utama customer
     }
 
-    @GetMapping("/customer/details/{title}")
+    @GetMapping("/details/{title}")
     public String details(@PathVariable String title, Model model) {
         HomePageData movieGenre = userRepository.getMovieByTitle(title);
         model.addAttribute("movieGenre", movieGenre);
@@ -58,12 +59,28 @@ public class CustomerController {
         return "Customer/MoviesDetails/Avatar/avatar";
     }
 
+    @GetMapping("/customer/movies")
+    public String movieList(Model model) {
+        List<HomePageData> movies = userRepository.getAllMovies();
+        model.addAttribute("movies", movies);
+        return "Customer/movieList"; // Mengarahkan ke halaman daftar film
+    }
+
+    @GetMapping("/customer/movies/filter")
+    @ResponseBody
+    public List<HomePageData> filterMovies(@RequestParam(required = false) List<String> genres){
+        if (genres == null || genres.isEmpty() || genres.contains("All")) {
+            return userRepository.getAllMovies();
+        }
+        return userRepository.getMoviesByGenres(genres.toArray(new String[0]));
+    }
+
     @GetMapping("/customer/profile")
     public String profile() {
         return "Customer/profile"; // Mengarahkan ke halaman profil customer
     }
 
-    @GetMapping("/customer/myRentals")
+    @GetMapping("/myRentals")
     public String myRentals() {
         return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
     }
@@ -130,16 +147,45 @@ public class CustomerController {
         return "redirect:/customer/homepage";
     }
 
-    @GetMapping("/check-movie_title")
-    @ResponseBody
-    public ResponseEntity<HomePageData> checkIdPendaftaran(@RequestParam("title") String title){
+    
+
+
+    @PostMapping("/customer/rentMovie/{title}")
+    //ceritanya udh ada cart di session (tinggal tambahin di login aj)
+    //tapi lebih bagusa kalo cart ga ke reset pas login, jadinya harus ke db bgst
+    public String rentMoviePost(@PathVariable String title, @RequestParam String titleInput, @RequestParam LocalDate pickUpDate, @RequestParam LocalDate returnDate, Model model, HttpSession session) {
+        // Logger logger = LoggerFactory.getLogger(this.getClass());
+        // logger.info("Title: " + titleInput);
         
-        HomePageData movie = userRepository.getMovieByTitle(title);
-        return ResponseEntity.ok(movie);
+        List<String> errors = new ArrayList<>();
+        if (pickUpDate.isBefore(LocalDate.now()) || returnDate.isBefore(LocalDate.now())) {
+            errors.add("Pickup date and return date must be in the future.");
+        }
+        if (!pickUpDate.isBefore(returnDate)) {
+            errors.add("Pickup date must be before the return date.");
+        }
+        if (!errors.isEmpty()) {
+            model.addAttribute("errors", errors);
+            return "Customer/rentMovie"; // return to the form page
+        }
+
+
+        HomePageData movie = userRepository.getMovieByTitle(titleInput);
+        
+        int movie_id = movie.getMovie_id();
+        UserData user = (UserData)session.getAttribute("user");
+        String phoneNum = user.getPhone();
+        long rent_duration = ChronoUnit.DAYS.between(pickUpDate, returnDate); 
+        long  total_price = movie.getBase_price() * rent_duration;
+
+        userRepository.addMovieToCart(phoneNum, movie_id, pickUpDate, returnDate, total_price);
+        return "redirect:/customer/homepage";
     }
 
+   
 
-    @GetMapping("/customer/cart")
+
+    @GetMapping("/cart")
     public String cart() {
         return "Customer/Cart"; // Mengarahkan ke halaman keranjang
     }
