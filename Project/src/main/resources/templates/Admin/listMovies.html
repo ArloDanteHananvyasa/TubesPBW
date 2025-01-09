@@ -60,13 +60,12 @@
     <div class="main-content">
       <div class="cari-add-produk">
         <div class="cari-produk">
-          <form>
-            <input type="text" name="filter" placeholder="Search movie" />
+          <form th:action="@{/admin/movies}" th:method="get">
+            <input type="text" name="filter" th:value="${filterTitle}" placeholder="Search movie" />
           </form>
         </div>
-        <button type="button" class="blue-button add-produk" onclick="window.location.href='/admin/movies/add-movies';">
-          (+) Add Movie
-        </button>
+        <a th:href="@{/admin/movies/add-movies}"><button type="button" class="blue-button add-produk">(+) Add
+            Movie</button></a>
       </div>
       <div class="list-movies">
         <table>
@@ -77,17 +76,41 @@
             <th>Update</th>
             <th>Remove</th>
           </tr>
+          <tr th:each="movie, iterStat : ${movies}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${movie.title}"></td>
+            <td>
+              <a th:href="@{/admin/movies/detail(movieId=${movie.movie_id})}"><button>Detail</button></a>
+            </td>
+            <td>
+              <a th:href="@{/admin/movies/update(movieId=${movie.movie_id})}"><button>Update</button></a>
+            </td>
+            <td>
+              <a th:href="@{/admin/movies/remove(movieId=${movie.movie_id})}"><button
+                  class="remove-button">Remove</button></a>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="list-movies">
+        <table>
           <tr>
-            <td></td>
-            <td></td>
+            <th>No.</th>
+            <th>Title</th>
+            <th>Detail</th>
+            <th>Restore</th>
+          </tr>
+          <tr th:each="movie, iterStat : ${removedMovies}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${movie.title}"></td>
             <td>
-              <a><button>Detail</button></a>
+              <a th:href="@{/admin/movies/detail(movieId=${movie.movie_id})}"><button>Detail</button></a>
             </td>
             <td>
-              <a><button>Update</button></a>
-            </td>
-            <td>
-              <a><button class="remove-button">Remove</button></a>
+              <a th:href="@{/admin/movies/restore(movieId=${movie.movie_id})}"><button>Restore</button></a>
             </td>
           </tr>
 

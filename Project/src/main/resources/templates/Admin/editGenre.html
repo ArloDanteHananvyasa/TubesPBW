@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Actors</title>
+    <title>Add Genres</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="/AdminStyle/addActorStyle.css" />
+    <link rel="stylesheet" href="/AdminStyle/addGenreStyle.css" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
         <!-- Header Section -->
         <div class="header">
-            <p class="dashboard-header">Add Actors</p>
+            <p class="dashboard-header">Add Genres</p>
         </div>
 
         <!-- Sidebar Section -->
@@ -32,16 +32,16 @@
 
                 <div class="nav-group" id="nav-movies">
                     <img src="/static/Assets/nav-movies.svg" />
-                    <a a th:href="@{/admin/movies}">Movies</a>
+                    <a th:href="@{/admin/movies}">Movies</a>
                 </div>
 
                 <div class="nav-group" id="nav-actors">
-                    <img src="/static/Assets/nav-actors-blue.svg" />
-                    <a a th:href="@{/admin/actors}">Actors</a>
+                    <img src="/static/Assets/nav-actors.png" />
+                    <a th:href="@{/admin/actors}">Actors</a>
                 </div>
 
                 <div class="nav-group" id="nav-genres">
-                    <img src="/static/Assets/nav-genre.svg" />
+                    <img src="/static/Assets/nav-genre-blue.svg" />
                     <a th:href="@{/admin/genres}">Genres</a>
                 </div>
 
@@ -58,11 +58,11 @@
         </div>
 
         <div class="main-content">
-            <form th:action="@{/admin/actors/add-actors/submit}" th:method="post">
+            <form th:action="@{/admin/genres/update/submit}" th:method="post">
                 <div class="form-container">
                     <div class="form-group">
-                        <label for="actorName">Full Name: </label>
-                        <input type="text" id="actorName" name="actorName" placeholder="Enter actor name">
+                        <label for="movieGenre">Genre: </label>
+                        <input type="text" id="movieGenre" name="movieGenre" placeholder="Enter genre">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" id="submitMovieForm">Submit</button>
