@@ -14,20 +14,20 @@
   <div class="page-container">
     <div class="header">
       <div class="navigation">
-        <img src="/static/Assets/logo.png" />
+        <img src="/Assets/logo.png" />
 
         <div class="nav-search">
           <div class="left-nav">
-            <a th:href="@{/customer/homepage}">Home</a>
-            <a th:href="@{/customer/movies}">Movies</a>
-            <a th:href="@{/customer/cart}">My Cart</a>
-            <a th:href="@{/customer/myRentals}">My Rentals</a>
-            <a th:href="@{/customer/profile}">Profile</a>
-            <a th:href="@{/logout}">Log Out</a>
+            <a th href="/customer/homepage">Home</a>
+            <a th href="/customer/movies">Movies</a>
+            <a th href="/customer/cart">My Cart</a>
+            <a th href="/customer/myRentals">My Rentals</a>
+            <a th href="/customer/profile">Profile</a>
+            <a th href="/landing">Log Out</a>
           </div>
 
           <div class="right-nav">
-            <img src="/static/Assets/search-icon.png" />
+            <img src="/Assets/search-icon.png" />
             <input type="text" class="search-bar" placeholder="Search movies, tv shows" />
           </div>
         </div>
@@ -39,7 +39,7 @@
             <div th:each="wheelMovie : ${wheelMovies}">
               <div class="slide">
                 <!-- MASIH DUMMY POSTER -->
-                <img src="/static/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
+                <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
                 <div class="slide-description">
                   <p th:text="${wheelMovie.release_year}">Year</p>
                   <h1 th:text="${wheelMovie.title}">Title</h1>
@@ -72,46 +72,65 @@
 
     <div class="latest-release">
       <h2>Latest Release</h2>
-      <div class="movies-container">
-        <div th:each="movie : ${latestMovies}">
-          <div class="latest-movies">
+      <div class="carousel">
+        <!-- Tombol panah kiri -->
+        <button class="carousel-button prevButton" onclick="moveSlide(-1)">&#10094;</button>
+        <!-- Container untuk film -->
+        <div class="movies-container">
+          <div th:each="movie : ${latestMovies}" class="latest-movies">
             <!-- MASIH DUMMY POSTER -->
-            <img th:src="${movie.portraitposter}" th:attr="data-title=${movie.title}"
+            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png" th:attr="data-title=${movie.title}"
               onclick="redirectToDetails(this)" />
             <p class="title" th:text="${movie.title}">Movie Title</p>
             <p class="genre" th:text="${movie.genres_names}">Genre</p>
           </div>
         </div>
+        <!-- Tombol panah kanan -->
+        <button class="carousel-button nextButton" onclick="moveSlide(1)">&#10095;</button>
       </div>
     </div>
 
     <div class="all-movies">
       <h2>Adventure</h2>
-      <div class="movies-container">
-        <div th:each="adventureMovie : ${adventureMovies}">
-          <div class="movies">
-            <!-- MASIH DUMMY POSTER -->
-            <img th:src="${adventureMovie.landscapeposter}" th:attr="data-title=${adventureMovie.title}"
-              onclick="redirectToDetails(this)" />
-            <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
-            <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
+      <div class="carousel">
+        <!-- Tombol panah kiri -->
+        <button class="carousel-button prevButton" onclick="moveAdventureSlide(-1)">&#10094;</button>
+        <!-- Container untuk film -->
+        <div class="movies-container">
+          <div th:each="adventureMovie : ${adventureMovies}">
+            <div class="movies">
+              <!-- MASIH DUMMY POSTER -->
+              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg"
+                th:attr="data-title=${adventureMovie.title}" onclick="redirectToDetails(this)" />
+              <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
+              <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
+            </div>
           </div>
         </div>
+        <!-- Tombol panah kanan -->
+        <button class="carousel-button nextButton" onclick="moveAdventureSlide(1)">&#10095;</button>
       </div>
     </div>
 
     <div class="tv-shows">
       <h2>Sci-Fi</h2>
-      <div class="movies-container">
-        <div th:each="scifiMovie : ${scifiMovies}">
-          <div class="movies">
-            <img th:src="${scifiMovie.landscapeposter}" th:attr="data-title=${scifiMovie.title}"
-              onclick="redirectToDetails(this)" />
-            <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
-            <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
+      <div class="carousel">
+        <button class="carousel-button prevButton" onclick="moveScifiSlide(-1)">&#10094;</button>
+
+        <div class="movies-container">
+          <div th:each="scifiMovie : ${scifiMovies}">
+            <div class="movies">
+              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${scifiMovie.title}"
+                onclick="redirectToDetails(this)" />
+              <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
+              <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
+            </div>
           </div>
         </div>
+
+        <button class="carousel-button nextButton" onclick="moveScifiSlide(1)">&#10095;</button>
       </div>
+
     </div>
   </div>
 
@@ -165,6 +184,67 @@
     const url = `/customer/details/${encodedTitle}`;
     window.location.href = url;
   }
+
+  let slideIndex = 0;
+
+  function moveSlide(n) {
+    const moviesContainer = document.querySelector('.movies-container');
+    const movies = document.querySelectorAll('.latest-movies');
+    const movieWidth = movies[0].offsetWidth + 20; // Lebar film + margin
+    const totalMovies = movies.length;
+
+    slideIndex += n;
+
+    // Batasi indeks agar tidak melebihi jumlah film
+    const maxIndex = Math.ceil(totalMovies - (moviesContainer.offsetWidth / movieWidth));
+    if (slideIndex < 0) slideIndex = 0;
+    if (slideIndex > maxIndex) slideIndex = maxIndex;
+
+    // Hitung offset
+    const offset = -(movieWidth * slideIndex);
+    moviesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+  let adventureSlideIndex = 0;
+
+  function moveAdventureSlide(n) {
+    const moviesContainer = document.querySelector('.all-movies .movies-container');
+    const movies = document.querySelectorAll('.all-movies .movies');
+    const movieWidth = movies[0].offsetWidth + 20; // Lebar film + margin
+    const totalMovies = movies.length;
+
+    adventureSlideIndex += n;
+
+    // Batasi indeks agar tidak melebihi jumlah film
+    const maxIndex = Math.ceil(totalMovies - (moviesContainer.offsetWidth / movieWidth));
+    if (adventureSlideIndex < 0) adventureSlideIndex = 0;
+    if (adventureSlideIndex > maxIndex) adventureSlideIndex = maxIndex;
+
+    // Hitung offset
+    const offset = -(movieWidth * adventureSlideIndex);
+    moviesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+  let scifiSlideIndex = 0;
+
+  function moveScifiSlide(n) {
+    const moviesContainer = document.querySelector('.tv-shows .movies-container');
+    const movies = document.querySelectorAll('.tv-shows .movies');
+    const movieWidth = movies[0].offsetWidth + 20; // Lebar film + margin
+    const totalMovies = movies.length;
+
+    scifiSlideIndex += n;
+
+    // Batasi indeks agar tidak melebihi jumlah film
+    const maxIndex = Math.ceil(totalMovies - (moviesContainer.offsetWidth / movieWidth));
+    if (scifiSlideIndex < 0) scifiSlideIndex = 0;
+    if (scifiSlideIndex > maxIndex) scifiSlideIndex = maxIndex;
+
+    // Hitung offset
+    const offset = -(movieWidth * scifiSlideIndex);
+    moviesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
 
 </script>
 

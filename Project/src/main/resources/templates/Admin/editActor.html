@@ -58,11 +58,12 @@
         </div>
 
         <div class="main-content">
-            <form th:action="@{/admin/actors/add-actors/submit}" th:method="post">
+            <form th:action="@{/admin/actors/update/submit}" th:method="post">
                 <div class="form-container">
                     <div class="form-group">
                         <label for="actorName">Full Name: </label>
-                        <input type="text" id="actorName" name="actorName" placeholder="Enter actor name">
+                        <input type="text" id="actorName" name="actorName" th:value="${actor}"
+                            placeholder="Enter actor name">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" id="submitMovieForm">Submit</button>
