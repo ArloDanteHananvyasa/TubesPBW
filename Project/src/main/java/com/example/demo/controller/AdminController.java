@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.admin.adminRepository;
 import com.example.demo.admin.datas.actorData;
 import com.example.demo.admin.datas.customerData;
 import com.example.demo.admin.datas.genreData;
 import com.example.demo.admin.datas.movieData;
+import com.example.demo.admin.repositories.adminActorRepository;
+import com.example.demo.admin.repositories.adminGeneralRepository;
+import com.example.demo.admin.repositories.adminGenreRepository;
+import com.example.demo.admin.repositories.adminMovieRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,13 +28,19 @@ import jakarta.servlet.http.HttpSession;
 public class AdminController {
 
     @Autowired
-    private adminRepository repo;
+    private adminGeneralRepository generalRepo;
+    @Autowired
+    private adminActorRepository actorRepo;
+    @Autowired
+    private adminGenreRepository genreRepo;
+    @Autowired
+    private adminMovieRepository movieRepo;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
 
-        List<movieData> movies = repo.getAllMovies(null);
-        List<customerData> customers = repo.getAllCustomers();
+        List<movieData> movies = movieRepo.getAllMovies(null);
+        List<customerData> customers = generalRepo.getAllCustomers();
 
         model.addAttribute("totalMovies", movies.size());
         model.addAttribute("totalUsers", customers.size());
@@ -46,12 +55,12 @@ public class AdminController {
         List<movieData> removedMovies = new ArrayList<>();
 
         if (filter != null) {
-            movies = repo.getAllMovies(filter);
-            removedMovies = repo.getRemovedMovies(filter);
+            movies = movieRepo.getAllMovies(filter);
+            removedMovies = movieRepo.getRemovedMovies(filter);
             model.addAttribute("filterTitle", filter);
         } else {
-            movies = repo.getAllMovies(null);
-            removedMovies = repo.getRemovedMovies(null);
+            movies = movieRepo.getAllMovies(null);
+            removedMovies = movieRepo.getRemovedMovies(null);
         }
         model.addAttribute("movies", movies);
         model.addAttribute("removedMovies", removedMovies);
@@ -59,15 +68,120 @@ public class AdminController {
         return "Admin/listMovies"; // Mengarahkan ke halaman manajemen film
     }
 
+    @GetMapping("/movies/detail")
+    public String movieDetail(@RequestParam("movieId") int id,
+            @RequestParam(value = "filter", required = false) String filter, Model model) {
+
+        List<movieData> movies = new ArrayList<>();
+        List<movieData> removedMovies = new ArrayList<>();
+
+        System.out.println(id);
+
+        if (filter != null) {
+            movies = movieRepo.getAllMovies(filter);
+            removedMovies = movieRepo.getRemovedMovies(filter);
+            model.addAttribute("filterTitle", filter);
+        } else {
+            movies = movieRepo.getAllMovies(null);
+            removedMovies = movieRepo.getRemovedMovies(null);
+        }
+        model.addAttribute("movies", movies);
+        model.addAttribute("removedMovies", removedMovies);
+
+        movieData movieDetail = movieRepo.getMovieById(id);
+        model.addAttribute("movieDetail", movieDetail);
+
+        List<genreData> genreDetail = genreRepo.getGenreByMovieId(id);
+        model.addAttribute("genres", genreDetail);
+
+        List<actorData> actorDetail = actorRepo.getActorByMovieId(id);
+        model.addAttribute("actors", actorDetail);
+
+        System.out.println(movieDetail.getLandscapePoster());
+        System.out.println(movieDetail.getPortraitPoster());
+
+        return "Admin/listMovies";
+    }
+
     @GetMapping("/movies/add-movies")
     public String addMovies(HttpSession session, Model model) {
-        List<genreData> genres = repo.getAllGenres(null);
+        List<genreData> genres = genreRepo.getAllGenres(null);
         model.addAttribute("movieGenres", genres);
 
-        List<actorData> actors = repo.getAllActors(null);
+        List<actorData> actors = actorRepo.getAllActors(null);
         model.addAttribute("actors", actors);
 
         return "Admin/addMovie"; // Mengarahkan ke halaman tambah film
+    }
+
+    @GetMapping("/movies/update")
+    public String updateMovie(@RequestParam("movieId") int id, HttpSession session, Model model) {
+        movieData movieDetail = movieRepo.getMovieById(id);
+
+        session.setAttribute("currentMovie", movieDetail);
+
+        List<genreData> genres = genreRepo.getAllGenres(null);
+        model.addAttribute("movieGenres", genres);
+
+        List<actorData> actors = actorRepo.getAllActors(null);
+        model.addAttribute("actors", actors);
+
+        List<genreData> selectedGenres = genreRepo.getGenreByMovieId(id);
+        List<Integer> selectedGenresId = new ArrayList<>();
+        for (genreData genre : selectedGenres) {
+            selectedGenresId.add(genre.getGenre_id());
+        }
+        model.addAttribute("selectedGenres", selectedGenresId);
+
+        List<actorData> selectedActors = actorRepo.getActorByMovieId(id);
+        List<Integer> selectedActorsId = new ArrayList<>();
+        for (actorData actor : selectedActors) {
+            selectedActorsId.add(actor.getActor_id());
+        }
+        model.addAttribute("selectedActors", selectedActorsId);
+
+        model.addAttribute("movieDetail", movieDetail);
+
+        return "Admin/editMovie";
+    }
+
+    @PostMapping("/movies/update/submit")
+    public String updateMovieSubmit(
+            @RequestParam("movieTitle") String movieTitle,
+            @RequestParam("movieDescription") String description,
+            @RequestParam("movieReleaseYear") String releaseYear,
+            @RequestParam("movieDuration") int duration,
+            @RequestParam("movieStock") int stock,
+            @RequestParam("moviePrice") double price,
+            @RequestParam("selectedGenres") List<Integer> selectedGenres,
+            @RequestParam("selectedActors") List<Integer> selectedActors,
+            @RequestParam("moviePosterLandscape") MultipartFile moviePosterLandscape,
+            @RequestParam("moviePosterPortrait") MultipartFile moviePosterPortrait,
+            HttpSession session,
+            Model model) {
+
+        // debug
+        System.out.println("Movie Title: " + movieTitle);
+        System.out.println("Movie Description: " + description);
+        System.out.println("Movie Release Year: " + releaseYear);
+        System.out.println("Movie Duration: " + duration);
+        System.out.println("Movie Stock: " + stock);
+        System.out.println("Movie Price: " + price);
+        System.out.println("Selected Genres: " + selectedGenres);
+        System.out.println("Selected Actors: " + selectedActors);
+        System.out.println("Movie Poster Landscape: " + moviePosterLandscape);
+        System.out.println("Movie Poster Portrait: " + moviePosterPortrait);
+
+        movieData currentMovie = (movieData) session.getAttribute("currentMovie");
+
+        if (!movieRepo.editMovie(currentMovie.getMovie_id(), movieTitle, description,
+                releaseYear, duration, stock, selectedGenres, selectedActors,
+                moviePosterLandscape, moviePosterPortrait)) {
+            model.addAttribute("error", "The title '" + movieTitle + "' already exists");
+            return "redirect:/admin/movies/update?movieId=" + currentMovie.getMovie_id();
+        }
+
+        return "redirect:/admin/movies";
     }
 
     @PostMapping("/movies/add-movies/submit")
@@ -97,7 +211,7 @@ public class AdminController {
         System.out.println("Movie Poster Landscape: " + moviePosterLandscape);
         System.out.println("Movie Poster Portrait: " + moviePosterPortrait);
 
-        repo.addMovie(movieTitle, description, releaseYear, duration, stock, selectedGenres, selectedActors,
+        movieRepo.addMovie(movieTitle, description, releaseYear, duration, stock, selectedGenres, selectedActors,
                 moviePosterLandscape, moviePosterPortrait);
 
         return "redirect:/admin/movies";
@@ -105,7 +219,7 @@ public class AdminController {
 
     @GetMapping("/movies/remove")
     public String removeMovies(@RequestParam("movieId") int id) {
-        repo.removeMovie(id);
+        movieRepo.removeMovie(id);
 
         return "redirect:/admin/movies";
     }
@@ -113,7 +227,7 @@ public class AdminController {
     @GetMapping("/movies/restore")
     public String retoreMovies(@RequestParam("movieId") int id) {
 
-        repo.restoreMovie(id);
+        movieRepo.restoreMovie(id);
 
         return "redirect:/admin/movies";
     }
@@ -125,12 +239,12 @@ public class AdminController {
         List<actorData> deletedActors = new ArrayList<>();
 
         if (filter != null) {
-            actors = repo.getAllActors(filter);
-            deletedActors = repo.getRemovedActors(filter);
+            actors = actorRepo.getAllActors(filter);
+            deletedActors = actorRepo.getRemovedActors(filter);
             model.addAttribute("filterName", filter);
         } else {
-            actors = repo.getAllActors(null);
-            deletedActors = repo.getRemovedActors(null);
+            actors = actorRepo.getAllActors(null);
+            deletedActors = actorRepo.getRemovedActors(null);
         }
         model.addAttribute("actors", actors);
         model.addAttribute("removedActors", deletedActors);
@@ -145,14 +259,14 @@ public class AdminController {
 
     @GetMapping("/actors/remove")
     public String removeActor(@RequestParam("actorId") int id) {
-        repo.removeActor(id);
+        actorRepo.removeActor(id);
 
         return "redirect:/admin/actors";
     }
 
     @GetMapping("/actors/restore")
     public String restoreActor(@RequestParam("actorId") int id) {
-        repo.restoreActor(id);
+        actorRepo.restoreActor(id);
 
         return "redirect:/admin/actors";
     }
@@ -160,7 +274,7 @@ public class AdminController {
     @PostMapping("/actors/add-actors/submit")
     public String addActorSubmit(@RequestParam("actorName") String name, Model model) {
 
-        if (!repo.addActor(name)) {
+        if (!actorRepo.addActor(name)) {
             model.addAttribute("error", "Actor with the same name already exists");
             return "Admin/addActor";
         } else {
@@ -170,7 +284,7 @@ public class AdminController {
 
     @GetMapping("/actors/update")
     public String updateActor(@RequestParam("actorId") int id, HttpSession session, Model model) {
-        actorData actor = repo.getActorById(id);
+        actorData actor = actorRepo.getActorById(id);
 
         session.setAttribute("currentActor", actor);
         model.addAttribute("actor", actor.getActorName());
@@ -185,7 +299,7 @@ public class AdminController {
         System.out.println(current.getActor_id());
         System.out.println(current.getActorName());
 
-        if (!repo.updateActor(current.getActor_id(), newName)) {
+        if (!actorRepo.updateActor(current.getActor_id(), newName)) {
             model.addAttribute("error", "Actor with the same name already exists");
             return "Admin/addActor";
         } else {
@@ -200,12 +314,12 @@ public class AdminController {
         List<genreData> removedGenres = new ArrayList<>();
 
         if (filter != null) {
-            genres = repo.getAllGenres(filter);
-            removedGenres = repo.getRemovedGenres(filter);
+            genres = genreRepo.getAllGenres(filter);
+            removedGenres = genreRepo.getRemovedGenres(filter);
             model.addAttribute("filterName", filter);
         } else {
-            genres = repo.getAllGenres(null);
-            removedGenres = repo.getRemovedGenres(null);
+            genres = genreRepo.getAllGenres(null);
+            removedGenres = genreRepo.getRemovedGenres(null);
         }
         model.addAttribute("genres", genres);
         model.addAttribute("removedGenres", removedGenres);
@@ -220,14 +334,14 @@ public class AdminController {
 
     @GetMapping("/genres/remove")
     public String removeGenre(@RequestParam("genreId") int id) {
-        repo.removeGenre(id);
+        genreRepo.removeGenre(id);
 
         return "redirect:/admin/genres";
     }
 
     @GetMapping("/genres/restore")
     public String restoreGenre(@RequestParam("genreId") int id) {
-        repo.restoreGenre(id);
+        genreRepo.restoreGenre(id);
 
         return "redirect:/admin/genres";
     }
@@ -235,7 +349,7 @@ public class AdminController {
     @PostMapping("/genres/add-genres/submit")
     public String submitGenre(@RequestParam("movieGenre") String name, Model model) {
 
-        if (!repo.addGenre(name)) {
+        if (!genreRepo.addGenre(name)) {
             model.addAttribute("error", "Genre with the same name already exists");
             return "Admin/addGenres";
         } else {

@@ -72,18 +72,16 @@
           <tr>
             <th>No.</th>
             <th>Title</th>
+            <th>Release Year</th>
             <th>Detail</th>
-            <th>Update</th>
             <th>Remove</th>
           </tr>
           <tr th:each="movie, iterStat : ${movies}">
             <td th:text="${iterStat.index + 1}"></td>
             <td th:text="${movie.title}"></td>
+            <td th:text="${movie.releaseYear}"></td>
             <td>
               <a th:href="@{/admin/movies/detail(movieId=${movie.movie_id})}"><button>Detail</button></a>
-            </td>
-            <td>
-              <a th:href="@{/admin/movies/update(movieId=${movie.movie_id})}"><button>Update</button></a>
             </td>
             <td>
               <a th:href="@{/admin/movies/remove(movieId=${movie.movie_id})}"><button
@@ -100,12 +98,14 @@
           <tr>
             <th>No.</th>
             <th>Title</th>
+            <th>Release Year</th>
             <th>Detail</th>
             <th>Restore</th>
           </tr>
           <tr th:each="movie, iterStat : ${removedMovies}">
             <td th:text="${iterStat.index + 1}"></td>
             <td th:text="${movie.title}"></td>
+            <td th:text="${movie.releaseYear}"></td>
             <td>
               <a th:href="@{/admin/movies/detail(movieId=${movie.movie_id})}"><button>Detail</button></a>
             </td>
@@ -113,7 +113,6 @@
               <a th:href="@{/admin/movies/restore(movieId=${movie.movie_id})}"><button>Restore</button></a>
             </td>
           </tr>
-
 
         </table>
       </div>
@@ -129,55 +128,61 @@
       </div>
     </div>
 
-    <!-- <div th:if="${umkDetail != null}" class="modal">
-      <div class="modal-content">
+    <div th:if="${movieDetail != null}" class="modal">
+      <div>
         <h2>Detail Movie</h2>
-        <div class="modal-container">
-          <div class="left-modal">
+        <div>
+          <div>
             <p>
               <strong>Title:</strong><br />
-              <span th:text="${umkDetail.namaUMK}"></span>
+              <span th:text="${movieDetail.title}"></span>
             </p>
 
             <p>
               <strong>Description:</strong><br />
-              <span th:text="${umkDetail.deskripsi}"></span>
+              <span th:text="${movieDetail.description}"></span>
             </p>
             <p>
               <strong>Duration:</strong><br />
-              <span th:text="${umkDetail.status}"></span>
+              <span th:text="${movieDetail.duration}"></span>
             </p>
             <p>
               <strong>Genres:</strong><br />
-              <span th:text="${umkDetail.tanggal}"></span>
+            <p th:if="${genres != null}" th:each="genre : ${genres}" th:text="${genre.genreName}"></p>
             </p>
 
             <p>
               <strong>Cast:</strong><br />
-              <span th:text="${umkDetail.namaUMK}"></span>
+            <p th:if="${actors != null}" th:each="actor : ${actors}" th:text="${actor.actorName}"></p>
             </p>
 
             <p>
               <strong>Stock:</strong><br />
-              <span th:text="${umkDetail.namaUMK}"></span>
-            </p
+              <span th:text="${movieDetail.stock}"></span>
+            </p>
 
             <p>
               <strong>Price:</strong><br />
-              <span th:text="${umkDetail.namaUMK}"></span>
-            </p
-          </div>
-
-          <div class="right-modal">
-            <p>
-              <strong>Poster:</strong><br />
-              <img th:src="@{${umkDetail.logo}}" alt="Movie Poster" />
+              <span th:text="${movieDetail.basePrice}"></span>
             </p>
           </div>
+
+          <div>
+            <p>
+              <strong>Landscape Poster:</strong><br />
+            </p>
+            <img th:src="${movieDetail.landscapePoster}" alt="Landscape Poster" />
+            <p>
+              <strong>Portrait Poster:</strong><br />
+            </p>
+            <img th:src="${movieDetail.portraitPoster}" alt="Portrait Poster" />
+          </div>
         </div>
-        <a href="/admin/umk" class="close-button"><button>Close</button></a>
+        <a th:href="@{/admin/movies}" class="close-button"><button>Close</button></a>
+        <a th:href="@{/admin/movies/update(movieId=${movieDetail.movie_id})}"
+          class="close-button"><button>Update</button></a>
       </div>
-    </div> -->
+    </div>
   </div>
 
 </body>

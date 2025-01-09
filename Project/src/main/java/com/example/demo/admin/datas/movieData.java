@@ -13,7 +13,8 @@ public class movieData {
     private int duration;
     private double basePrice;
     private String landscapePoster;
-    private String potraitPoster;
+    private String portraitPoster;
+    private int stock;
 }
 
 // private movieData mapRowToPemeriksaanData(ResultSet rs, int rowNum)
