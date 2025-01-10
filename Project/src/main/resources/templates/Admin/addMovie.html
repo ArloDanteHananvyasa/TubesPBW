@@ -58,7 +58,7 @@
         </div>
 
         <div class="main-content">
-            <form>
+            <form th:action="@{/admin/movies/add-movies/submit}" th:method="post" enctype="multipart/form-data">
                 <div class="form-container">
                     <div class="left-group">
                         <div class="form-group">
@@ -69,6 +69,11 @@
                         <div class="form-group">
                             <label for="movieDescription">Description:</label>
                             <textarea id="movieDescription" name="movieDescription" placeholder="Enter"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieReleaseYear">Release Year:</label>
+                            <input type="text" id="movieReleaseYear" name="movieReleaseYear" placeholder="Enter">
                         </div>
 
                         <div class="form-group">
@@ -92,41 +97,10 @@
                         <div class="form-group">
                             <label for="movieGenre">Genre:</label>
                             <div id="movieGenre">
-                                <div>
-                                    <input type="checkbox" id="genreAction" name="genre" value="Action">
-                                    <label for="genreAction">Action</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreComedy" name="genre" value="Comedy">
-                                    <label for="genreComedy">Comedy</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreAdventure" name="genre" value="Adventure">
-                                    <label for="genreAdventure">Adventure</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreDrama" name="genre" value="Drama">
-                                    <label for="genreDrama">Drama</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreThriller" name="genre" value="Thriller">
-                                    <label for="genreThriller">Thriller</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreSciFi" name="genre" value="Sci-Fi">
-                                    <label for="genreSciFi">Sci-Fi</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreFantasy" name="genre" value="Fantasy">
-                                    <label for="genreFantasy">Fantasy</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreHorror" name="genre" value="Horror">
-                                    <label for="genreHorror">Horror</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="genreAnimation" name="genre" value="Animation">
-                                    <label for="genreAnimation">Animation</label>
+                                <div th:each="genre : ${movieGenres}">
+                                    <input type="checkbox" th:id="'genre' + ${genre.genre_id}" name="selectedGenres"
+                                        th:value="${genre.genre_id}">
+                                    <label th:for="'genre' + ${genre.genre_id}" th:text="${genre.genreName}"></label>
                                 </div>
                             </div>
                         </div>
@@ -136,18 +110,10 @@
                         <div class="form-group">
                             <label for="movieActors">Actors:</label>
                             <div id="movieActors">
-                                <div>
-                                    <input type="checkbox" id="actorRyanReynolds" name="actor" value="Ryan Reynolds">
-                                    <label for="actorRyanReynolds">Ryan Reynolds</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="actorDwayneJohnson" name="actor" value="Dwayne Johnson">
-                                    <label for="actorDwayneJohnson">Dwayne Johnson</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="actorGalGadot" name="actor" value="Gal Gadot">
-                                    <label for="actorGalGadot">Gal Gadot</label>
-                                </div>
+                                <select name="selectedActors" multiple>
+                                    <option th:each="actor : ${actors}" th:value="${actor.actor_id}"
+                                        th:text="${actor.actorName}"></option>
+                                </select>
                             </div>
                         </div>
 
@@ -155,11 +121,22 @@
 
                     <div class="next-next-right">
                         <div class="form-group">
-                            <label for="moviePoster">Upload Movie Poster:</label>
-                            <input type="file" id="moviePoster" name="moviePoster" accept="image/*"
-                                onchange="previewImage(event)">
+                            <label for="moviePosterLandscape">Upload Landscape Movie Poster:</label>
+                            <input type="file" id="moviePosterLandscape" name="moviePosterLandscape" accept="image/*"
+                                onchange="previewImage(event, 'landscapePreview')">
                             <div id="posterPreviewContainer" style="margin-top: 10px;">
-                                <img id="posterPreview" src="" alt="Movie Poster Preview"
+                                <img id="landscapePreview" src="" alt="Landscape Poster Preview"
+                                    style="max-width: 200px; display: none; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-next-right">
+                        <div class="form-group">
+                            <label for="moviePosterPortrait">Upload Portrait Movie Poster:</label>
+                            <input type="file" id="moviePosterPortrait" name="moviePosterPortrait" accept="image/*"
+                                onchange="previewImage(event, 'portraitPreview')">
+                            <div id="posterPreviewContainer" style="margin-top: 10px;">
+                                <img id="portraitPreview" src="" alt="Portrait Poster Preview"
                                     style="max-width: 200px; display: none; border: 1px solid #ddd; padding: 5px;">
                             </div>
                         </div>
@@ -173,8 +150,8 @@
 
     </div>
     <script>
-        function previewImage(event) {
-            const preview = document.getElementById('posterPreview');
+        function previewImage(event, previewId) {
+            const preview = document.getElementById(previewId);
             const file = event.target.files[0];
 
             if (file) {

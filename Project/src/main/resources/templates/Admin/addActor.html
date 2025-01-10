@@ -58,7 +58,7 @@
         </div>
 
         <div class="main-content">
-            <form>
+            <form th:action="@{/admin/actors/add-actors/submit}" th:method="post">
                 <div class="form-container">
                     <div class="form-group">
                         <label for="actorName">Full Name: </label>
@@ -66,6 +66,9 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" id="submitMovieForm">Submit</button>
+                <div class="errorMessage">
+                    <p style="color: red;" th:if="${error != null}" th:text="${error}"></p>
+                </div>
             </form>
         </div>
 
