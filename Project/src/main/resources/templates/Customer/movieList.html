@@ -13,25 +13,8 @@
 
 <body>
   <div class="page-container">
-    <div class="navigation">
-      <img src="/static/Assets/logo.png" />
-
-      <div class="nav-search">
-        <div class="left-nav">
-          <a th:href="@{/customer/homepage}">Home</a>
-          <a th:href="@{/customer/movies}">Movies</a>
-          <a th:href="@{/customer/cart}">My Cart</a>
-          <a th:href="@{/customer/myRentals}">My Rentals</a>
-          <a th:href="@{/customer/profile}">Profile</a>
-          <a th:href="@{/logout}">Log Out</a>
-        </div>
-
-        <div class="right-nav">
-          <img src="/static/Assets/search-icon.png" />
-          <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
-        </div>
-      </div>
-    </div>
+    <!-- Navigation -->
+    <th:block th:include="~{Customer/navigation :: navigationCustomer}"></th:block>
 
     <div class="movie-container">
       <div class="sub-header">
@@ -161,7 +144,7 @@
       movies.forEach((movie) => {
         const movieElement = `
           <div class="latest-movies">
-            <img src="${movie.portraitposter}" />
+            <a href="/customer/details?title=${encodeURIComponent(movie.title)}"><img src="${movie.portraitposter}" /></a>
             <p class="title">${movie.title}</p>
             <p class="genre">${movie.genres_names}</p>
           </div>
