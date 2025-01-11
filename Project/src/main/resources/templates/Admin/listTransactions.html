@@ -7,7 +7,8 @@
   <title>Manage Movies</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/AdminStyle/listMoviesStyle.css" />
+  <link rel="stylesheet" href="/AdminStyle/listTransactionStyle.css" />
+
 </head>
 
 <body>
@@ -31,7 +32,8 @@
         </div>
 
         <div class="nav-group" id="nav-movies">
-          <img src="/static/Assets/nav-movies-blue.svg" />
+          <img src="/static/Assets/nav-movies.svg" />
+
           <a th:href="@{/admin/movies}">Movies</a>
         </div>
 
@@ -45,8 +47,8 @@
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
-        <div class="nav-group" id="nav-genres">
-          <img src="/static/Assets/nav-genre.svg" />
+        <div class="nav-group" id="nav-transaksi">
+          <img src="/static/Assets/nav-transaksi-blue.svg" />
           <a th:href="@{/admin/transactions}">Transactions</a>
         </div>
 
@@ -59,30 +61,38 @@
           <img src="/static/Assets/nav-logout.svg" />
           <a th:href="@{/logout}">Log Out</a>
         </div>
-
-        <form th:action="@{/admin/transactions}" th:method="get">
-          <p>Filter by Order Date:</p>
-          <label for="startDate">Start Date:</label>
-          <input type="date" name="startDate" id="startDate" th:value="${startDate}">
-          <label for="endDate">End Date:</label>
-          <input type="date" name="endDate" id="endDate" th:value="${endDate}">
-          <button type="submit">Apply Filter</button>
-        </form>
       </div>
     </div>
 
     <div class="main-content">
-      <div class="cari-add-produk">
-        <div class="cari-produk">
-          <form th:action="@{/admin/transactions}" th:method="get">
-            <p>Filter by Order Date:</p>
-            <label for="startDate">Start Date:</label>
-            <input type="date" name="startDate" id="startDate" th:value="${startDate}">
-            <label for="endDate">End Date:</label>
-            <input type="date" name="endDate" id="endDate" th:value="${endDate}">
-            <button type="submit">Apply Filter</button>
-          </form>
-        </div>
+
+      <div class="filter">
+        <h2>Filter by Order Date</h2>
+
+        <form th:action="@{/admin/transactions}" th:method="get">
+          <div class="form-container">
+            <div class="left-group">
+              <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" name="startDate" id="startDate" th:value="${startDate}">
+              </div>
+
+
+            </div>
+
+            <div class="right-group">
+              <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" name="endDate" id="endDate" th:value="${endDate}">
+              </div>
+            </div>
+
+            <div class="button">
+              <button type="submit">Apply Filter</button>
+            </div>
+          </div>
+
+        </form>
       </div>
 
       <div class="list-movies">
