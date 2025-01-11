@@ -162,7 +162,6 @@ button:hover {
 .form-container {
     display: flex;
     column-gap: 20px;
-    align-items: flex-end;
 
 }
 
@@ -179,9 +178,8 @@ button:hover {
     flex-direction: column;
 }
 
-input {
+input[type="text"] {
     width: 100%;
-    height: 30px;
 }
 
 label {

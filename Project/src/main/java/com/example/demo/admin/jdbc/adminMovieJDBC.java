@@ -109,9 +109,7 @@ public class adminMovieJDBC implements adminMovieRepository {
         // Handle new landscape poster upload
         if (moviePosterLandscape != null && !moviePosterLandscape.isEmpty()) {
             // Delete old landscape poster
-            deleteImage(
-                    "C:\\Users\\Junita Hariyati\\OneDrive - Universitas Katolik Parahyangan\\Semester 5\\PBW\\Tubes\\Project\\moviePosters"
-                            + landscapePath);
+            deleteImage("F:/Campus Stuff/Codes/PBW/TheReelDeal/TheReelDeal/moviePosters" + landscapePath);
 
             // Save new landscape poster
             landscapePath = saveImage(moviePosterLandscape, "Horizontal");
@@ -120,9 +118,7 @@ public class adminMovieJDBC implements adminMovieRepository {
         // Handle new portrait poster upload
         if (moviePosterPortrait != null && !moviePosterPortrait.isEmpty()) {
             // Delete old portrait poster
-            deleteImage(
-                    "C:\\Users\\Junita Hariyati\\OneDrive - Universitas Katolik Parahyangan\\Semester 5\\PBW\\Tubes\\Project\\moviePosters"
-                            + portraitPath);
+            deleteImage("F:/Campus Stuff/Codes/PBW/TheReelDeal/TheReelDeal/moviePosters" + portraitPath);
 
             // Save new portrait poster
             portraitPath = saveImage(moviePosterPortrait, "Vertical");
@@ -157,14 +153,11 @@ public class adminMovieJDBC implements adminMovieRepository {
         try {
             // Create the file path
             String filename = image.getOriginalFilename();
-            String filePath = "C:\\Users\\Junita Hariyati\\OneDrive - Universitas Katolik Parahyangan\\Semester 5\\PBW\\Tubes\\Project\\moviePosters\\"
-                    + folder + "/"
+            String filePath = "F:/Campus Stuff/Codes/PBW/TheReelDeal/TheReelDeal/moviePosters/" + folder + "/"
                     + filename;
 
             // Create the directory if it doesn't exist
-            File directory = new File(
-                    "C:\\Users\\Junita Hariyati\\OneDrive - Universitas Katolik Parahyangan\\Semester 5\\PBW\\Tubes\\Project\\moviePosters\\"
-                            + folder);
+            File directory = new File("F:/Campus Stuff/Codes/PBW/TheReelDeal/TheReelDeal/moviePosters/" + folder);
             if (!directory.exists()) {
                 directory.mkdirs(); // Create the directory if it does not exist
             }

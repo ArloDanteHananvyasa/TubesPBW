@@ -17,6 +17,7 @@ import com.example.demo.admin.datas.billData;
 import com.example.demo.admin.datas.customerData;
 import com.example.demo.admin.datas.genreData;
 import com.example.demo.admin.datas.movieData;
+import com.example.demo.admin.datas.reportData;
 import com.example.demo.admin.datas.transactionData;
 import com.example.demo.admin.repositories.adminActorRepository;
 import com.example.demo.admin.repositories.adminGeneralRepository;
@@ -395,27 +396,52 @@ public class AdminController {
         System.out.println(bill);
 
         model.addAttribute("bill", bill);
+        session.setAttribute("bill", bill);
 
         return "Admin/listTransactions";
     }
 
-    @GetMapping("/admin/transactions/confirm-pickup")
+    @GetMapping("/transactions/confirm-pickup")
     public String confirmPickup(@RequestParam("transactionId") int id, HttpSession session, Model model) {
 
-        return "Admin/listTransactions";
+        generalRepo.confirmPickup(id);
+
+        return "redirect:/admin/transactions";
     }
 
     @PostMapping("/transactions/bill/complete")
     public String completeBill(@RequestParam("paymentMethod") int methodId, HttpSession session) {
         int transaction_id = (int) session.getAttribute("currentTransactionId");
-        generalRepo.completeBill(transaction_id, methodId);
+
+        billData bd = (billData) session.getAttribute("bill");
+
+        System.out.println(bd);
+
+        generalRepo.completeBill(transaction_id, methodId, bd.getLate_fee());
 
         return "redirect:/admin/transactions";
     }
 
     @GetMapping("/sales-report")
-    public String salesReport() {
-        return "Admin/salesReport"; // Mengarahkan ke halaman laporan penjualan
+    public String salesReport(
+            @RequestParam(value = "startDate", required = false) String startDate,
+            @RequestParam(value = "endDate", required = false) String endDate,
+            @RequestParam(value = "customerName", required = false) String customerName,
+            Model model) {
+
+        // Pass the parameters to the service layer, leaving them null if not provided
+
+        System.out.println(startDate);
+
+        List<reportData> reportList = generalRepo.getReport(startDate, endDate, customerName);
+
+        // Add the report data to the model
+        model.addAttribute("transactions", reportList);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        model.addAttribute("customerName", customerName);
+
+        return "Admin/salesReport"; // Directing to the sales report page
     }
 
 }

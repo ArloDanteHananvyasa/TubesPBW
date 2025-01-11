@@ -13,10 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(@Nonnull ResourceHandlerRegistry registry) {
         // Serve files from the uploads folder (new folder)
         registry.addResourceHandler("/Assets/**")
-                .addResourceLocations(
-                        "file:/C:\\Users\\Junita Hariyati\\OneDrive - Universitas Katolik Parahyangan\\Semester 5\\PBW\\Tubes\\Project\\moviePosters\\"); // change
-                                                                                                                                                          // this
-                                                                                                                                                          // too
+                .addResourceLocations("file:/F:/Campus Stuff/Codes/PBW/TheReelDeal/TheReelDeal/moviePosters/"); // change
+                                                                                                                // this
+                                                                                                                // too
 
         // Serve files from the static folder (old folder)
         registry.addResourceHandler("/static/**")
