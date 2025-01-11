@@ -45,6 +45,11 @@
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
+        <div class="nav-group" id="nav-genres">
+          <img src="/static/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/transactions}">Transactions</a>
+        </div>
+
         <div class="nav-group" id="nav-sales">
           <img src="/static/Assets/nav-sales.svg" />
           <a th:href="@{/admin/sales-report}">Sales Report</a>
@@ -129,53 +134,58 @@
     </div>
 
     <div th:if="${movieDetail != null}" class="modal">
-      <div>
+      <div class="modal-content">
         <h2>Detail Movie</h2>
-        <div>
-          <div>
-            <p>
-              <strong>Title:</strong><br />
-              <span th:text="${movieDetail.title}"></span>
-            </p>
+        <div class="modal-container">
+          <div class="left-modal">
+            <div class="left-left">
+              <p>
+                <strong>Title:</strong><br />
+                <span th:text="${movieDetail.title}"></span>
+              </p>
 
-            <p>
-              <strong>Description:</strong><br />
-              <span th:text="${movieDetail.description}"></span>
-            </p>
-            <p>
-              <strong>Duration:</strong><br />
-              <span th:text="${movieDetail.duration}"></span>
-            </p>
-            <p>
-              <strong>Genres:</strong><br />
-            <p th:if="${genres != null}" th:each="genre : ${genres}" th:text="${genre.genreName}"></p>
-            </p>
+              <p>
+                <strong>Description:</strong><br />
+                <span th:text="${movieDetail.description}"></span>
+              </p>
+              <p>
+                <strong>Duration:</strong><br />
+                <span th:text="${movieDetail.duration}"></span>
+              </p>
+              <p>
+                <strong>Stock:</strong><br />
+                <span th:text="${movieDetail.stock}"></span>
+              </p>
 
-            <p>
-              <strong>Cast:</strong><br />
-            <p th:if="${actors != null}" th:each="actor : ${actors}" th:text="${actor.actorName}"></p>
-            </p>
+              <p>
+                <strong>Price:</strong><br />
+                <span th:text="${movieDetail.basePrice}"></span>
+              </p>
+            </div>
 
-            <p>
-              <strong>Stock:</strong><br />
-              <span th:text="${movieDetail.stock}"></span>
-            </p>
+            <div class="left-right">
+              <p>
+                <strong>Genres:</strong><br />
+              <p th:if="${genres != null}" th:each="genre : ${genres}" th:text="${genre.genreName}"></p>
+              </p>
 
-            <p>
-              <strong>Price:</strong><br />
-              <span th:text="${movieDetail.basePrice}"></span>
-            </p>
+              <p>
+                <strong>Cast:</strong><br />
+              <p th:if="${actors != null}" th:each="actor : ${actors}" th:text="${actor.actorName}"></p>
+              </p>
+
+            </div>
           </div>
 
-          <div>
+          <div class="right-modal">
             <p>
               <strong>Landscape Poster:</strong><br />
             </p>
-            <img th:src="${movieDetail.landscapePoster}" alt="Landscape Poster" />
+            <img th:src="${movieDetail.landscapePoster}" alt="Landscape Poster" class="landscapePoster" />
             <p>
               <strong>Portrait Poster:</strong><br />
             </p>
-            <img th:src="${movieDetail.portraitPoster}" alt="Portrait Poster" />
+            <img th:src="${movieDetail.portraitPoster}" alt="Portrait Poster" class="portraitPoster" />
           </div>
         </div>
         <a th:href="@{/admin/movies}" class="close-button"><button>Close</button></a>

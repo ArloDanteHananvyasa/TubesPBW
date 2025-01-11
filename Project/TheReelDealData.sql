@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS actors CASCADE;
 DROP TABLE IF EXISTS genres CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS admins CASCADE;
+DROP TABLE IF EXISTS payment_method CASCADE;
 
 -- Create Tables:
 CREATE TABLE users (
@@ -62,18 +63,25 @@ CREATE TABLE movie_actors (
     FOREIGN KEY (actor_id) REFERENCES actors(actor_id) ON DELETE CASCADE
 );
 
+CREATE TABLE payment_method (
+	method_id INT,
+    method_name VARCHAR(100) NOT NULL,
+	PRIMARY KEY (method_id)
+);
+
 CREATE TABLE transactions (
     transaction_id SERIAL PRIMARY KEY,
     phone VARCHAR(20),
     base_fee NUMERIC NOT NULL,
     pickup_date DATE NOT NULL,
-	isPickedUp BOOLEAN DEFAULT False,
     due_date DATE NOT NULL,
 	return_date DATE,
     transaction_date DATE NOT NULL,
 	days INT NOT NULL,
 	late_fee NUMERIC DEFAULT 0,
-    FOREIGN KEY (phone) REFERENCES users(phone) ON DELETE CASCADE
+	payment_method_id INT DEFAULT NULL,
+    FOREIGN KEY (phone) REFERENCES users(phone) ON DELETE CASCADE,
+    FOREIGN KEY (payment_method_id) REFERENCES payment_method(method_id) ON DELETE CASCADE
 );
 
 
@@ -519,13 +527,18 @@ INSERT INTO movie_actors (movie_id, actor_id) VALUES
 -- Indiana Jones and the Kingdom of the Crystal Skull
 (53, 36), (53, 8), (53, 32);
 
+INSERT INTO payment_method(method_id, method_name) VALUES
+(1, 'Cash'),
+(2, 'QRIS'),
+(3, 'Debit'),
+(4, 'Credit');
 
-INSERT INTO transactions (phone, base_fee, pickup_date, isPickedUp, due_date, return_date, transaction_date, days, late_fee) VALUES
-('08781827391', 84000,'2024-01-01', true, '2024-01-04', '2024-01-04', '2024-01-01', 4,0), --1, tepat waktu
-('080981233125', 46000, '2024-02-03', true, '2024-02-04', '2024-02-04','2024-01-02', 1, 0),--2,3; multiple films, tepat waktu
-('080981233125', 25000, '2024-01-02', true,'2024-01-04','2024-01-05', '2024-01-02',1,10000),--4, late
-('08158092834', 58000,'2024-03-01', true, '2024-03-03','2024-03-02', '2024-02-29',2,0 ), --5, early
-('08158092834', 21000, '2024-03-01', true, '2024-03-02', null,'2024-03-01',1, null);--1, not returned, late
+INSERT INTO transactions (phone, base_fee, pickup_date, due_date, return_date, transaction_date, days, late_fee, payment_method_id) VALUES
+('08781827391', 84000,'2024-01-01', '2024-01-04', '2024-01-04', '2024-01-01', 4,0,1), --1, tepat waktu
+('080981233125', 46000, '2024-02-03', '2024-02-04', '2024-02-04','2024-01-02', 1, 0,3),--2,3; multiple films, tepat waktu
+('080981233125', 25000, '2024-01-02','2024-01-04','2024-01-05', '2024-01-02',1,10000,4),--4, late
+('08158092834', 58000,'2024-03-01', '2024-03-03','2024-03-02', '2024-02-29',2,0,1), --5, early
+('08158092834', 21000, '2024-03-01', '2024-03-02', null,'2024-03-01',1, null, null);--1, not returned, late
 
 
 INSERT INTO transaction_details(transaction_id, movie_id) VALUES

@@ -245,7 +245,17 @@ strong {
     text-align: left;
 }
 
-.modal-content img {
+img.portraitPoster {
     width: 150px;
-    height: 150px;
+    height: 250px;
+}
+
+img.landscapePoster {
+    width: 250px;
+    height: 100px;
+}
+
+.left-modal {
+    display: flex;
+    column-gap: 30px;
 }
