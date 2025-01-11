@@ -15,4 +15,6 @@ public interface UserRepository {
     MovieDetailData getActorsByTitle(String title);
     List<HomePageData> getMoviesByGenres(String[] genres);
     List<HomePageData> getAllMovies();
+
+    List<HomePageData> searchTitle(String title);
 }

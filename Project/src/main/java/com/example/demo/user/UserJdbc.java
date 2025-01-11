@@ -55,31 +55,31 @@ public class UserJdbc implements UserRepository {
 
     @Override
     public List<HomePageData> getMoviesFromLast5Years(){
-        String sql = "SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5)";
+        String sql = "SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5) AND deleted = false";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getAdventureMovies(){
-        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%'";
+        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%' AND deleted = false";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getScifiMovies(){
-        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%'";
+        String sql = "SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%' AND deleted = false";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public List<HomePageData> getMovieWheel(){
-        String sql = "SELECT * FROM view_moviegenres ORDER BY RANDOM() LIMIT 5";
+        String sql = "SELECT * FROM view_moviegenres WHERE deleted = false ORDER BY RANDOM() LIMIT 5";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
     }
 
     @Override
     public HomePageData getMovieByTitle(String title){
-        String sql = "SELECT * FROM view_moviegenres WHERE title = ?";
+        String sql = "SELECT * FROM view_moviegenres WHERE title = ? AND deleted = false";
         List<HomePageData> movies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class), title);
         return movies.isEmpty() ? null : movies.get(0);
     }
@@ -93,7 +93,7 @@ public class UserJdbc implements UserRepository {
 
     @Override
     public List<HomePageData> getMoviesByGenres(String[] genres){
-        String sql = "SELECT * FROM view_moviegenres WHERE 1=1";
+        String sql = "SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false";
 
         for(String genre : genres){
             sql += " AND genres_names LIKE '%" + genre + "%'";
@@ -104,7 +104,13 @@ public class UserJdbc implements UserRepository {
 
     @Override
     public List<HomePageData> getAllMovies(){
-        String sql = "SELECT * FROM view_moviegenres";
+        String sql = "SELECT * FROM view_moviegenres WHERE deleted = false";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class));
+    }
+
+    @Override
+    public List<HomePageData> searchTitle(String title){
+        String sql = "SELECT * FROM view_moviegenres WHERE title iLIKE ? AND deleted = false LIMIT 10";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class), "%" + title + "%");
     }
 }
