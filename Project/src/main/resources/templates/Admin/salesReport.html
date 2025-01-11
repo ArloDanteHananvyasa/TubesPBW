@@ -49,8 +49,10 @@
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
+
         <div class="nav-group" id="nav-transaksi">
           <img src="/static/Assets/nav-transaksi.svg" />
+
           <a th:href="@{/admin/transactions}">Transactions</a>
         </div>
 
@@ -70,31 +72,27 @@
 
       <div class="filter">
         <h2>Filter Sales Report</h2>
-        <form>
+        <form th:action="@{/admin/sales-report}">
           <div class="form-container">
             <div class="left-group">
               <div class="form-group">
                 <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate" name="startDate">
+                <input type="date" id="startDate" name="startDate" th:value="${startDate}">
               </div>
 
               <div class="form-group">
                 <label for="endDate">End Date:</label>
-                <input type="date" id="endDate" name="endDate">
+                <input type="date" id="endDate" name="endDate" th:value="${endDate}">
               </div>
 
             </div>
             <div class="right-group">
-              <div class="form-group">
-                <label for="movieTitle">Movie Title:</label>
-                <input type="text" id="movieTitle" name="movieTitle" placeholder="Enter movie title">
-              </div>
 
               <div class="form-group">
                 <label for="customerName">Customer Name:</label>
-                <input type="text" id="customerName" name="customerName" placeholder="Enter customer name">
+                <input type="text" id="customerName" name="customerName" placeholder="Enter customer name"
+                  th:value="${customerName}">
               </div>
-
 
             </div>
 
@@ -112,19 +110,17 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>Movie Title</th>
               <th>Customer Name</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
+              <th>Total</th>
+              <th>Payment Method</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>2024-12-20</td>
-              <td>Avengers: End Game</td>
-              <td>John Doe</td>
-              <td>2</td>
-              <td>40.000</td>
+            <tr th:each="transaction : ${transactions}">
+              <td th:text="${transaction.orderDate}"></td>
+              <td th:text="${transaction.customerName}"></td>
+              <td th:text="${transaction.total}"></td>
+              <td th:text="${transaction.method_name}"></td>
             </tr>
           </tbody>
         </table>
