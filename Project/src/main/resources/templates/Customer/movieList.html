@@ -61,16 +61,6 @@
 
       <div class="movie">
         <h2>Movies</h2>
-        <div class="movies-container">
-          <div th:each="movie : ${movies}">
-            <div class="latest-movies">
-              <img th:src="${movie.portraitposter}"/>
-              <p class="title" th:text="${movie.title}">Title</p>
-              <p class="genre" th:text="${movie.genres_names}">Title</p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel">
           <button class="carousel-button prevButton" onclick="moveSlide(-1)">&#10094;</button>
 
           <div class="movies-container">
