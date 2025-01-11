@@ -802,3 +802,290 @@ WHERE user_phone = ? AND is_active = true;
 2025-01-12T00:05:35.702+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-01-12T00:05:35.704+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.369 seconds (process running for 38573.113)
 2025-01-12T00:05:35.704+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:11.835+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 10 class path changes (0 additions, 10 deletions, 0 modifications)
+2025-01-12T00:20:11.837+07:00  INFO 15280 --- [demo] [Thread-1316] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:11.851+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:11.853+07:00  INFO 15280 --- [demo] [Thread-1316] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:11.954+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:11.954+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:12.198+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:12.217+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:12.373+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:12.375+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:12.376+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:12.395+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:12.396+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 431 ms
+2025-01-12T00:20:12.443+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:12.448+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:12.464+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:12.465+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:12.517+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:12.520+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@22224aaf']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:12.520+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@75fea6af) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@c7f5583)
+2025-01-12T00:20:12.520+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@7594411f) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@41c57960)
+2025-01-12T00:20:12.541+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:12.541+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:12.572+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:12.735+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:12.742+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:12.745+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.838 seconds (process running for 39450.155)
+2025-01-12T00:20:12.746+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:14.176+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 227 class path changes (162 additions, 0 deletions, 65 modifications)
+2025-01-12T00:20:14.177+07:00  INFO 15280 --- [demo] [Thread-1320] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:14.189+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:14.191+07:00  INFO 15280 --- [demo] [Thread-1320] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:14.246+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:14.247+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:14.361+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:14.364+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:14.433+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:14.434+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:14.434+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:14.456+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:14.456+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 209 ms
+2025-01-12T00:20:14.491+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:14.493+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:14.503+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:14.503+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:14.552+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:14.552+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@695c80e2']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:14.553+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@2223d5a9) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@52aaceaf)
+2025-01-12T00:20:14.553+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@4bf26962) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@7524af4a)
+2025-01-12T00:20:14.567+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:14.567+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:14.622+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:14.704+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:14.794+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:14.799+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:14.801+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.571 seconds (process running for 39452.211)
+2025-01-12T00:20:14.802+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:22.405+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:20:22.407+07:00  INFO 15280 --- [demo] [Thread-1324] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:22.413+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:22.414+07:00  INFO 15280 --- [demo] [Thread-1324] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:22.463+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:22.463+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:22.554+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:22.557+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:22.614+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:22.614+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:22.614+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:22.623+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:22.623+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 159 ms
+2025-01-12T00:20:22.640+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:22.641+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:22.645+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:22.646+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:22.688+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:22.689+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@6d214724']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:22.689+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@b156ad0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@20909bc1)
+2025-01-12T00:20:22.689+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@23dd740c) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@23aaf0a1)
+2025-01-12T00:20:22.698+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:22.698+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:22.738+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:22.795+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:22.862+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:22.867+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:22.868+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.423 seconds (process running for 39460.278)
+2025-01-12T00:20:22.869+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:30.430+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:20:30.430+07:00  INFO 15280 --- [demo] [Thread-1328] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:30.443+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:30.444+07:00  INFO 15280 --- [demo] [Thread-1328] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:30.501+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:30.502+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:30.642+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:30.646+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:30.733+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:30.734+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:30.734+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:30.745+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:30.745+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 241 ms
+2025-01-12T00:20:30.765+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:30.766+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:30.770+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:30.772+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:30.814+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:30.815+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@716230df']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:30.815+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@5381e4f1) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@5b535814)
+2025-01-12T00:20:30.816+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@168006dd) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@357d29a0)
+2025-01-12T00:20:30.828+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:30.828+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:30.886+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:30.955+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:31.006+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:31.013+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:31.015+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.536 seconds (process running for 39468.424)
+2025-01-12T00:20:31.015+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:37.969+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:20:37.970+07:00  INFO 15280 --- [demo] [Thread-1332] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:37.979+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:37.979+07:00  INFO 15280 --- [demo] [Thread-1332] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:38.021+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:38.021+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:38.104+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:38.106+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:38.158+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:38.158+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:38.158+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:38.167+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:38.167+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 145 ms
+2025-01-12T00:20:38.185+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:38.185+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:38.189+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:38.189+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:38.225+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:38.225+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@472566e6']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:38.227+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@36a4ce88) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@499aa103)
+2025-01-12T00:20:38.227+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@71aeb32b) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@11ceadc1)
+2025-01-12T00:20:38.234+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:38.234+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:38.273+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:38.327+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:38.371+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:38.377+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:38.377+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.37 seconds (process running for 39475.787)
+2025-01-12T00:20:38.378+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:46.961+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:20:46.962+07:00  INFO 15280 --- [demo] [Thread-1336] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:46.968+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:46.968+07:00  INFO 15280 --- [demo] [Thread-1336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:47.010+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:47.010+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:47.099+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:47.102+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:47.162+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:47.162+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:47.162+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:47.171+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:47.172+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 160 ms
+2025-01-12T00:20:47.190+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:47.191+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:47.197+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:47.197+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:47.236+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:47.237+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@6f805334']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:47.237+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@5cf7414e) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@77b86ccb)
+2025-01-12T00:20:47.237+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@9735751) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@240c634)
+2025-01-12T00:20:47.248+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:47.248+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:47.289+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:47.356+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:47.414+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:47.420+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:47.421+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.423 seconds (process running for 39484.83)
+2025-01-12T00:20:47.422+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:20:54.965+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:20:54.966+07:00  INFO 15280 --- [demo] [Thread-1340] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:20:54.973+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:20:54.974+07:00  INFO 15280 --- [demo] [Thread-1340] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:55.022+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:20:55.023+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:20:55.117+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:20:55.120+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:20:55.174+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:20:55.174+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:20:55.174+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:20:55.185+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:20:55.185+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 162 ms
+2025-01-12T00:20:55.200+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:20:55.202+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:20:55.207+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:20:55.207+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:20:55.247+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:20:55.248+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@16310438']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:20:55.248+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@6c807389) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@3f26c307)
+2025-01-12T00:20:55.248+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@2c444a7a) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6d21351d)
+2025-01-12T00:20:55.257+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:20:55.257+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:20:55.298+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:20:55.360+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:20:55.408+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:20:55.413+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:20:55.415+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.408 seconds (process running for 39492.824)
+2025-01-12T00:20:55.416+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T00:21:02.388+07:00  INFO 15280 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T00:21:02.388+07:00  INFO 15280 --- [demo] [Thread-1344] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T00:21:02.395+07:00  INFO 15280 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T00:21:02.396+07:00  INFO 15280 --- [demo] [Thread-1344] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:21:02.439+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 15280 (D:\Code\PBW\Tubes\Project\build\classes\java\main started by Air in D:\Code\PBW\Tubes\Project)
+2025-01-12T00:21:02.439+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T00:21:02.521+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T00:21:02.524+07:00  INFO 15280 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T00:21:02.573+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T00:21:02.573+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T00:21:02.573+07:00  INFO 15280 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T00:21:02.583+07:00  INFO 15280 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T00:21:02.583+07:00  INFO 15280 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 143 ms
+2025-01-12T00:21:02.599+07:00  INFO 15280 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T00:21:02.601+07:00  INFO 15280 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T00:21:02.605+07:00  INFO 15280 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T00:21:02.606+07:00 DEBUG 15280 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T00:21:02.642+07:00  WARN 15280 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T00:21:02.643+07:00  INFO 15280 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@30b74329']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T00:21:02.643+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@142f34d4) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@6069cb63)
+2025-01-12T00:21:02.643+07:00 DEBUG 15280 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@36d5cc17) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6c5feed9)
+2025-01-12T00:21:02.652+07:00  INFO 15280 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T00:21:02.652+07:00  INFO 15280 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T00:21:02.691+07:00  WARN 15280 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T00:21:02.748+07:00  WARN 15280 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T00:21:02.792+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T00:21:02.798+07:00  INFO 15280 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T00:21:02.799+07:00  INFO 15280 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.372 seconds (process running for 39500.209)
+2025-01-12T00:21:02.800+07:00  INFO 15280 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
