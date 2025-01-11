@@ -133,10 +133,24 @@ body {
   z-index: -1000;
 }
 
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Hitam dengan opacity 50% */
+  z-index: -1;
+  display: flex;
+}
+
 
 .slide-description {
   width: 55%;
   padding-left: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .prev,
@@ -276,8 +290,6 @@ body {
   display: block;
 }
 
-
-
 .title {
   margin-bottom: 0px;
 }
@@ -295,10 +307,10 @@ body {
 }
 
 .movies img {
-  width: 100%;
+  width: 200px;
+  /* Pastikan gambar memenuhi elemen */
   border-radius: 10px;
   display: block;
-  cursor: pointer;
 }
 
 footer {
