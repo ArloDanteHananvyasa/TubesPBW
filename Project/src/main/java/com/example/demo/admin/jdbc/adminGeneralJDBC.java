@@ -2,7 +2,10 @@ package com.example.demo.admin.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.admin.datas.billData;
 import com.example.demo.admin.datas.customerData;
 import com.example.demo.admin.datas.movieData;
+import com.example.demo.admin.datas.reportData;
 import com.example.demo.admin.datas.transactionData;
 import com.example.demo.admin.repositories.adminGeneralRepository;
 
@@ -69,42 +73,137 @@ public class adminGeneralJDBC implements adminGeneralRepository {
     public void confirmPickup(int transaction_id) {
         LocalDate today = LocalDate.now();
 
-        jdbc.update("UPDATE transactions SET pickup_date = ? WHERE transaction_id = ?", today, transaction_id);
+        // Retrieve transaction data
+        transactionData td = getTransactionById(transaction_id);
+        int days = td.getDays(); // Get the number of days from the transaction data
+
+        // Calculate the due_date by adding the number of days to today's date
+        LocalDate dueDate = today.plusDays(days);
+
+        // Update both pickup_date and due_date
+        jdbc.update("UPDATE transactions SET pickup_date = ?, due_date = ? WHERE transaction_id = ?", today, dueDate,
+                transaction_id);
+    }
+
+    private double calculateLateFee(transactionData td) {
+        double lateFee = 0;
+
+        // Get today's date for comparison
+        LocalDate today = LocalDate.now();
+
+        // Check if due_date is not null or empty
+        String dueDateStr = td.getDueReturnDate();
+
+        if (dueDateStr != null && !dueDateStr.isEmpty()) {
+            try {
+                // Convert due_date from String to LocalDate
+                LocalDate dueDate = LocalDate.parse(dueDateStr); // Assuming dueDate is in YYYY-MM-DD format
+
+                // Calculate late fee based on today's date (because the item is being returned
+                // now)
+                if (today.isAfter(dueDate)) {
+                    long daysLate = java.time.temporal.ChronoUnit.DAYS.between(dueDate, today);
+                    lateFee = daysLate * 10000; // Calculate late fee
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Error parsing dates: " + e.getMessage());
+            }
+        }
+        return lateFee;
     }
 
     @Override
-    public void completeBill(int transaction_id, int method_id) {
+    public void completeBill(int transaction_id, int method_id, double lateFee) {
         // Get today's date
         LocalDate today = LocalDate.now();
 
         // Update the return_date to today's date and set the payment method
-        jdbc.update("UPDATE transactions SET payment_method_id = ?, return_date = ? WHERE transaction_id = ?",
-                method_id, today, transaction_id);
+        jdbc.update(
+                "UPDATE transactions SET payment_method_id = ?, return_date = ?, late_fee = ? WHERE transaction_id = ?",
+                method_id, today, lateFee, transaction_id);
     }
 
     @Override
     public billData getBillByTransactionId(int id) {
+        // Get the transaction data
         transactionData td = getTransactionById(id);
 
-        double lateFee = 0;
+        // Calculate the late fee (based on today's date since the item is just being
+        // returned)
+        double lateFee = calculateLateFee(td);
 
-        // Check if return_date and due_date are not null or empty
-        String returnDateStr = td.getActualReturnDate();
-        String dueDateStr = td.getDueReturnDate();
+        // Return billData object, including base fee and calculated late fee
+        return new billData(td.getBasePrice(), lateFee, td.getBasePrice() + lateFee);
+    }
 
-        if (returnDateStr != null && !returnDateStr.isEmpty() && dueDateStr != null && !dueDateStr.isEmpty()) {
-            // Convert return_date and due_date from String to LocalDate
-            LocalDate returnDate = LocalDate.parse(returnDateStr); // Assuming returnDate is in YYYY-MM-DD format
-            LocalDate dueDate = LocalDate.parse(dueDateStr); // Assuming dueDate is in YYYY-MM-DD format
+    @Override
+    public List<reportData> getReport(String startDate, String endDate, String customerName) {
+        // Base query for selecting data from the joined tables
+        StringBuilder query = new StringBuilder(
+                "SELECT * FROM transactions t JOIN users u on u.phone = t.phone JOIN payment_method p on p.method_id = t.payment_method_id WHERE 1=1");
 
-            // Check if return_date is greater than due_date to calculate late fee
-            if (returnDate.isAfter(dueDate)) {
-                long daysLate = java.time.temporal.ChronoUnit.DAYS.between(dueDate, returnDate);
-                lateFee = daysLate * 10000; // Calculate late fee
+        System.out.println(startDate);
+        System.out.println(endDate);
+        System.out.println(customerName);
+
+        // List to hold parameters for the query
+        List<Object> params = new ArrayList<>();
+
+        // Parse and add condition for startDate if provided
+        if (startDate != null && !startDate.isEmpty()) {
+            try {
+                // Parse startDate to LocalDate
+                LocalDate parsedStartDate = LocalDate.parse(startDate);
+                query.append(" AND t.transaction_date >= ?");
+                params.add(parsedStartDate);
+            } catch (DateTimeParseException e) {
+                // Handle invalid date format (optional)
+                System.err.println("Invalid start date format: " + startDate);
             }
         }
 
-        return new billData(td.getBasePrice(), lateFee, td.getBasePrice() + lateFee);
+        // Parse and add condition for endDate if provided
+        if (endDate != null && !endDate.isEmpty()) {
+            try {
+                // Parse endDate to LocalDate
+                LocalDate parsedEndDate = LocalDate.parse(endDate);
+                query.append(" AND t.transaction_date <= ?");
+                params.add(parsedEndDate);
+            } catch (DateTimeParseException e) {
+                // Handle invalid date format (optional)
+                System.err.println("Invalid end date format: " + endDate);
+            }
+        }
+
+        // Add condition for customerName if provided
+        if (customerName != null && !customerName.isEmpty()) {
+            query.append(" AND u.name ILIKE ?");
+            params.add("%" + customerName + "%"); // Use LIKE for partial matching
+        }
+
+        // Execute the query with the specified parameters and return the results
+        return jdbc.query(query.toString(), this::mapRowToReportData, params.toArray());
+    }
+
+    private reportData mapRowToReportData(ResultSet rs, int rowNum) throws SQLException {
+        // Extract the fields from the ResultSet
+        String customerName = rs.getString("name");
+        String orderDate = rs.getString("transaction_date");
+        double basePrice = rs.getDouble("base_fee");
+        double lateFee = rs.getDouble("late_fee");
+        String methodName = rs.getString("method_name");
+
+        // Calculate the total (basePrice + lateFee)
+        double total = basePrice + lateFee;
+
+        // Format the total using DecimalFormat
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setGroupingSeparator('.'); // Set the grouping separator as dot
+        DecimalFormat decimalFormat = new DecimalFormat("'Rp. '#,###", symbols);
+        String formattedTotal = decimalFormat.format(total);
+
+        // Return the formatted reportData object
+        return new reportData(customerName, orderDate, formattedTotal, methodName);
     }
 
     @Override
