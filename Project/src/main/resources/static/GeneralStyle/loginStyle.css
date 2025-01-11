@@ -4,7 +4,7 @@
 
 body {
   margin: 0px;
-  background-image: url("/Assets/Log\ in.png");
+  background-image: url("/static/Assets/Log\ in.png");
 }
 
 .page-container {
