@@ -135,10 +135,23 @@ body {
   z-index: -1000;
 }
 
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Hitam dengan opacity 50% */
+  z-index: -1;
+  display: flex;
+}
 
 .slide-description {
   width: 55%;
   padding-left: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .prev,
@@ -316,26 +329,35 @@ footer {
 .suggestions {
   display: none;
   position: absolute;
-  top: calc(100% + 5px); /* Jarak 5px di bawah search bar */
+  top: calc(100% + 5px);
+  /* Jarak 5px di bawah search bar */
   left: 0;
   background-color: white;
   border: 1px solid #ccc;
-  border-radius: 8px; /* Membulatkan sudut */
+  border-radius: 8px;
+  /* Membulatkan sudut */
   max-height: 200px;
   overflow-y: auto;
-  width: 100%; /* Sesuai dengan lebar search bar */
+  width: 100%;
+  /* Sesuai dengan lebar search bar */
   z-index: 1000;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek visual */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Tambahkan bayangan untuk efek visual */
 }
 
 .suggestions div {
-  padding: 10px; /* Tambahkan padding untuk kenyamanan klik */
+  padding: 10px;
+  /* Tambahkan padding untuk kenyamanan klik */
   cursor: pointer;
-  color: black; /* Teks hitam */
-  font-size: 14px; /* Sesuaikan ukuran teks */
-  font-weight: normal; /* Tidak terlalu tebal */
+  color: black;
+  /* Teks hitam */
+  font-size: 14px;
+  /* Sesuaikan ukuran teks */
+  font-weight: normal;
+  /* Tidak terlalu tebal */
 }
 
 .suggestions div:hover {
-  background-color: #f0f0f0; /* Gaya hover */
+  background-color: #f0f0f0;
+  /* Gaya hover */
 }
