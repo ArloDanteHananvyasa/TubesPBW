@@ -126,6 +126,38 @@ button {
   border: none;
 }
 
+.carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+  /* Sesuaikan dengan lebar parent */
+  overflow: hidden;
+  /* Hanya tampilkan elemen di dalam viewport */
+}
+
+.carousel-button {
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  height: auto;
+}
+
+.carousel-button.prevButton {
+  left: 10px;
+}
+
+.carousel-button.nextButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .movie {
   padding: 0px 40px;
 }
@@ -136,13 +168,22 @@ button {
 
 .movies-container {
   display: flex;
-  column-gap: 50px;
+  overflow: visible;
+  /* Memotong elemen di luar viewport */
+  flex-wrap: nowrap;
+  width: 100%;
+  /* Sesuaikan dengan lebar parent */
+  transition: transform 0.5s ease-in-out;
+  column-gap: 20px;
+  /* Jarak antar film */
 }
 
 .latest-movies {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 0 0 200px;
+  /* Lebar setiap elemen film */
+  margin: 0 10px;
+  /* Jarak antar elemen film */
+  text-align: center;
 }
 
 .latest-movies img {
@@ -153,6 +194,12 @@ button {
 
 .title {
   margin-bottom: 0px;
+}
+
+.genre {
+  margin-top: 0px;
+  color: #0466c8;
+  font-weight: 600;
 }
 
 footer {
