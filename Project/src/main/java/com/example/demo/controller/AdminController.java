@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.admin.datas.actorData;
+import com.example.demo.admin.datas.billData;
 import com.example.demo.admin.datas.customerData;
 import com.example.demo.admin.datas.genreData;
 import com.example.demo.admin.datas.movieData;
+import com.example.demo.admin.datas.transactionData;
 import com.example.demo.admin.repositories.adminActorRepository;
 import com.example.demo.admin.repositories.adminGeneralRepository;
 import com.example.demo.admin.repositories.adminGenreRepository;
@@ -355,6 +357,60 @@ public class AdminController {
         } else {
             return "redirect:/admin/genres";
         }
+    }
+
+    @GetMapping("/transactions")
+    public String manageTransactions(
+            @RequestParam(name = "startDate", required = false) String startDate,
+            @RequestParam(name = "endDate", required = false) String endDate,
+            Model model) {
+
+        List<transactionData> transactions = generalRepo.getAllTransactions(startDate, endDate);
+
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+
+        return "Admin/listTransactions";
+    }
+
+    @GetMapping("/transactions/detail")
+    public String detailTransaction(@RequestParam("transactionId") int id, Model model) {
+
+        transactionData detail = generalRepo.getTransactionById(id);
+        List<movieData> movies = generalRepo.getMoviesByTransactionId(id);
+
+        model.addAttribute("transactionDetail", detail);
+        model.addAttribute("transactionMovies", movies);
+
+        return "Admin/listTransactions";
+    }
+
+    @GetMapping("/transactions/bill")
+    public String billTransaction(@RequestParam("transactionId") int id, HttpSession session, Model model) {
+
+        session.setAttribute("currentTransactionId", id);
+        billData bill = generalRepo.getBillByTransactionId(id);
+
+        System.out.println(bill);
+
+        model.addAttribute("bill", bill);
+
+        return "Admin/listTransactions";
+    }
+
+    @GetMapping("/admin/transactions/confirm-pickup")
+    public String confirmPickup(@RequestParam("transactionId") int id, HttpSession session, Model model) {
+
+        return "Admin/listTransactions";
+    }
+
+    @PostMapping("/transactions/bill/complete")
+    public String completeBill(@RequestParam("paymentMethod") int methodId, HttpSession session) {
+        int transaction_id = (int) session.getAttribute("currentTransactionId");
+        generalRepo.completeBill(transaction_id, methodId);
+
+        return "redirect:/admin/transactions";
     }
 
     @GetMapping("/sales-report")

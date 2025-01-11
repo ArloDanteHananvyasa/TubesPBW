@@ -18,49 +18,60 @@
 
     <div class="movie-container">
       <div class="sub-header">
-        <button type="button" class="black-button" id="all-movies-button" value="All" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="all-movies-button" value="All" name="genre"
+          onclick="selectGenre(this)">
           All Movies
         </button>
 
-        <button type="button" class="black-button" id="comedy-movies-button" value="Comedy" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="comedy-movies-button" value="Comedy" name="genre"
+          onclick="selectGenre(this)">
           Comedy
         </button>
 
-        <button type="button" class="black-button" id="Adventure-movies-button" value="Adventure" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="Adventure-movies-button" value="Adventure" name="genre"
+          onclick="selectGenre(this)">
           Adventure
         </button>
 
-        <button type="button" class="black-button" id="action-movies-button" value="Action" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="action-movies-button" value="Action" name="genre"
+          onclick="selectGenre(this)">
           Action
         </button>
 
-        <button type="button" class="black-button" id="horror-movies-button" value="Horror" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="horror-movies-button" value="Horror" name="genre"
+          onclick="selectGenre(this)">
           Horror
         </button>
 
-        <button type="button" class="black-button" id="drama-movies-button" value="Drama" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="drama-movies-button" value="Drama" name="genre"
+          onclick="selectGenre(this)">
           Drama
         </button>
 
-        <button type="button" class="black-button" id="thriller-movies-button" value="Thriller" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="thriller-movies-button" value="Thriller" name="genre"
+          onclick="selectGenre(this)">
           Thriller
         </button>
 
-        <button type="button" class="black-button" id="scifi-movies-button" value="Sci-Fi" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="scifi-movies-button" value="Sci-Fi" name="genre"
+          onclick="selectGenre(this)">
           Sci-Fi
         </button>
 
-        <button type="button" class="black-button" id="fantasy-movies-button" value="Fantasy" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="fantasy-movies-button" value="Fantasy" name="genre"
+          onclick="selectGenre(this)">
           Fantasy
         </button>
 
-        <button type="button" class="black-button" id="animation-movies-button" value="Animation" name="genre" onclick="selectGenre(this)">
+        <button type="button" class="black-button" id="animation-movies-button" value="Animation" name="genre"
+          onclick="selectGenre(this)">
           Animation
         </button>
       </div>
 
       <div class="movie">
         <h2>Movies</h2>
+
           <button class="carousel-button prevButton" onclick="moveSlide(-1)">&#10094;</button>
 
           <div class="movies-container">
@@ -86,9 +97,9 @@
 <script>
   const selectedGenres = new Set();
 
-  function selectGenre(button){
+  function selectGenre(button) {
     const genre = button.value;
-    
+
     if (genre === "All") {
       selectedGenres.clear(); // Hapus semua genre yang dipilih
       document.querySelectorAll(".sub-header button").forEach((btn) => {

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Movies</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/AdminStyle/listMoviesStyle.css" />
+</head>
+
+<body>
+
+  <div class="page-container">
+    <div class="logo">
+      <img src="/static/Assets/logo-dark.png">
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+      <p class="dashboard-header">Manage Transactions</p>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <div class="navigation">
+        <div class="nav-group" id="nav-dashboard">
+          <img src="/static/Assets/nav-dashboard-gray.svg" />
+          <a th:href="@{/admin/dashboard}">Dashboard</a>
+        </div>
+
+        <div class="nav-group" id="nav-movies">
+          <img src="/static/Assets/nav-movies-blue.svg" />
+          <a th:href="@{/admin/movies}">Movies</a>
+        </div>
+
+        <div class="nav-group" id="nav-actors">
+          <img src="/static/Assets/nav-actors.png" />
+          <a th:href="@{/admin/actors}">Actors</a>
+        </div>
+
+        <div class="nav-group" id="nav-genres">
+          <img src="/static/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/genres}">Genres</a>
+        </div>
+
+        <div class="nav-group" id="nav-genres">
+          <img src="/static/Assets/nav-genre.svg" />
+          <a th:href="@{/admin/transactions}">Transactions</a>
+        </div>
+
+        <div class="nav-group" id="nav-sales">
+          <img src="/static/Assets/nav-sales.svg" />
+          <a th:href="@{/admin/sales-report}">Sales Report</a>
+        </div>
+
+        <div class="nav-group" id="nav-log-out">
+          <img src="/static/Assets/nav-logout.svg" />
+          <a th:href="@{/logout}">Log Out</a>
+        </div>
+
+        <form th:action="@{/admin/transactions}" th:method="get">
+          <p>Filter by Order Date:</p>
+          <label for="startDate">Start Date:</label>
+          <input type="date" name="startDate" id="startDate" th:value="${startDate}">
+          <label for="endDate">End Date:</label>
+          <input type="date" name="endDate" id="endDate" th:value="${endDate}">
+          <button type="submit">Apply Filter</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="cari-add-produk">
+        <div class="cari-produk">
+          <form th:action="@{/admin/transactions}" th:method="get">
+            <p>Filter by Order Date:</p>
+            <label for="startDate">Start Date:</label>
+            <input type="date" name="startDate" id="startDate" th:value="${startDate}">
+            <label for="endDate">End Date:</label>
+            <input type="date" name="endDate" id="endDate" th:value="${endDate}">
+            <button type="submit">Apply Filter</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="list-movies">
+        <table>
+          <tr>
+            <th>No.</th>
+            <th>Customer Name</th>
+            <th>Detail</th>
+            <th>Confirm Pickup</th>
+            <th>Due Date</th>
+            <th>Confirm Return and Pay</th>
+          </tr>
+          <tr th:each="transaction, iterStat : ${transactions}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${transaction.customerName}"></td>
+            <td>
+              <a
+                th:href="@{/admin/transactions/detail(transactionId=${transaction.transaction_id})}"><button>Detail</button></a>
+            </td>
+            <td>
+              <a th:href="${transaction.pickupDate == null} ? 
+                          @{/admin/transactions/confirm-pickup(transactionId=${transaction.transaction_id})} : null">
+                <button th:disabled="${transaction.pickupDate != null}">Pick Up</button>
+              </a>
+            </td>
+
+            <td th:text="${transaction.dueReturnDate}"></td>
+            <td>
+              <a th:href="@{/admin/transactions/bill(transactionId=${transaction.transaction_id})}"><button>Return
+                  and Pay</button></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="page-navigation-container">
+        <div class="page-navigation">
+          <p class="_1">1</p>
+          <p class="_2">2</p>
+          <p class="_3">3</p>
+          <p class="_4">4</p>
+          <p class="next">Next</p>
+        </div>
+      </div>
+    </div>
+
+    <div th:if="${transactionDetail != null}" class="modal">
+      <div class="modal-content">
+        <h2>Detail Movie</h2>
+        <div class="modal-container">
+          <div class="left-modal">
+            <div class="left-left">
+              <p>
+                <strong>Customer Phone Number:</strong><br />
+                <span th:text="${transactionDetail.customerPhone}"></span>
+              </p>
+
+              <p>
+                <strong>Customer Name:</strong><br />
+                <span th:text="${transactionDetail.customerName}"></span>
+              </p>
+
+              <p>
+                <strong>Order Date:</strong><br />
+                <span th:text="${transactionDetail.orderDate}"></span>
+              </p>
+
+              <p>
+                <strong>Pick Up Date:</strong><br />
+                <span th:text="${transactionDetail.pickupDate}"></span>
+              </p>
+
+              <p>
+                <strong>Due Return Date:</strong><br />
+                <span th:text="${transactionDetail.basePrice}"></span>
+              </p>
+
+              <p>
+                <strong>Late Fee:</strong><br />
+                <span th:text="${transactionDetail.lateFee}"></span>
+              </p>
+            </div>
+
+            <div class="left-right">
+              <p>
+                <strong>Movies:</strong><br />
+              <p th:if="${transactionMovies != null}" th:each="movie : ${transactionMovies}" th:text="${movie.title}">
+              </p>
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+      </div>
+    </div>
+    <div th:if="${bill != null}" class="modal">
+      <div class="modal-content">
+        <h2>Bill</h2>
+        <div class="modal-container">
+          <div class="left-modal">
+            <div class="left-left">
+              <p>
+                <strong>Base Fee:</strong><br />
+                <span th:text="${bill.base_fee}"></span>
+              </p>
+
+              <p>
+                <strong>Late Fee:</strong><br />
+                <span th:text="${bill.late_fee}"></span>
+              </p>
+
+              <p>
+                <strong>Final Fee:</strong><br />
+                <span th:text="${bill.final_fee}"></span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+        <form th:action="@{/admin/transactions/bill/complete}" th:method="post">
+          <select name="paymentMethod">
+            <option value="1">Cash</option>
+            <option value="2">QRIS</option>
+            <option value="3">Debit</option>
+            <option value="4">Credit</option>
+          </select>
+          <button type="submit">Finalize Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
