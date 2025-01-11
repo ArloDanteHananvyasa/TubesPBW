@@ -86,14 +86,10 @@ CREATE TABLE transaction_details (
     FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id) ON DELETE CASCADE,
     FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE
 );
-
 CREATE TABLE cart (
     cart_id SERIAL PRIMARY KEY,
 	user_phone VARCHAR(20),
 	movie_id INT,
-    pickup_date DATE NOT NULL,
-    due_date DATE NOT NULL,
-	total_price INT NOT NULL,
 	is_active BOOLEAN DEFAULT True,
     FOREIGN KEY (user_phone) REFERENCES users(phone) ON DELETE CASCADE,
 	FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE
@@ -174,8 +170,8 @@ INSERT INTO movies (movie_id, title, description, release_year, duration, base_p
 (50, 'Indiana Jones and the Raiders of the Lost Ark', 'Archaeologist Indiana Jones races against the Nazis to find the Ark of the Covenant.', '1981', 115, 23000, '/Horizontal/indiana-jones-lost-ark-h.jpg', '/Vertical/indiana-jones-lost-ark-v.jpg', 3, FALSE),
 (51, 'Indiana Jones and the Temple of Doom', 'Indiana Jones must rescue a group of children from an evil cult in India.', '1984', 118, 25000, '/Horizontal/indiana-jones-temple-of-doom-h.jpg', '/Vertical/indiana-jones-temple-of-doom-v.jpg', 3, FALSE),
 (52, 'Indiana Jones and the Last Crusade', 'Indiana Jones teams up with his father to find the Holy Grail before the Nazis can get to it.', '1989', 127, 24000, '/Horizontal/indiana-jones-last-crusade-h.jpg', '/Vertical/indiana-jones-last-crusade-v.jpg', 3, FALSE),
-(53, 'Indiana Jones and the Kingdom of the Crystal Skull', 'Indiana Jones discovers a mysterious crystal skull with extraordinary powers.', '2008', 122, 27000, '/Horizontal/indiana-jones-crystal-skull-h.jpg', '/Vertical/indiana-jones-crystal-skull-v.jpg', 3, FALSE);
-(54, 'Avengers: Infinity War', 'The Avengers team up with the Guardians of the Galaxy to stop Thanos from collecting the Infinity Stones.', '2018', 149, 40000, '/Horizontal/avengers-infinity-war-h.jpg', '/Vertical/avengers-infinity-war-v.jpg', 3, FALSE),
+(53, 'Indiana Jones and the Kingdom of the Crystal Skull', 'Indiana Jones discovers a mysterious crystal skull with extraordinary powers.', '2008', 122, 27000, '/Horizontal/indiana-jones-crystal-skull-h.jpg', '/Vertical/indiana-jones-crystal-skull-v.jpg', 3, FALSE),
+(54, 'Avengers: Infinity War', 'The Avengers team up with the Guardians of the Galaxy to stop Thanos from collecting the Infinity Stones.', '2018', 149, 40000, '/Horizontal/avengers-infinity-war-h.jpg', '/Vertical/avengers-infinity-war-v.jpg', 3, FALSE);
 
 INSERT INTO movie_genres (movie_id, genre_id) VALUES
 (1, 1), -- Red Notice: Action, Thriller
@@ -548,29 +544,29 @@ INSERT INTO transaction_details(transaction_id, movie_id) VALUES
 (5,1);
 
 
-INSERT INTO cart (user_phone, movie_id, pickup_date, due_date, total_price, is_active) VALUES
-('08781827391', 1, '2025-01-10', '2025-01-12', 23000, TRUE),
-('080981233125', 2, '2025-01-15', '2025-01-17', 24000, TRUE),
-('08158092834', 3, '2025-01-20', '2025-01-22', 28000, TRUE),
-('0812387123', 4, '2025-01-22', '2025-01-24', 30000, TRUE),
-('0812937918', 5, '2025-01-25', '2025-01-27', 33000, FALSE),
-('0812937918', 6, '2025-02-01', '2025-02-03', 29000, TRUE),
-('08781827391', 7, '2025-02-05', '2025-02-07', 27000, TRUE),
-('080981233125', 8, '2025-02-10', '2025-02-12', 24000, TRUE),
-('08158092834', 9, '2025-02-12', '2025-02-14', 22000, FALSE),
-('0812387123', 10, '2025-02-18', '2025-02-20', 25000, TRUE),
-('0812937918', 11, '2025-02-20', '2025-02-22', 24000, TRUE),
-('0812937918', 12, '2025-03-01', '2025-03-03', 25000, FALSE),
-('08781827391', 13, '2025-03-05', '2025-03-07', 28000, TRUE),
-('080981233125', 14, '2025-03-10', '2025-03-12', 30000, TRUE),
-('08158092834', 15, '2025-03-15', '2025-03-17', 31000, TRUE),
-('0812387123', 16, '2025-03-20', '2025-03-22', 32000, FALSE),
-('0812937918', 17, '2025-03-25', '2025-03-27', 33000, TRUE),
-('08781827391', 18, '2025-04-01', '2025-04-03', 35000, TRUE),
-('080981233125', 19, '2025-04-05', '2025-04-07', 40000, TRUE),
-('08158092834', 20, '2025-04-10', '2025-04-12', 35000, FALSE),
-('0812387123', 21, '2025-04-12', '2025-04-14', 27000, TRUE),
-('0812937918', 22, '2025-04-15', '2025-04-17', 30000, TRUE),
-('08781827391', 23, '2025-04-20', '2025-04-22', 35000, FALSE),
-('080981233125', 24, '2025-04-25', '2025-04-27', 32000, TRUE),
-('08158092834', 25, '2025-05-01', '2025-05-03', 32000, TRUE);
+INSERT INTO cart (user_phone, movie_id, is_active) VALUES
+('08781827391', 1, TRUE),
+('080981233125', 2, TRUE),
+('08158092834', 3, TRUE),
+('0812387123', 4, TRUE),
+('0812937918', 5, FALSE),
+('0812937918', 6, TRUE),
+('08781827391', 7, TRUE),
+('080981233125', 8, TRUE),
+('08158092834', 9, FALSE),
+('0812387123', 10, TRUE),
+('0812937918', 11, TRUE),
+('0812937918', 12, FALSE),
+('08781827391', 13, TRUE),
+('080981233125', 14, TRUE),
+('08158092834', 15, TRUE),
+('0812387123', 16, FALSE),
+('0812937918', 17, TRUE),
+('08781827391', 18, TRUE),
+('080981233125', 19, TRUE),
+('08158092834', 20, FALSE),
+('0812387123', 21, TRUE),
+('0812937918', 22, TRUE),
+('08781827391', 23, FALSE),
+('080981233125', 24, TRUE),
+('08158092834', 25, TRUE);

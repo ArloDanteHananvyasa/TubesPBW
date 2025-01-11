@@ -18,12 +18,12 @@
 
         <div class="nav-search">
           <div class="left-nav">
-            <a th href="/customer/homepage">Home</a>
-            <a th href="/customer/movies">Movies</a>
-            <a th href="/customer/cart">My Cart</a>
-            <a th href="/customer/myRentals">My Rentals</a>
-            <a th href="/customer/profile">Profile</a>
-            <a th href="/landing">Log Out</a>
+            <a th:href="@{/customer/homepage}">Home</a>
+            <a th:href="@{/customer/movies}">Movies</a>
+            <a th:href="@{/customer/cart}">My Cart</a>
+            <a th:href="@{/customer/myRentals}">My Rentals</a>
+            <a th:href="@{/customer/profile}">Profile</a>
+            <a th:href="@{/logout}">Log Out</a>
           </div>
 
           <div class="right-nav">
@@ -55,8 +55,9 @@
                         <b>Rent Now</b>
                       </button>
                     </a>
-  
-                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}" onclick="redirectToDetails(this)">
+
+                    <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}"
+                      onclick="redirectToDetails(this)">
                       <b>More Details</b>
                     </button>
                   </div>

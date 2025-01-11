@@ -111,18 +111,144 @@ public class UserJdbc implements UserRepository {
 
 
     @Override
-    public void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice){
+    public void addMovieToCart(String phoneNum, int movieId){
         String sql = """
-                INSERT INTO cart (user_phone, movie_id, pickup_date, due_date, total_price) VALUES
-                (?, ?, ?, ?, ?)
+                INSERT INTO cart (user_phone, movie_id) VALUES
+                (?, ?)
                 """;
         jdbcTemplate.update(
             sql, 
             phoneNum,
-            movieId,
-            pickUpDate,
-            returnDate,
-            totalPrice
+            movieId
             );
     }
+
+    @Override
+    public List<CartData> getCartByUser(String phoneNum){
+        String sql = """
+            SELECT title, movies.base_price
+            FROM CART 
+            INNER JOIN movies ON cart.movie_id = movies.movie_id
+            WHERE user_phone = ? AND is_active = true
+            """;
+
+            return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+                CartData cart = new CartData(
+                    resultSet.getString("title"),
+                    resultSet.getInt("base_price")
+                    
+                );
+                return cart;
+            }, phoneNum);
+    }
+
+    @Override
+    public HomePageData getMovieByTitleFromMovies(String title){
+        String sql = "SELECT * FROM movies WHERE title = ?";
+        List<HomePageData> movies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class), title);
+        return movies.isEmpty() ? null : movies.get(0);
+    }
+
+    @Override
+    public boolean isMovieInCart(String phoneNum, int movieId){
+        boolean result = true;
+        String sql = """
+            SELECT *
+            FROM CART 
+            INNER JOIN movies ON cart.movie_id = movies.movie_id
+            WHERE user_phone = ? AND is_active = true AND cart.movie_id = ?
+            """;
+            
+        List<CartData> cartList = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+            CartData cart = new CartData(
+                resultSet.getString("title"),
+                resultSet.getInt("base_price")
+            );
+            return cart;
+        }, phoneNum, movieId);
+
+        if(cartList.isEmpty()){
+            result = false;
+        }
+        return result;
+    }
+
+    @Override
+    public boolean isCartEmpty(String phoneNum) {
+        String sql = """
+                SELECT COUNT(*)
+                FROM CART
+               WHERE user_phone = ? AND is_active = true
+                """;
+
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, phoneNum);
+
+        return count == null || count == 0; // If count is 0 or null, the cart is empty
+    }
+
+    @Override
+    public int getTotalCartPrice(String phoneNum){
+        String sql = """
+            SELECT SUM(base_price) AS total_price
+            FROM CART 
+            INNER JOIN movies ON cart.movie_id = movies.movie_id
+            WHERE user_phone = ? AND is_active = true
+            """;
+            // Use queryForObject to retrieve a single value
+            Integer res = jdbcTemplate.queryForObject(sql, new Object[]{phoneNum}, Integer.class);
+            // Handle cases where the result might be null (e.g., no matching rows)
+            return res != null ? res : 0;
+    }
+
+    //take dari cart, masukin ke transactions, update stock
+    @Override
+public void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, LocalDate returnDate, LocalDate transactionDate, int rent_duration) {
+    // Step 1: Insert the transaction
+    String sql = """
+        INSERT INTO transactions (phone, base_fee, pickup_date, due_date, transaction_date, days) VALUES
+        (?, ?, ?, ?, ?, ?);
+        """;
+    jdbcTemplate.update(sql, phoneNum, totalPrice, pickUpDate, returnDate, transactionDate, rent_duration);
+
+    // Step 2: Get all movie IDs from the cart
+    sql = """
+        SELECT movie_id
+        FROM CART
+        WHERE user_phone = ? AND is_active = true;
+        """;
+    List<Integer> movieIds = jdbcTemplate.queryForList(sql, Integer.class, phoneNum);
+
+    // Step 3: Retrieve the latest transaction ID
+    sql = """
+        SELECT transaction_id
+        FROM transactions
+        ORDER BY transaction_id DESC
+        LIMIT 1;
+        """;
+    Integer transId = jdbcTemplate.queryForObject(sql, Integer.class);
+
+    // Step 4: Insert movie IDs into the transaction_details table
+    sql = """
+        INSERT INTO transaction_details (transaction_id, movie_id) VALUES (?, ?);
+        """;
+    String sqlStock = """
+        UPDATE movies
+        SET stock = stock - 1
+        WHERE movie_id = ?;
+        """;
+    for (Integer movieId : movieIds) {
+        jdbcTemplate.update(sql, transId, movieId);
+        jdbcTemplate.update(sqlStock, movieId);
+    }
+
+    // Step 5: Mark cart items as inactive
+    sql = """
+        UPDATE CART
+        SET is_active = false
+        WHERE user_phone = ? AND is_active = true;
+        """;
+    jdbcTemplate.update(sql, phoneNum);
+}
+
+
 }

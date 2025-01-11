@@ -18,12 +18,12 @@
 
         <div class="nav-search">
           <div class="left-nav">
-            <a>Home</a>
-            <a>Movies</a>
-            <a>Cart</a>
-            <a>My Rentals</a>
-            <a>Profile</a>
-            <a>Log Out</a>
+            <a th:href="@{/customer/homepage}">Home</a>
+            <a th:href="@{/customer/movies}">Movies</a>
+            <a th:href="@{/customer/cart}">My Cart</a>
+            <a th:href="@{/customer/myRentals}">My Rentals</a>
+            <a th:href="@{/customer/profile}">Profile</a>
+            <a th:href="@{/logout}">Log Out</a>
           </div>
 
           <div class="right-nav">
@@ -44,13 +44,28 @@
           <p th:text="${movieGenre.description}">
             Description
           </p>
-          <div class="button-container">
-            <a th:href="@{'/customer/rentMovie/' + ${movieGenre.title}}">
-              <button type="button" class="play-button">
-                <b>Rent Now</b>
-              </button>
-            </a>
+
+
+          <div class="total-group">
+            <span>Harga Rental/hari: Rp. </span>
+            <span th:text="${formattedBasePrice}"></span>
           </div>
+
+
+          <div class="button-container">
+            <form th:action="@{/customer/details/{title}(title=${movieGenre.title})}" method="post">
+              <!-- Pass any required data as hidden input fields -->
+              <input type="hidden" name="titleInput" th:value="${movieGenre.title}" />
+              <button type="submit" class="play-button">
+                <b>Add to cart</b>
+              </button>
+            </form>
+          </div>
+
+          <div th:if="${error}" class="error-message" style="color: red;">
+            <p th:text="${error}"></p>
+          </div>
+
         </div>
         <div class="movie-carousel">
           <!-- DUMMY POSTER -->

@@ -79,8 +79,10 @@
               <input type="date" id="returnDate" name="returnDate" th:value="${[returnDate]}" required />
             </div>
 
-            <div th:if="${error}" style="color: red;">
-              <p th:text="${error}"></p>
+            <div th:if="${errors}" style="color: red;">
+              <ul>
+                <li th:each="error : ${errors}">[[${error}]]</li>
+              </ul>
             </div>
 
 
@@ -102,11 +104,16 @@
             <th>Movie Title</th>
             <th>Pick Up Date</th>
             <th>Return Date</th>
+            <th>Price</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody th:each="row, stat : ${listCart}">
           <tr>
-            <td></td>
+            <td th:text="${stat.index + 1}"></td>
+            <td th:text="${row.title}"></td>
+            <td th:text="${row.pickup_date}"></td>
+            <td th:text="${row.due_date}"></td>
+            <td th:text="${row.total_price}"></td>
           </tr>
         </tbody>
       </table>
@@ -116,7 +123,7 @@
   <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 </body>
 
-<script>
+<script th:inline="javascript">
   document.addEventListener("DOMContentLoaded", function () {
     const navigation = document.querySelector(".navigation");
 
@@ -127,6 +134,37 @@
         navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
       }
     });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const pickUpDateInput = document.getElementById("pickUpDate");
+    const returnDateInput = document.getElementById("returnDate");
+    const hargaTotalInput = document.getElementById("hargaTotal");
+
+    // Assuming the base price is fetched dynamically, replace with a server-side rendered value if needed
+    const basePrice = /*[[${movie.base_price}]]*/ 100; // Example base price (replace dynamically)
+
+    // Function to calculate and update the total price
+    function updateTotalPrice() {
+      const pickUpDate = new Date(pickUpDateInput.value);
+      const returnDate = new Date(returnDateInput.value);
+
+      if (pickUpDate && returnDate && returnDate >= pickUpDate) {
+        const rentDuration = (returnDate - pickUpDate) / (1000 * 60 * 60 * 24); // Convert ms to days
+        console.log(rentDuration)
+        if (rentDuration == 0) {
+          rentDuration = 1
+        }
+        const totalPrice = rentDuration * basePrice;
+        hargaTotalInput.value = totalPrice.toLocaleString("id-ID"); // Format as Indonesian Rupiah
+      } else {
+        hargaTotalInput.value = ""; // Clear total if dates are invalid
+      }
+    }
+
+    // Attach event listeners to update total price when dates change
+    pickUpDateInput.addEventListener("change", updateTotalPrice);
+    returnDateInput.addEventListener("change", updateTotalPrice);
   });
 </script>
 

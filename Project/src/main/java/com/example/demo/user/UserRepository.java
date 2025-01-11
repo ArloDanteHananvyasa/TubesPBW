@@ -16,5 +16,12 @@ public interface UserRepository {
     MovieDetailData getActorsByTitle(String title);
     List<HomePageData> getMoviesByGenres(String[] genres);
     List<HomePageData> getAllMovies();
-    void addMovieToCart(String phoneNum, int movieId, LocalDate pickUpDate, LocalDate returnDate, long totalPrice);
+    void addMovieToCart(String phoneNum, int movieId);
+    List<CartData> getCartByUser(String phoneNum);
+    HomePageData getMovieByTitleFromMovies(String title);
+    boolean isMovieInCart(String phoneNum, int movieId);
+    boolean isCartEmpty(String phoneNum);
+    void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, LocalDate returnDate, LocalDate transactionDate, int rent_duration);
+    int getTotalCartPrice(String phoneNum);
+
 }
