@@ -13,25 +13,8 @@
 <body>
   <div class="page-container">
     <div class="header">
-      <div class="navigation">
-        <img src="/static/Assets/logo.png" />
-
-        <div class="nav-search">
-          <div class="left-nav">
-            <a>Home</a>
-            <a>Movies</a>
-            <a>Cart</a>
-            <a>My Rentals</a>
-            <a>Profile</a>
-            <a>Log Out</a>
-          </div>
-
-          <div class="right-nav">
-            <img src="/static/Assets/search-icon.png" />
-            <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
-          </div>
-        </div>
-      </div>
+      <!-- Navigation -->
+      <th:block th:include="~{Customer/navigation :: navigationCustomer}"></th:block>
 
       <div th:object="${movieGenre}">
         <div class="movie-description">
@@ -50,7 +33,7 @@
         </div>
         <div class="movie-carousel">
           <!-- DUMMY POSTER -->
-          <img src="/static/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" />
+          <img th:src="${movieGenre.landscapeposter}" />
         </div>
       </div>
     </div>

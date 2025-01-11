@@ -13,33 +13,15 @@
 <body>
   <div class="page-container">
     <div class="header">
-      <div class="navigation">
-        <img src="/Assets/logo.png" />
-
-        <div class="nav-search">
-          <div class="left-nav">
-            <a th href="/customer/homepage">Home</a>
-            <a th href="/customer/movies">Movies</a>
-            <a th href="/customer/cart">My Cart</a>
-            <a th href="/customer/myRentals">My Rentals</a>
-            <a th href="/customer/profile">Profile</a>
-            <a th href="/landing">Log Out</a>
-          </div>
-
-          <div class="right-nav">
-            <img src="/Assets/search-icon.png" />
-            <input type="text" class="search-bar" placeholder="Search movies, tv shows" />
-          </div>
-        </div>
-      </div>
+      <!-- Navigation -->
+      <th:block th:include="~{Customer/navigation :: navigationCustomer}"></th:block>
 
       <div class="movie-carousel">
         <div class="carousel-container">
           <div class="carousel-slide">
             <div th:each="wheelMovie : ${wheelMovies}">
               <div class="slide">
-                <!-- MASIH DUMMY POSTER -->
-                <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg">
+                <img th:src="${wheelMovie.landscapeposter}">
                 <div class="slide-description">
                   <p th:text="${wheelMovie.release_year}">Year</p>
                   <h1 th:text="${wheelMovie.title}">Title</h1>
@@ -78,9 +60,7 @@
         <!-- Container untuk film -->
         <div class="movies-container">
           <div th:each="movie : ${latestMovies}" class="latest-movies">
-            <!-- MASIH DUMMY POSTER -->
-            <img src="/Assets/Movies Poster/Vertical/dummyvertical.png" th:attr="data-title=${movie.title}"
-              onclick="redirectToDetails(this)" />
+            <a th:href="@{/customer/details(title=${movie.title})}"><img th:src="${movie.portraitposter}" /></a>
             <p class="title" th:text="${movie.title}">Movie Title</p>
             <p class="genre" th:text="${movie.genres_names}">Genre</p>
           </div>
@@ -99,9 +79,7 @@
         <div class="movies-container">
           <div th:each="adventureMovie : ${adventureMovies}">
             <div class="movies">
-              <!-- MASIH DUMMY POSTER -->
-              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg"
-                th:attr="data-title=${adventureMovie.title}" onclick="redirectToDetails(this)" />
+              <a th:href="@{/customer/details(title=${adventureMovie.title})}"><img th:src="${adventureMovie.portraitposter}"/></a>
               <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
               <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
             </div>
@@ -120,8 +98,7 @@
         <div class="movies-container">
           <div th:each="scifiMovie : ${scifiMovies}">
             <div class="movies">
-              <img src="/Assets/Movies Poster/Horizontal/dummyhorizontal.jpg" th:attr="data-title=${scifiMovie.title}"
-                onclick="redirectToDetails(this)" />
+              <a th:href="@{/customer/details(title=${scifiMovie.title})}"><img th:src="${scifiMovie.portraitposter}"/></a>
               <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
               <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
             </div>
@@ -177,13 +154,6 @@
 
     window.addEventListener("resize", updateSlide); // Adjust for responsive design
   });
-
-  function redirectToDetails(button) {
-    const title = button.getAttribute('data-title');
-    const encodedTitle = encodeURIComponent(title);
-    const url = `/customer/details/${encodedTitle}`;
-    window.location.href = url;
-  }
 
   let slideIndex = 0;
 
