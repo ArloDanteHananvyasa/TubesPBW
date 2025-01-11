@@ -45,6 +45,12 @@
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
+
+        <div class="nav-group" id="nav-transaksi">
+          <img src="/static/Assets/nav-transaksi.svg" />
+          <a th:href="@{/admin/transactions}">Transactions</a>
+        </div>
+
         <div class="nav-group" id="nav-sales">
           <img src="/static/Assets/nav-sales.svg" />
           <a th:href="@{/admin/sales-report}">Sales Report</a>
@@ -60,8 +66,8 @@
     <div class="main-content">
       <div class="cari-add-produk">
         <div class="cari-produk">
-          <form>
-            <input type="text" name="filter" placeholder="Search actor" />
+          <form th:action="@{/admin/actors}" th:method="get">
+            <input type="text" name="filter" th:value="${filterName}" placeholder="Search actor" />
           </form>
         </div>
         <button type="button" class="blue-button add-produk" onclick="window.location.href='/admin/actors/add-actors';">
@@ -74,19 +80,39 @@
           <tr>
             <th>No.</th>
             <th>Full Name</th>
-            <th>Filmography</th>
             <th>Update</th>
             <th>Remove</th>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+
+          <tr th:each="actor, iterStat : ${actors}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${actor.actorName}"></td>
             <td>
-              <a><button>Update</button></a>
+              <a th:href="@{/admin/actors/update(actorId=${actor.actor_id})}"><button>Update</button></a>
             </td>
             <td>
-              <a><button class="remove-button">Remove</button></a>
+              <a th:href="@{/admin/actors/remove(actorId=${actor.actor_id})}"><button
+                  class="remove-button">Remove</button></a>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="list-actors">
+        <table>
+          <tr>
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Restore</th>
+          </tr>
+
+          <tr th:each="actor, iterStat : ${removedActors}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${actor.actorName}"></td>
+            <td>
+              <a th:href="@{/admin/actors/restore(actorId=${actor.actor_id})}"><button>Restore</button></a>
             </td>
           </tr>
 

@@ -34,6 +34,12 @@ public class CustomerController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @GetMapping("/search")
+    @ResponseBody
+    public List<HomePageData> search(@RequestParam String title){
+        return userRepository.searchTitle("%" + title + "%");
+    }
     
     @GetMapping("/customer/homepage")
     @RequiredRole({"user"})

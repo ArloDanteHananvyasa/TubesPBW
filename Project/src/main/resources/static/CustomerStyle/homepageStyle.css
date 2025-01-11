@@ -82,6 +82,8 @@ body {
   background-color: transparent;
   border: 1px solid white;
   border-radius: 8px;
+
+  font-weight: bold;
 }
 
 ::placeholder {
@@ -295,10 +297,10 @@ body {
 }
 
 .movies img {
-  width: 100%;
+  width: 200px;
+  /* Pastikan gambar memenuhi elemen */
   border-radius: 10px;
   display: block;
-  cursor: pointer;
 }
 
 footer {
@@ -308,4 +310,32 @@ footer {
   color: white;
   position: relative;
   bottom: 0;
+}
+
+/* BAGIAN SUGGESTION */
+.suggestions {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px); /* Jarak 5px di bawah search bar */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Membulatkan sudut */
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%; /* Sesuai dengan lebar search bar */
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek visual */
+}
+
+.suggestions div {
+  padding: 10px; /* Tambahkan padding untuk kenyamanan klik */
+  cursor: pointer;
+  color: black; /* Teks hitam */
+  font-size: 14px; /* Sesuaikan ukuran teks */
+  font-weight: normal; /* Tidak terlalu tebal */
+}
+
+.suggestions div:hover {
+  background-color: #f0f0f0; /* Gaya hover */
 }

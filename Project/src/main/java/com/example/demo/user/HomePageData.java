@@ -12,5 +12,6 @@ public class HomePageData {
     private int duration;
     private String landscapeposter;
     private String portraitposter;
+    private boolean deleted;
     private int base_price; //ini radif yg nambahi, kalo ada error apa apa mungkin ini 
 }

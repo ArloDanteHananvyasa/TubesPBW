@@ -10,7 +10,8 @@ SELECT
     movies.release_year,
 	movies.duration,
     movies.landscapeposter,
-    movies.portraitposter
+    movies.portraitposter,
+	movies.deleted
 FROM 
     movie_genres 
 JOIN 

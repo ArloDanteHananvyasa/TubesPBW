@@ -45,6 +45,12 @@
           <a th:href="@{/admin/genres}">Genres</a>
         </div>
 
+        <div class="nav-group" id="nav-transaksi">
+          <img src="/static/Assets/nav-transaksi.svg" />
+
+          <a th:href="@{/admin/transactions}">Transactions</a>
+        </div>
+
         <div class="nav-group" id="nav-sales">
           <img src="/static/Assets/nav-sales.svg" />
           <a th:href="@{/admin/sales-report}">Sales Report</a>
@@ -60,8 +66,8 @@
     <div class="main-content">
       <div class="cari-add-produk">
         <div class="cari-produk">
-          <form>
-            <input type="text" name="filter" placeholder="Search genre" />
+          <form th:action="@{/admin/genres}" th:method="get">
+            <input type="text" name="filter" th:value="${filterName}" placeholder="Search genre" />
           </form>
         </div>
         <button type="button" class="blue-button add-produk" onclick="window.location.href='/admin/genres/add-genres';">
@@ -78,14 +84,35 @@
             <th>Remove</th>
           </tr>
 
-          <tr>
-            <td></td>
-            <td></td>
+          <tr th:each="genre, iterStat : ${genres}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${genre.genreName}"></td>
             <td>
-              <a><button>Update</button></a>
+              <a th:href="@{/admin/genres/update(genreId=${genre.genre_id})}"><button>Update</button></a>
             </td>
             <td>
-              <a><button class="remove-button">Remove</button></a>
+              <a th:href="@{/admin/genres/remove(genreId=${genre.genre_id})}"><button
+                  class="remove-button">Remove</button></a>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="list-genres">
+        <table>
+          <tr>
+            <th>No.</th>
+            <th>Genre</th>
+            <th>Restore</th>
+          </tr>
+
+          <tr th:each="genre, iterStat : ${removedGenres}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${genre.genreName}"></td>
+            <td>
+              <a th:href="@{/admin/genres/restore(genreId=${genre.genre_id})}"><button>Restore</button></a>
             </td>
           </tr>
 

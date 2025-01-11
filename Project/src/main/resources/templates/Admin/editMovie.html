@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movies</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/AdminStyle/addMovieStyle.css" />
+</head>
+
+<body>
+
+    <div class="page-container">
+        <div class="logo">
+            <img src="/static/Assets/logo-dark.png">
+        </div>
+
+        <!-- Header Section -->
+        <div class="header">
+            <p class="dashboard-header">Edit Movies</p>
+        </div>
+
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <div class="navigation">
+                <div class="nav-group" id="nav-dashboard">
+                    <img src="/static/Assets/nav-dashboard-gray.svg" />
+                    <a th:href="@{/admin/dashboard}">Dashboard</a>
+                </div>
+
+                <div class="nav-group" id="nav-movies">
+                    <img src="/static/Assets/nav-movies-blue.svg" />
+                    <a th:href="@{/admin/movies}">Movies</a>
+                </div>
+
+                <div class="nav-group" id="nav-actors">
+                    <img src="/static/Assets/nav-actors.png" />
+                    <a th:href="@{/admin/actors}">Actors</a>
+                </div>
+
+                <div class="nav-group" id="nav-genres">
+                    <img src="/static/Assets/nav-genre.svg" />
+                    <a th:href="@{/admin/genres}">Genres</a>
+                </div>
+
+
+                <div class="nav-group" id="nav-transaksi">
+                    <img src="/static/Assets/nav-transaksi.svg" />
+                    <a th:href="@{/admin/transactions}">Transactions</a>
+                </div>
+
+                <div class="nav-group" id="nav-sales">
+                    <img src="/static/Assets/nav-sales.svg" />
+                    <a th:href="@{/admin/sales-report}">Sales Report</a>
+                </div>
+
+                <div class="nav-group" id="nav-log-out">
+                    <img src="/static/Assets/nav-logout.svg" />
+                    <a th:href="@{/logout}">Log Out</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content" th:object="${movieDetail}">
+            <form th:action="@{/admin/movies/update/submit}" th:method="post" enctype="multipart/form-data">
+                <div class="form-container">
+                    <div class="left-group">
+                        <div class="form-group">
+                            <label for="movieTitle">Title:</label>
+                            <input type="text" id="movieTitle" name="movieTitle" th:value="${movieDetail.title}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieDescription">Description:</label>
+                            <textarea id="movieDescription" name="movieDescription"
+                                th:text="${movieDetail.description}"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieReleaseYear">Release Year:</label>
+                            <input type="text" id="movieReleaseYear" name="movieReleaseYear"
+                                th:value="${movieDetail.releaseYear}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieDuration">Duration:</label>
+                            <input type="number" id="movieDuration" name="movieDuration"
+                                th:value="${movieDetail.duration}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieStock">Stock:</label>
+                            <input type="number" id="movieStock" name="movieStock" th:value="${movieDetail.stock}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="moviePrice">Price:</label>
+                            <input type="number" id="moviePrice" name="moviePrice" th:value="${movieDetail.basePrice}">
+                        </div>
+
+
+                    </div>
+
+                    <div class="right-group">
+                        <div class="form-group">
+                            <label for="movieGenre">Genre:</label>
+                            <div id="movieGenre">
+                                <div th:each="genre : ${movieGenres}">
+                                    <input type="checkbox" th:id="'genre' + ${genre.genre_id}" name="selectedGenres"
+                                        th:value="${genre.genre_id}"
+                                        th:checked="${selectedGenres.contains(genre.genre_id)}" />
+                                    <label th:for="'genre' + ${genre.genre_id}" th:text="${genre.genreName}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-right">
+                        <div class="form-group">
+                            <label for="movieActors">Actors:</label>
+                            <div id="movieActors">
+                                <select name="selectedActors" multiple>
+                                    <option th:each="actor : ${actors}" th:value="${actor.actor_id}"
+                                        th:text="${actor.actorName}"
+                                        th:selected="${selectedActors.contains(actor.actor_id)}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="next-next-right">
+                        <div class="form-group">
+                            <label for="moviePosterLandscape">Upload Landscape Movie Poster:</label>
+
+                            <!-- Existing Poster Preview -->
+                            <div id="posterPreviewContainer" style="margin-bottom: 10px;">
+                                <img th:if="${movieDetail.landscapePoster != null}"
+                                    th:src="${movieDetail.landscapePoster}" alt="Landscape Poster Preview"
+                                    style="max-width: 200px; display: block; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+
+                            <!-- File Input -->
+                            <input type="file" id="moviePosterLandscape" name="moviePosterLandscape" accept="image/*"
+                                onchange="previewImage(event, 'landscapePreview')">
+
+                            <!-- New File Preview -->
+                            <div id="newPosterPreviewContainer" style="margin-top: 10px;">
+                                <img id="landscapePreview" src="" alt="Landscape Poster Preview"
+                                    style="max-width: 200px; display: none; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-next-right">
+                        <div class="form-group">
+                            <label for="moviePosterPortrait">Upload Portrait Movie Poster:</label>
+
+                            <!-- Existing Poster Preview -->
+                            <div id="posterPreviewContainer" style="margin-bottom: 10px;">
+                                <img th:if="${movieDetail.PortraitPoster != null}"
+                                    th:src="${movieDetail.PortraitPoster}" alt="Portrait Poster Preview"
+                                    style="max-width: 200px; display: block; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+
+                            <!-- File Input -->
+                            <input type="file" id="moviePosterPortrait" name="moviePosterPortrait" accept="image/*"
+                                onchange="previewImage(event, 'portraitPreview')">
+
+                            <!-- New File Preview -->
+                            <div id="newPosterPreviewContainer" style="margin-top: 10px;">
+                                <img id="portraitPreview" src="" alt="Portrait Poster Preview"
+                                    style="max-width: 200px; display: none; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+                        </div>
+
+                        <div class="errorMessage">
+                            <p style="color: red;" th:if="${error != null}" th:text="${error}"></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitMovieForm">Submit</button>
+
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+        function previewImage(event, previewId) {
+            const preview = document.getElementById(previewId);
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Show the image
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none'; // Hide the image
+            }
+        }
+    </script>
+</body>
+
+</html>

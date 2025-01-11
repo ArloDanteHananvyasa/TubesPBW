@@ -1,0 +1,85 @@
+<html th:fragment="navigationCustomer">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="/CustomerStyle/homepageStyle.css" />
+    </head>
+    <body>
+        <div class="navigation">
+            <img src="/static/Assets/logo.png" />
+    
+            <div class="nav-search">
+              <div class="left-nav">
+                <a th:href="@{/customer/homepage}">Home</a>
+                <a th:href="@{/customer/movies}">Movies</a>
+                <a th:href="@{/customer/cart}">My Cart</a>
+                <a th:href="@{/customer/myRentals}">My Rentals</a>
+                <a th:href="@{/customer/profile}">Profile</a>
+                <a th:href="@{/logout}">Log Out</a>
+              </div>
+    
+              <div class="right-nav">
+                <img src="/static/Assets/search-icon.png" />
+                <input type="text" id="search-bar" class="search-bar" placeholder="Search movies, tv shows" />
+                <div id="suggestions" class="suggestions"></div>
+              </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+      // SUGGESTION
+      let searchBar;
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        searchBar = document.getElementById('search-bar');
+        const suggestions = document.getElementById('suggestions');
+
+        if(searchBar && suggestions) {
+          searchBar.addEventListener('input', async (input) => {
+            const query = input.target.value.trim();
+
+            if(query.length > 0){
+              try{
+                const response = await fetch(`/customer/search?title=${query}`);
+                const movies = await response.json();
+                showSuggestions(movies);
+              } catch (error) {
+                console.error(error);
+              }
+            }   else {
+              suggestions.innerHTML = '';
+              suggestions.style.display = 'none';
+            }
+          });
+        } else {
+          console.error('Elemen tidak ada');
+        }
+      });
+
+      
+      function showSuggestions(movies){
+        if(movies.length > 0) {
+          suggestions.innerHTML = movies
+            .map(
+              (movie) => `
+                <div onclick="selectMovie('${movie.title}')">
+                  ${movie.title}
+                </div>
+              `
+            )
+            .join('');
+          suggestions.style.display = 'block';
+        }
+      }
+
+      function selectMovie(title){
+        if(searchBar){
+          searchBar.value = title;
+          suggestions.style.display = 'none';
+          window.location.href = `/customer/details?title=${encodeURIComponent(title)}`;
+        }
+      }
+
+    </script>
+</html>
