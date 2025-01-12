@@ -77,7 +77,7 @@
         if(searchBar){
           searchBar.value = title;
           suggestions.style.display = 'none';
-          window.location.href = `/customer/details?title=${encodeURIComponent(title)}`;
+          window.location.href = `/customer/details/${encodeURIComponent(title)}`;
         }
       }
 

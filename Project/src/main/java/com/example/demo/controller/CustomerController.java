@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.RequiredRole;
 import com.example.demo.user.CartData;
+import com.example.demo.user.GenreData;
 import com.example.demo.user.HomePageData;
 import com.example.demo.user.MovieDetailData;
 import com.example.demo.user.TransactionData;
@@ -139,7 +140,10 @@ public class CustomerController {
     @GetMapping("/movies")
     public String movieList(Model model) {
         List<HomePageData> movies = userRepository.getAllMovies();
+        List<GenreData> genres = userRepository.getAllGenre();
+
         model.addAttribute("movies", movies);
+        model.addAttribute("genres", genres);
         return "Customer/movieList"; // Mengarahkan ke halaman daftar film
     }
 

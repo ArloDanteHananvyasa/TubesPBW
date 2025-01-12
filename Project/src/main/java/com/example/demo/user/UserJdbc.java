@@ -110,6 +110,12 @@ public class UserJdbc implements UserRepository {
     }
 
     @Override
+    public List<GenreData> getAllGenre(){
+        String sql = "SELECT * FROM genres WHERE deleted = false";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(GenreData.class));
+    }
+
+    @Override
     public List<HomePageData> searchTitle(String title){
         String sql = "SELECT * FROM view_moviegenres WHERE title iLIKE ? AND deleted = false LIMIT 10";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(HomePageData.class), "%" + title + "%");
