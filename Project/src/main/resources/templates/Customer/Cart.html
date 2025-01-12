@@ -13,49 +13,55 @@
 <body>
 
     <div class="page-container">
-        <!-- Navigation -->
-        <th:block th:include="~{Customer/navigation :: navigationCustomer}"></th:block>
+        <div class="navigation">
+            <img src="/static/Assets/logo.png" />
+
+            <div class="nav-search">
+                <div class="left-nav">
+                    <a th:href="@{/customer/homepage}">Home</a>
+                    <a th:href="@{/customer/movies}">Movies</a>
+                    <a th:href="@{/customer/cart}">My Cart</a>
+                    <a th:href="@{/customer/myRentals}">My Rentals</a>
+                    <a th:href="@{/customer/profile}">Profile</a>
+                    <a th:href="@{/logout}">Log Out</a>
+                </div>
+
+                <div class="right-nav">
+                    <img src="/static/Assets/search-icon.png" />
+                    <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
+                </div>
+            </div>
+        </div>
 
         <div class="cart-container">
             <h1>My Cart</h1>
 
             <div class="cart-checkout">
-                <!-- ini jadiin masing row 2, tapi terus nambahnya turun bukan kesamping -->
-                <div class="cart-group-container" th:each="cart : ${listCart}">
-                    <div class="cart-group" th:attr="data-price=${cart.base_price}">
-                        <img th:src="${cart.portraitPoster}"/>
+                <div class="cart-group-container">
+                    <div class="cart-group">
+                        <img src="/static/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
+
                         <div class="cart-text">
-                            <p th:text="${cart.title}"></p>
-                            <p><strong>Price/day:</strong> <span th:text="${cart.formattedBasePrice}"></span></p>
-                            <form th:action="@{/customer/RemoveFromCart}">
-                                <input type="hidden" id="movieId" name="movieId" th:value="${cart.movieId}">
-                                <button class="remove-btn" type="submit">Remove from cart</button>
-                            </form>
-                            
+                            <p>Aquaman: Lost Kingdom</p>
+                            <p><strong>Price:</strong> Rp20.000</p>
+                            <button class="remove-btn">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-group">
+                        <img src="/static/Assets/Movies Poster/Vertical/spiderman-homecoming.jpg" />
+
+                        <div class="cart-text">
+                            <p>Spider-Man: Homecoming</p>
+                            <p><strong>Price:</strong> Rp20.000</p>
+                            <button class="remove-btn">Remove</button>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="checkout-container">
-                    <form th:action="@{/customer/cart}" method="post">
-                        <div class="input-group">
-                            <label for="pickUpDate">Pick up date</label>
-                            <input type="date" id="pickUpDate" name="pickUpDate" th:value="${[pickUpDate]}" required />
-                        </div>
-    
-                        <div class="input-group">
-                            <label for="returnDate">Return date</label>
-                            <input type="date" id="returnDate" name="returnDate" th:value="${[returnDate]}" required />
-                        </div>
-                        <span>Total Price:</span> <input type="text" id="totalPrice" name="totalPrice" readonly />
-                        <button class="checkout-btn" type="submit">Proceed to Checkout</button>
-                        <div th:if="${errors}" style="color: red;">
-                            <ul>
-                              <li th:each="error : ${errors}">[[${error}]]</li>
-                            </ul>
-                        </div>
-                    </form>
+                    <p><strong>Total:</strong> Rp40.000</p>
+                    <button class="checkout-btn">Proceed to Checkout</button>
                 </div>
             </div>
         </div>
@@ -63,53 +69,6 @@
     </div>
 
     <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
-
-    <script th:inline="javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            const pickUpDateInput = document.getElementById("pickUpDate");
-            const returnDateInput = document.getElementById("returnDate");
-            const totalPriceInput = document.getElementById("totalPrice");
-
-            // Fetch base prices from the cart items
-            const cartGroups = document.querySelectorAll(".cart-group");
-            let totalBasePrice = 0;
-
-            cartGroups.forEach(group => {
-                const basePrice = parseFloat(group.getAttribute("data-price"));
-                if (!isNaN(basePrice)) {
-                    totalBasePrice += basePrice;
-                }
-            });
-
-            console.log("Total Base Price: ", totalBasePrice); // Debugging total base price
-
-            // Set default total price for 1 day rental on page load
-            const defaultTotalPrice = totalBasePrice; // Default is for 1-day rental
-            totalPriceInput.value = defaultTotalPrice.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
-
-            // Function to calculate and update the total price
-            function updateTotalPrice() {
-                const pickUpDate = new Date(pickUpDateInput.value);
-                const returnDate = new Date(returnDateInput.value);
-
-                if (pickUpDate && returnDate && returnDate >= pickUpDate) {
-                    let rentDuration = (returnDate - pickUpDate) / (1000 * 60 * 60 * 24); // Convert ms to days
-                    rentDuration = rentDuration === 0 ? 1 : rentDuration; // Ensure minimum 1 day rental
-                    const totalPrice = rentDuration * totalBasePrice;
-
-                    // Format the price in Rupiah format
-                    totalPriceInput.value = totalPrice.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
-                } else {
-                    totalPriceInput.value = defaultTotalPrice.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
-                }
-            }
-
-            // Attach event listeners to update total price when dates change
-            pickUpDateInput.addEventListener("change", updateTotalPrice);
-            returnDateInput.addEventListener("change", updateTotalPrice);
-        });
-
-    </script>
 
 </body>
 
