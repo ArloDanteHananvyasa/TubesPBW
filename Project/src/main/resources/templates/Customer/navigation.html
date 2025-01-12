@@ -14,7 +14,6 @@
                 <a th:href="@{/customer/movies}">Movies</a>
                 <a th:href="@{/customer/cart}">My Cart</a>
                 <a th:href="@{/customer/myRentals}">My Rentals</a>
-                <a th:href="@{/customer/profile}">Profile</a>
                 <a th:href="@{/logout}">Log Out</a>
               </div>
     
@@ -77,7 +76,7 @@
         if(searchBar){
           searchBar.value = title;
           suggestions.style.display = 'none';
-          window.location.href = `/customer/details?title=${encodeURIComponent(title)}`;
+          window.location.href = `/customer/details/${encodeURIComponent(title)}`;
         }
       }
 

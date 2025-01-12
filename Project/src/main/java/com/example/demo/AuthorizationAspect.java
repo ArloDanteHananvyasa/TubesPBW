@@ -40,7 +40,7 @@ public class AuthorizationAspect {
         
         if (!Arrays.asList(roles).contains(role)) {
             if(role.equals("user")){
-                response.sendRedirect("/customer/homePage");
+                response.sendRedirect("/customer/homepage");
                 return;
             }
             if(role.equals("admin")){

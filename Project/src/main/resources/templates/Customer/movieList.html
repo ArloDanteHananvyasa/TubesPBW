@@ -24,50 +24,10 @@
           All Movies
         </button>
 
-        <button type="button" class="black-button" id="comedy-movies-button" value="Comedy" name="genre"
-          onclick="selectGenre(this)">
-          Comedy
-        </button>
-
-        <button type="button" class="black-button" id="Adventure-movies-button" value="Adventure" name="genre"
-          onclick="selectGenre(this)">
-          Adventure
-        </button>
-
-        <button type="button" class="black-button" id="action-movies-button" value="Action" name="genre"
-          onclick="selectGenre(this)">
-          Action
-        </button>
-
-        <button type="button" class="black-button" id="horror-movies-button" value="Horror" name="genre"
-          onclick="selectGenre(this)">
-          Horror
-        </button>
-
-        <button type="button" class="black-button" id="drama-movies-button" value="Drama" name="genre"
-          onclick="selectGenre(this)">
-          Drama
-        </button>
-
-        <button type="button" class="black-button" id="thriller-movies-button" value="Thriller" name="genre"
-          onclick="selectGenre(this)">
-          Thriller
-        </button>
-
-        <button type="button" class="black-button" id="scifi-movies-button" value="Sci-Fi" name="genre"
-          onclick="selectGenre(this)">
-          Sci-Fi
-        </button>
-
-        <button type="button" class="black-button" id="fantasy-movies-button" value="Fantasy" name="genre"
-          onclick="selectGenre(this)">
-          Fantasy
-        </button>
-
-        <button type="button" class="black-button" id="animation-movies-button" value="Animation" name="genre"
-          onclick="selectGenre(this)">
-          Animation
-        </button>
+        <div th:each="genre : ${genres}">
+          <button type="button" class="black-button" th:id="'genre-' + ${genre.name}" th:value="${genre.name}" 
+          th:text="${genre.name}" name="genre" onclick="selectGenre(this)"></button>
+        </div>
       </div>
 
       <div class="movie">

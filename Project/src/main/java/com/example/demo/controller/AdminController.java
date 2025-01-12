@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.RequiredRole;
 import com.example.demo.admin.datas.actorData;
 import com.example.demo.admin.datas.billData;
 import com.example.demo.admin.datas.customerData;
@@ -57,6 +58,7 @@ public class AdminController {
     private UserRepository userRepo;
 
     @GetMapping("/dashboard")
+    @RequiredRole({"admin"})
     public String dashboard(Model model) {
 
         List<movieData> movies = movieRepo.getAllMovies(null);
@@ -106,6 +108,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies")
+    @RequiredRole({"admin"})
     public String manageMovies(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<movieData> movies = new ArrayList<>();
@@ -126,6 +129,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/detail")
+    @RequiredRole({"admin"})
     public String movieDetail(@RequestParam("movieId") int id,
             @RequestParam(value = "filter", required = false) String filter, Model model) {
 
@@ -161,6 +165,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/add-movies")
+    @RequiredRole({"admin"})
     public String addMovies(HttpSession session, Model model) {
         List<genreData> genres = genreRepo.getAllGenres(null);
         model.addAttribute("movieGenres", genres);
@@ -172,6 +177,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/update")
+    @RequiredRole({"admin"})
     public String updateMovie(@RequestParam("movieId") int id, HttpSession session, Model model) {
         movieData movieDetail = movieRepo.getMovieById(id);
 
@@ -275,6 +281,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/remove")
+    @RequiredRole({"admin"})
     public String removeMovies(@RequestParam("movieId") int id) {
         movieRepo.removeMovie(id);
 
@@ -282,6 +289,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/restore")
+    @RequiredRole({"admin"})
     public String retoreMovies(@RequestParam("movieId") int id) {
 
         movieRepo.restoreMovie(id);
@@ -290,6 +298,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors")
+    @RequiredRole({"admin"})
     public String manageActors(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<actorData> actors = new ArrayList<>();
@@ -310,11 +319,13 @@ public class AdminController {
     }
 
     @GetMapping("/actors/add-actors")
+    @RequiredRole({"admin"})
     public String addActor() {
         return "Admin/addActor"; // Mengarahkan ke halaman tambah film
     }
 
     @GetMapping("/actors/remove")
+    @RequiredRole({"admin"})
     public String removeActor(@RequestParam("actorId") int id) {
         actorRepo.removeActor(id);
 
@@ -322,6 +333,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors/restore")
+    @RequiredRole({"admin"})
     public String restoreActor(@RequestParam("actorId") int id) {
         actorRepo.restoreActor(id);
 
@@ -340,6 +352,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors/update")
+    @RequiredRole({"admin"})
     public String updateActor(@RequestParam("actorId") int id, HttpSession session, Model model) {
         actorData actor = actorRepo.getActorById(id);
 
@@ -365,6 +378,7 @@ public class AdminController {
     }
 
     @GetMapping("/genres")
+    @RequiredRole({"admin"})
     public String manageGenres(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<genreData> genres = new ArrayList<>();
@@ -385,11 +399,13 @@ public class AdminController {
     }
 
     @GetMapping("/genres/add-genres")
+    @RequiredRole({"admin"})
     public String addGenre() {
         return "Admin/addGenres"; // Mengarahkan ke halaman tambah film
     }
 
     @GetMapping("/genres/remove")
+    @RequiredRole({"admin"})
     public String removeGenre(@RequestParam("genreId") int id) {
         genreRepo.removeGenre(id);
 
@@ -397,6 +413,7 @@ public class AdminController {
     }
 
     @GetMapping("/genres/restore")
+    @RequiredRole({"admin"})
     public String restoreGenre(@RequestParam("genreId") int id) {
         genreRepo.restoreGenre(id);
 
@@ -415,6 +432,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions")
+    @RequiredRole({"admin"})
     public String manageTransactions(
             @RequestParam(name = "startDate", required = false) String startDate,
             @RequestParam(name = "endDate", required = false) String endDate,
@@ -430,6 +448,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/detail")
+    @RequiredRole({"admin"})
     public String detailTransaction(@RequestParam("transactionId") int id, Model model) {
 
         transactionData detail = generalRepo.getTransactionById(id);
@@ -442,6 +461,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/bill")
+    @RequiredRole({"admin"})
     public String billTransaction(@RequestParam("transactionId") int id, HttpSession session, Model model) {
 
         session.setAttribute("currentTransactionId", id);
@@ -456,6 +476,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/confirm-pickup")
+    @RequiredRole({"admin"})
     public String confirmPickup(@RequestParam("transactionId") int id, HttpSession session, Model model) {
 
         generalRepo.confirmPickup(id);
@@ -477,6 +498,7 @@ public class AdminController {
     }
 
     @GetMapping("/sales-report")
+    @RequiredRole({"admin"})
     public String salesReport(
             @RequestParam(value = "startDate", required = false) String startDate,
             @RequestParam(value = "endDate", required = false) String endDate,
@@ -500,6 +522,7 @@ public class AdminController {
 
 
     @GetMapping("/register-new-admin")
+    @RequiredRole({"admin"})
     public String register() {
         return "Admin/registerNewAdmin";
     }

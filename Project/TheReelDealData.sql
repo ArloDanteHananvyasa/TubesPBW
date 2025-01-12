@@ -111,7 +111,7 @@ INSERT INTO users (phone, username, name, email, password, role, deleted) VALUES
 ('08781827391', 'jeyii', 'Junita', 'jeyii@example.com', 'jeyii', 'user', FALSE),
 ('080981233125', 'Ska', 'Renggana', 'ska@example.com', 'ska', 'user', FALSE),
 ('08158092834', 'AirPls', 'Radif', 'airpls@example.com', 'airpls', 'user', FALSE),
-('0812387123', 'admin_1', 'ADMIN1', 'admin.one@example.com', 'adminpass1', 'admin', FALSE),
+('0812387123', 'admin_1', 'ADMIN1', 'admin.one@example.com', '$2a$10$0NCC8h7fbMNNdD6OhwDr8OLMTAlV6vIqKi6ifUWHTFhY0yVDn7Pw.', 'admin', FALSE),
 ('0812937918', 'admin_2', 'ADMIN2', 'admin.two@example.com', 'adminpass2', 'admin', FALSE);
 
 INSERT INTO genres (name) VALUES
