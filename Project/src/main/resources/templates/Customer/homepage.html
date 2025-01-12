@@ -21,6 +21,7 @@
           <div class="carousel-slide">
             <div th:each="wheelMovie : ${wheelMovies}">
               <div class="slide">
+                <div class="slide-overlay"></div>
                 <img th:src="${wheelMovie.landscapeposter}">
                 <div class="slide-description">
                   <p th:text="${wheelMovie.release_year}">Year</p>
