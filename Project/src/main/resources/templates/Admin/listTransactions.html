@@ -176,31 +176,37 @@
             </div>
           </div>
         </div>
-        <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+
         <form th:action="@{/admin/transactions/bill/complete}" th:method="post">
+          <strong>Payment Method:</strong><br />
           <select name="paymentMethod">
             <option value="1">Cash</option>
             <option value="2">QRIS</option>
             <option value="3">Debit</option>
             <option value="4">Credit</option>
           </select>
-          <button type="submit">Finalize Payment</button>
+          <div class="button-container">
+            <button type="submit">Finalize Payment</button>
+            <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+          </div>
+
         </form>
+
       </div>
     </div>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const moviesPerPage = 10;
 
-      function setupPagination(tableId, paginationId){
+      function setupPagination(tableId, paginationId) {
         const allMovies = [...document.querySelectorAll(`#${tableId} .movie-row`)];
         const pagination = document.getElementById(paginationId);
         let currentPage = 1;
         const totalPages = Math.ceil(allMovies.length / moviesPerPage);
 
-        function updateMovies(page){
+        function updateMovies(page) {
           const start = (page - 1) * moviesPerPage;
           const end = Math.min(start + moviesPerPage, allMovies.length);
 
@@ -209,7 +215,7 @@
           });
         }
 
-        function updatePagination(page){
+        function updatePagination(page) {
           pagination.innerHTML = "";
 
           //Previous Button
@@ -228,11 +234,11 @@
           //Page Number
           const startPage = Math.max(1, page - 1);
           const endPage = Math.min(totalPages, page + 1);
-          for(let i = startPage; i <= endPage; i++){
+          for (let i = startPage; i <= endPage; i++) {
             const pageButton = document.createElement("p");
             pageButton.textContent = i;
             pageButton.className = `page-${i}`;
-            if(i === page) pageButton.classList.add("active");
+            if (i === page) pageButton.classList.add("active");
             pageButton.addEventListener("click", () => {
               currentPage = i;
               updateMovies(currentPage);
