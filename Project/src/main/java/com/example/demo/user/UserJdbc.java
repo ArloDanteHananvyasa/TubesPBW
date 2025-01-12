@@ -132,7 +132,7 @@ public class UserJdbc implements UserRepository {
     @Override
     public List<CartData> getCartByUser(String phoneNum){
         String sql = """
-            SELECT title, movies.base_price, movies.portraitposter
+            SELECT cart.movie_id, title, movies.base_price, movies.portraitposter
             FROM CART 
             INNER JOIN movies ON cart.movie_id = movies.movie_id
             WHERE user_phone = ? AND is_active = true
@@ -140,6 +140,7 @@ public class UserJdbc implements UserRepository {
 
             return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
                 CartData cart = new CartData(
+                    resultSet.getInt("movie_id"),
                     resultSet.getString("title"),
                     resultSet.getInt("base_price"),
                     resultSet.getString("portraitPoster")
@@ -168,6 +169,7 @@ public class UserJdbc implements UserRepository {
             
         List<CartData> cartList = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
             CartData cart = new CartData(
+                resultSet.getInt("movie_id"),
                 resultSet.getString("title"),
                 resultSet.getInt("base_price"),
                 resultSet.getString("portraitPoster")
@@ -256,7 +258,17 @@ public void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, 
         WHERE user_phone = ? AND is_active = true;
         """;
     jdbcTemplate.update(sql, phoneNum);
-}
+    }
+
+    @Override
+    public void removeFromCart(String phoneNum, int movieId){
+        String sql ="""
+                UPDATE CART
+                SET is_active = false
+                WHERE user_phone = ? AND movie_id = ? AND is_active = true;
+                """;
+        jdbcTemplate.update(sql, phoneNum, movieId);
+    }
 
 
 }

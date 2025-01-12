@@ -27,9 +27,11 @@
                         <div class="cart-text">
                             <p th:text="${cart.title}"></p>
                             <p><strong>Price/day:</strong> <span th:text="${cart.formattedBasePrice}"></span></p>
-                            <a th:href="@{'/customer/rentMovie/' + ${cart.title}}"><button
-                                    class="edit-btn">Edit</button></a>
-                            <button class="remove-btn">Remove</button>
+                            <form th:action="@{/customer/RemoveFromCart}">
+                                <input type="hidden" id="movieId" name="movieId" th:value="${cart.movieId}">
+                                <button class="remove-btn" type="submit">Remove from cart</button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -264,5 +263,17 @@ public class CustomerController {
         }
         
         return "Customer/cart";
+    }
+    
+    @GetMapping("/RemoveFromCart")
+    @RequiredRole({"user"})
+    public String removeFromCart(@RequestParam int movieId, HttpSession session, Model model){
+        UserData user = (UserData)session.getAttribute("user");
+        String phoneNum = user.getPhone();
+        userRepository.removeFromCart(phoneNum, movieId);
+        List<CartData>  listCart = userRepository.getCartByUser(phoneNum);
+        model.addAttribute("listCart", listCart);
+
+        return "redirect:/customer/cart";
     }
 }

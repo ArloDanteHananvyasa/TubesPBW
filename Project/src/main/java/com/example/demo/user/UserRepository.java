@@ -25,5 +25,7 @@ public interface UserRepository {
     boolean isCartEmpty(String phoneNum);
     void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, LocalDate returnDate, LocalDate transactionDate, int rent_duration);
     int getTotalCartPrice(String phoneNum);
+    void removeFromCart(String phoneNum, int movieId);
+
 
 }

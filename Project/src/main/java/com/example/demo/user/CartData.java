@@ -10,14 +10,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 public class CartData {
-    public CartData(String title, int base_price, String portraitPoster) {
+    public CartData(int movieId, String title, int base_price, String portraitPoster) {
         this.title = title;
         this.base_price = base_price;
         NumberFormat rupiahFormatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
         this.formattedBasePrice =  rupiahFormatter.format(base_price);
         this.portraitPoster = portraitPoster;
+        this.movieId = movieId;
     }
 
+    private int movieId;
     private String title;
     private int base_price;
     private String portraitPoster;
