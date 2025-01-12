@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,6 +24,7 @@ import com.example.demo.RequiredRole;
 import com.example.demo.user.CartData;
 import com.example.demo.user.HomePageData;
 import com.example.demo.user.MovieDetailData;
+import com.example.demo.user.TransactionData;
 import com.example.demo.user.UserData;
 import com.example.demo.user.UserRepository;
 
@@ -85,8 +87,8 @@ public class CustomerController {
     }
 
     @PostMapping("/details/{title}")
-    public String detailsPost(@PathVariable String title, @RequestParam String titleInput, Model model, HttpSession session) {
-        Logger logger = LoggerFactory.getLogger(this.getClass());
+    public String detailsPost(@PathVariable String title, @RequestParam String titleInput, @RequestParam int stock, Model model, HttpSession session) {
+        //Logger logger = LoggerFactory.getLogger(this.getClass());
         
         HomePageData movie = userRepository.getMovieByTitleFromMovies(titleInput);
 
@@ -95,26 +97,36 @@ public class CustomerController {
         int movie_id = movie.getMovie_id();
         UserData user = (UserData)session.getAttribute("user"); //true
         String phoneNum = user.getPhone();
-        logger.info("Titlenya adalah: " + phoneNum);
+        //logger.info("Titlenya adalah: " + phoneNum);
         
-        
-
-        if(userRepository.isMovieInCart(phoneNum, movie_id)==false){
-            userRepository.addMovieToCart(phoneNum, movie_id);
+        List<String> errors = new ArrayList<>();
+        //check stock
+        if(stock <= 0){
+            errors.add("Movie is not in stock");
         }
-        else{
-            //show error and add back the models
-            String error = "This movie is already in your cart";
-            model.addAttribute("error", error);
+        //check movies is in cart already or not
+        if(!userRepository.isMovieInCart(phoneNum, movie_id)==false){
+            errors.add("This movie is already in your cart");
+        }
+        if (!errors.isEmpty()) {
+            model.addAttribute("errors", errors);
             HomePageData movieGenre = userRepository.getMovieByTitle(title);
             model.addAttribute("movieGenre", movieGenre);
-    
+
             MovieDetailData movieActor = userRepository.getActorsByTitle(title);
             model.addAttribute("movieActor", movieActor);
             model.addAttribute("movie", movie);
-            return "Customer/MoviesDetails/Avatar/avatar";
+            if (movie != null) {
+                int basePrice = movie.getBase_price(); // Assuming `base_price` is an int
+                String formattedBasePrice = NumberFormat.getInstance(new Locale("en", "US"))
+                                                        .format(basePrice)
+                                                       .replace(",", "."); // Replace commas with dots
+                model.addAttribute("formattedBasePrice", formattedBasePrice);
+            }
+            return "Customer/MoviesDetails/Avatar/avatar"; // return to the form page
         }
-        
+
+        userRepository.addMovieToCart(phoneNum, movie_id);
         return "redirect:/customer/homepage";
     }
 
@@ -122,12 +134,6 @@ public class CustomerController {
     @RequiredRole({"user"})
     public String profile() {
         return "Customer/profile"; // Mengarahkan ke halaman profil customer
-    }
-
-    @GetMapping("/myRentals")
-    @RequiredRole({"user"})
-    public String myRentals() {
-        return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
     }
 
     @GetMapping("/movies")
@@ -228,12 +234,6 @@ public class CustomerController {
         UserData user = (UserData)session.getAttribute("user");
         String phoneNum = user.getPhone();
         List<CartData>  listCart = userRepository.getCartByUser(phoneNum);
-
-        // NumberFormat rupiahFormatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
-        // for (CartData cart : listCart) {
-        //     String formattedPrice = rupiahFormatter.format(cart.getBase_price());
-        //     cart.setFormattedBasePrice(formattedPrice); // Assuming you add a new field for the formatted price
-        // }
         model.addAttribute("listCart", listCart);
         
         return "Customer/Cart"; // Mengarahkan ke halaman keranjang
@@ -241,10 +241,27 @@ public class CustomerController {
 
     @PostMapping("/cart")
     @RequiredRole({"user"})
-    public String handleCheckout(@RequestParam LocalDate pickUpDate, @RequestParam LocalDate returnDate, HttpSession session){
+    public String handleCheckout(@RequestParam LocalDate pickUpDate, @RequestParam LocalDate returnDate, HttpSession session, Model model){
         UserData user = (UserData)session.getAttribute("user");
         String phoneNum = user.getPhone();
         LocalDate transactionDate = LocalDate.now();
+
+        List<String> errors = new ArrayList<>();
+        if (pickUpDate.isBefore(LocalDate.now()) || returnDate.isBefore(LocalDate.now())) {
+            errors.add("Pickup date and return date must be in the future.");
+        }
+        if (!pickUpDate.isBefore(returnDate)) {
+            errors.add("Pickup date must be before the return date.");
+        }
+        if(userRepository.isCartEmpty(phoneNum)){
+            errors.add("Cart is empty");
+        }
+        if (!errors.isEmpty()) {
+            model.addAttribute("errors", errors);
+            List<CartData>  listCart = userRepository.getCartByUser(phoneNum);
+            model.addAttribute("listCart", listCart);
+            return "Customer/cart"; // return to the form page
+        }
 
         //calculate price by taking from db instead
         int cartPrice = userRepository.getTotalCartPrice(phoneNum);
@@ -275,5 +292,18 @@ public class CustomerController {
         model.addAttribute("listCart", listCart);
 
         return "redirect:/customer/cart";
+    }
+
+    @GetMapping("/myRentals")
+    @RequiredRole({"user"})
+    public String myRentals(HttpSession session, Model model) {
+        UserData user = (UserData)session.getAttribute("user");
+        String phoneNum = user.getPhone();
+
+        List<TransactionData>  listRentalsCurr = userRepository.getRentalsCurrByUser(phoneNum);
+        List<TransactionData> listRentalsHistory = userRepository.getRentalsHistoryByUser(phoneNum);
+        model.addAttribute("rentalsCurr", listRentalsCurr);
+        model.addAttribute("rentalsHistory", listRentalsHistory);
+        return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
     }
 }

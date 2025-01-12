@@ -28,9 +28,13 @@
             Description
           </p>
 
+          <div class="total-group">
+            <span>Stock: </span>
+            <span th:text="${movie.stock}"></span>
+          </div>
 
           <div class="total-group">
-            <span>Harga Rental/hari: Rp. </span>
+            <span>Rental Price/day: Rp. </span>
             <span th:text="${formattedBasePrice}"></span>
           </div>
 
@@ -39,15 +43,19 @@
             <form th:action="@{/customer/details/{title}(title=${movieGenre.title})}" method="post">
               <!-- Pass any required data as hidden input fields -->
               <input type="hidden" name="titleInput" th:value="${movieGenre.title}" />
+              <input type="hidden" name="stock" th:value="${movie.stock}" />
               <button type="submit" class="play-button">
                 <b>Add to cart</b>
               </button>
             </form>
+            <div th:if="${errors}" style="color: red;">
+              <ul>
+                <li th:each="error : ${errors}">[[${error}]]</li>
+              </ul>
+          </div>
           </div>
 
-          <div th:if="${error}" class="error-message" style="color: red;">
-            <p th:text="${error}"></p>
-          </div>
+          
 
         </div>
         <div class="movie-carousel">
