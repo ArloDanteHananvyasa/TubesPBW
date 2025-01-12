@@ -249,3 +249,25 @@ strong {
     width: 150px;
     height: 150px;
 }
+
+/* PAGINATION */
+.page-navigation p {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #0058ea;
+    border-radius: 5px;
+    color: #0058ea;
+    cursor: pointer;
+  }
+  
+  .page-navigation p.active {
+    background-color: #0058ea;
+    color: white;
+  }
+  
+  .page-navigation p:hover {
+    background-color: #0041b5;
+    color: white;
+  }
+  

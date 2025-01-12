@@ -1,0 +1,48 @@
+<html th:fragment="sidebarAdmin">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="/AdminStyle/homepageAdminStyle.css" />
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="navigation">
+              <div class="nav-group" id="nav-dashboard">
+                <img src="/static/Assets/home-20.svg" />
+                <a th:href="@{/admin/dashboard}">Dashboard</a>
+              </div>
+      
+              <div class="nav-group" id="nav-movies">
+                <img src="/static/Assets/nav-movies.svg" />
+                <a th:href="@{/admin/movies}">Movies</a>
+              </div>
+      
+              <div class="nav-group" id="nav-actors">
+                <img src="/static/Assets/nav-actors.png" />
+                <a th:href="@{/admin/actors}">Actors</a>
+              </div>
+      
+              <div class="nav-group" id="nav-genres">
+                <img src="/static/Assets/nav-genre.svg" />
+                <a th:href="@{/admin/genres}">Genres</a>
+              </div>
+      
+              <div class="nav-group" id="nav-transaksi">
+                <img src="/static/Assets/nav-transaksi.svg" />
+      
+                <a th:href="@{/admin/transactions}">Transactions</a>
+              </div>
+      
+              <div class="nav-group" id="nav-sales">
+                <img src="/static/Assets/nav-sales.svg" />
+                <a th:href="@{/admin/sales-report}">Sales Report</a>
+              </div>
+      
+              <div class="nav-group" id="nav-log-out">
+                <img src="/static/Assets/nav-logout.svg" />
+                <a th:href="@{/logout}">Log Out</a>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
