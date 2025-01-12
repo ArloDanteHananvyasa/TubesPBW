@@ -23,7 +23,7 @@
                 <!-- ini jadiin masing row 2, tapi terus nambahnya turun bukan kesamping -->
                 <div class="cart-group-container" th:each="cart : ${listCart}">
                     <div class="cart-group" th:attr="data-price=${cart.base_price}">
-                        <img th:src="${cart.portraitPoster}"/>
+                        <img th:src="${cart.portraitPoster}" />
                         <div class="cart-text">
                             <p th:text="${cart.title}"></p>
                             <p><strong>Price/day:</strong> <span th:text="${cart.formattedBasePrice}"></span></p>
@@ -31,7 +31,7 @@
                                 <input type="hidden" id="movieId" name="movieId" th:value="${cart.movieId}">
                                 <button class="remove-btn" type="submit">Remove from cart</button>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <label for="pickUpDate">Pick up date</label>
                             <input type="date" id="pickUpDate" name="pickUpDate" th:value="${[pickUpDate]}" required />
                         </div>
-    
+
                         <div class="input-group">
                             <label for="returnDate">Return date</label>
                             <input type="date" id="returnDate" name="returnDate" th:value="${[returnDate]}" required />
@@ -52,7 +52,7 @@
                         <button class="checkout-btn" type="submit">Proceed to Checkout</button>
                         <div th:if="${errors}" style="color: red;">
                             <ul>
-                              <li th:each="error : ${errors}">[[${error}]]</li>
+                                <li th:each="error : ${errors}">[[${error}]]</li>
                             </ul>
                         </div>
                     </form>
@@ -62,7 +62,7 @@
 
     </div>
 
-    <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+    <footer class="footer">ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 
     <script th:inline="javascript">
         document.addEventListener("DOMContentLoaded", function () {

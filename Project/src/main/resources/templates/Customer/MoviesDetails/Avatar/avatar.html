@@ -28,15 +28,18 @@
             Description
           </p>
 
-          <div class="total-group">
-            <span>Stock: </span>
-            <span th:text="${movie.stock}"></span>
+          <div class="total-group-container">
+            <div class="total-group">
+              <span>Stock: </span>
+              <span th:text="${movie.stock}"></span>
+            </div>
+
+            <div class="total-group">
+              <span>Rental Price/day: Rp. </span>
+              <span th:text="${formattedBasePrice}"></span>
+            </div>
           </div>
 
-          <div class="total-group">
-            <span>Rental Price/day: Rp. </span>
-            <span th:text="${formattedBasePrice}"></span>
-          </div>
 
 
           <div class="button-container">
@@ -52,10 +55,10 @@
               <ul>
                 <li th:each="error : ${errors}">[[${error}]]</li>
               </ul>
-          </div>
+            </div>
           </div>
 
-          
+
 
         </div>
         <div class="movie-carousel">
@@ -117,7 +120,7 @@
     </div>
 
   </div>
-  <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
+  <footer class="footer">ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 </body>
 
 <script>
