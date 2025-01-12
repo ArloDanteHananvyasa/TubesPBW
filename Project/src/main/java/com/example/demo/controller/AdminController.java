@@ -1,13 +1,21 @@
 package com.example.demo.controller;
 
+
+import java.text.ParseException;
+
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +32,9 @@ import com.example.demo.admin.repositories.adminActorRepository;
 import com.example.demo.admin.repositories.adminGeneralRepository;
 import com.example.demo.admin.repositories.adminGenreRepository;
 import com.example.demo.admin.repositories.adminMovieRepository;
+import com.example.demo.user.UserData;
+import com.example.demo.user.UserRepository;
+import com.example.demo.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -39,6 +50,11 @@ public class AdminController {
     private adminGenreRepository genreRepo;
     @Autowired
     private adminMovieRepository movieRepo;
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserRepository userRepo;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
@@ -482,4 +498,45 @@ public class AdminController {
         return "Admin/salesReport"; // Directing to the sales report page
     }
 
+
+    @GetMapping("/register-new-admin")
+    public String register() {
+        return "Admin/registerNewAdmin";
+    }
+
+    @PostMapping("/register-new-admin/submit")
+    public String registerUser(@Valid @ModelAttribute UserData userData, Model model, BindingResult bindingResult)
+            throws ParseException {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("error", "Please correct the highlighted errors.");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Phone Number
+        if (userRepo.findByPhone(userData.getPhone()).isPresent()) {
+            model.addAttribute("error", "Number already exists.");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Email
+        if (!userData.getEmail().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+            model.addAttribute("error", "Please enter a valid email address");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Passwords
+        if (!userData.getPassword().equals(userData.getConfpassword())) {
+            model.addAttribute("error", "Passwords do not Match!");
+            return "Admin/registerNewAdmin";
+        }
+
+        boolean isRegistered = userService.registerAdmin(userData);
+        if (!isRegistered) {
+            model.addAttribute("error", "Registration failed. Please try again.");
+            return "Admin/registerNewAdmin";
+        }
+
+        return "redirect:/login";
+    }
 }
