@@ -35,11 +35,6 @@ public class GeneralController {
         return "General/landingPage";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "General/login";
@@ -108,4 +103,9 @@ public class GeneralController {
         return "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:"; 
+    }
 }

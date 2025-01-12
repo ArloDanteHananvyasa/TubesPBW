@@ -165,3 +165,35 @@ footer {
     position: relative;
     bottom: 0;
 }
+
+input[type="date"] {
+    background: transparent;
+    color: white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+}
+
+.input-container {
+    display: flex;
+    column-gap: 50px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+input,
+select {
+    height: 40px;
+    width: 250px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    padding: 0px 10px;
+}

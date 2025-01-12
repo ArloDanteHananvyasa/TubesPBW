@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avatar: The Way of Water</title>
+  <title th:text="${movieGenre.title}"></title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/CustomerStyle/MoviesDetails/Avatar/avatarStyle.css" />
@@ -27,9 +27,28 @@
           <p th:text="${movieGenre.description}">
             Description
           </p>
-          <div class="button-container">
-            <input type="submit" class="play-button" value="Rent Now" />
+
+
+          <div class="total-group">
+            <span>Harga Rental/hari: Rp. </span>
+            <span th:text="${formattedBasePrice}"></span>
           </div>
+
+
+          <div class="button-container">
+            <form th:action="@{/customer/details/{title}(title=${movieGenre.title})}" method="post">
+              <!-- Pass any required data as hidden input fields -->
+              <input type="hidden" name="titleInput" th:value="${movieGenre.title}" />
+              <button type="submit" class="play-button">
+                <b>Add to cart</b>
+              </button>
+            </form>
+          </div>
+
+          <div th:if="${error}" class="error-message" style="color: red;">
+            <p th:text="${error}"></p>
+          </div>
+
         </div>
         <div class="movie-carousel">
           <!-- DUMMY POSTER -->
