@@ -1,3 +1,4 @@
+
 * {
     font-family: "Montserrat", sans-serif;
 }
@@ -273,4 +274,5 @@ strong {
 .page-navigation p:hover {
     background-color: #0041b5;
     color: white;
+
 }

@@ -103,8 +103,6 @@ public class GeneralController {
         return "redirect:/login";
     }
 
-    
-
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
