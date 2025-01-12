@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -52,19 +52,41 @@
         <canvas id="salesChart" class="chart"></canvas>
       </div>
       <button id="downloadBtn">Download PDF</button>
+      <form th:action="@{/admin/dashboard}" method="post" id="form">
+        <label for="year">Select Year:</label>
+        <select id="year" name="year">
+          <option value="" disabled selected>Select a year</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+        </select>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </div>
 
-  <script>
+  <script th:inline="javascript">
+    // Correctly bind the Thymeleaf variables to JavaScript variables
+    const labels = /*[[${labels}]]*/ [];
+    const salesData = /*[[${monthlySale}]]*/ [];
+  
     // Initialize Chart.js
     const ctx = document.getElementById('salesChart').getContext('2d');
     const salesChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: labels, // These labels will now be dynamically injected
         datasets: [{
-          label: 'Sales ($)',
-          data: [1200, 1900, 3000, 5000, 4000, 6000, 7000],
+          label: 'Sales (Rp.)',
+          data: salesData, // These sales data will now be dynamically injected
           borderColor: 'rgba(54, 162, 235, 1)',
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
           borderWidth: 2,
@@ -80,7 +102,7 @@
         }
       }
     });
-
+  
     // Download PDF Functionality
     document.getElementById('downloadBtn').addEventListener('click', function () {
       const { jsPDF } = window.jspdf;
@@ -94,6 +116,7 @@
       });
     });
   </script>
+  
 
 </body>
 

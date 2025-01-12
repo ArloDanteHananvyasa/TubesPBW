@@ -247,4 +247,74 @@ public class adminGeneralJDBC implements adminGeneralRepository {
                 rs.getInt("payment_method_id"),
                 rs.getString("method_name"));
     }
+
+    @Override
+    public int getTotalRentalsInYear(int year) {
+        // Define the SQL query with placeholders
+        String sql = """
+            SELECT COUNT(transaction_id)
+            FROM transactions
+            WHERE pickup_date >= ? AND pickup_date < ?
+        """;
+
+        // Calculate yearEnd dynamically
+        int yearEnd = year + 1;
+
+        // Format the year and yearEnd into the required date format
+        LocalDate startOfYear = LocalDate.of(year, 1, 1);
+        LocalDate startOfNextYear = LocalDate.of(yearEnd, 1, 1);
+
+        // Execute the query and retrieve the total sales
+        Integer result = jdbc.queryForObject(sql, Integer.class, startOfYear, startOfNextYear);
+
+        // If result is null, return 0; otherwise, return the result
+        return (result != null) ? result : 0;
+    }
+
+    @Override
+    public int getTotalSalesInYear(int year){
+        String sql = """
+            SELECT SUM(base_fee) + SUM(late_fee) as totalSales
+            FROM transactions
+            WHERE pickup_date >= ? AND pickup_date < ?
+            """;
+
+        // Calculate yearEnd dynamically
+        int yearEnd = year + 1;
+
+        // Format the year and yearEnd into the required date format
+        LocalDate startOfYear = LocalDate.of(year, 1, 1);
+        LocalDate startOfNextYear = LocalDate.of(yearEnd, 1, 1);
+
+        // Execute the query and retrieve the total sales
+        Integer result = jdbc.queryForObject(sql, Integer.class, startOfYear, startOfNextYear);
+
+        // If result is null, return 0; otherwise, return the result
+        return (result != null) ? result : 0;
+    }
+
+    @Override
+    public List<Integer> getMonthlySales(int year) {
+        String sql = """
+            WITH months AS (
+                SELECT generate_series(1, 12) AS month
+            )
+            SELECT m.month,
+                   COALESCE(SUM(t.base_fee + t.late_fee), 0) AS total_sales
+            FROM months m
+            LEFT JOIN transactions t ON EXTRACT(MONTH FROM t.pickup_date) = m.month
+            AND EXTRACT(YEAR FROM t.pickup_date) = ?
+            WHERE t.pickup_date IS NOT NULL
+            GROUP BY m.month
+            ORDER BY m.month;
+        """;
+
+        // Execute the query and map the result to a list of integers
+        List<Integer> salesList = jdbc.query(sql, (rs, rowNum) -> {
+        return rs.getInt("total_sales");  // Get the total sales for each month
+    }, year);
+
+    return salesList;
+}
+
 }

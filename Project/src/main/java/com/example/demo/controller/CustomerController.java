@@ -132,6 +132,7 @@ public class CustomerController {
     }
 
     @GetMapping("/movies")
+    @RequiredRole({"user"})
     public String movieList(Model model) {
         List<HomePageData> movies = userRepository.getAllMovies();
         List<GenreData> genres = userRepository.getAllGenre();
@@ -149,73 +150,6 @@ public class CustomerController {
         }
         return userRepository.getMoviesByGenres(genres.toArray(new String[0]));
     }
-
-    // //bakal ada request param rent duration sama pickupdate
-    // //gapake param, pakenya ngambil dari db
-    // @GetMapping("/customer/rentMovie/{title}")
-    // @RequiredRole({"user"})
-    // public String rentMovie(@PathVariable String title, Model model, HttpSession session){
-    //     HomePageData movie = userRepository.getMovieByTitleFromMovies(title);
-    //     model.addAttribute("movie", movie);
-        
-    //     UserData user = (UserData)session.getAttribute("user");
-    //     String phoneNum = user.getPhone();
-    //     //long price = movie.getBase_price();
-    //     List<CartData>  listCart = userRepository.getCartByUser(phoneNum);
-    //     model.addAttribute("listCart", listCart);
-    //     // Logger logger = LoggerFactory.getLogger(this.getClass());
-    //     // logger.info("Base_price: " + price);
-        
-    //     return "Customer/rentMovie"; // Mengarahkan ke halaman sewa film
-    // }
-
-    // @PostMapping("/customer/rentMovie/{title}")
-    // @RequiredRole({"user"})
-    // //ceritanya udh ada cart di session (tinggal tambahin di login aj)
-    // //tapi lebih bagusa kalo cart ga ke reset pas login, jadinya harus ke db bgst
-    // public String rentMoviePost(@PathVariable String title, @RequestParam String titleInput, @RequestParam LocalDate pickUpDate, @RequestParam LocalDate returnDate, Model model, HttpSession session) {
-    //     // Logger logger = LoggerFactory.getLogger(this.getClass());
-    //     // logger.info("Title: " + titleInput);
-    //     HomePageData movie = userRepository.getMovieByTitleFromMovies(titleInput);
-
-    //     List<String> errors = new ArrayList<>();
-    //     if (pickUpDate.isBefore(LocalDate.now()) || returnDate.isBefore(LocalDate.now())) {
-    //         errors.add("Pickup date and return date must be in the future.");
-    //     }
-    //     if (!pickUpDate.isBefore(returnDate)) {
-    //         errors.add("Pickup date must be before the return date.");
-    //     }
-    //     if (!errors.isEmpty()) {
-    //         model.addAttribute("errors", errors);
-    //         model.addAttribute("movie", movie);
-    //         UserData user = (UserData)session.getAttribute("user");
-    //         String phoneNum = user.getPhone();
-    //         List<CartData>  listCart = userRepository.getCartByUser(phoneNum);
-    //         model.addAttribute("listCart", listCart);
-    //         return "Customer/rentMovie"; // return to the form page
-    //     }
-
-
-        //cek udah ada di table cart ato belom, kalo belom di add, kalo udah di update 
-        
-        // int movie_id = movie.getMovie_id();
-        // UserData user = (UserData)session.getAttribute("user");
-        // String phoneNum = user.getPhone();
-        // long rent_duration = ChronoUnit.DAYS.between(pickUpDate, returnDate); 
-        // Logger logger = LoggerFactory.getLogger(this.getClass());
-        // logger.info("PriceYagesya: " + movie.getBase_price());
-        // long  total_price = movie.getBase_price() * rent_duration;
-
-        // if(userRepository.isMovieInCart(phoneNum, movie_id)==false){
-        //     userRepository.addMovieToCart(phoneNum, movie_id, pickUpDate, returnDate, total_price);
-        // }
-        // else{
-        //     userRepository.updateCart(phoneNum, movie_id, pickUpDate, returnDate, total_price);
-        // }
-        
-    //     return "redirect:/customer/homepage";
-    // }
-    
 
     @GetMapping("/check-movie_title")
     @ResponseBody

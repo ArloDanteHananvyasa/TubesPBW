@@ -1,17 +1,27 @@
 package com.example.demo.controller;
 
+
+import java.text.ParseException;
+
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.RequiredRole;
 import com.example.demo.admin.datas.actorData;
 import com.example.demo.admin.datas.billData;
 import com.example.demo.admin.datas.customerData;
@@ -23,6 +33,9 @@ import com.example.demo.admin.repositories.adminActorRepository;
 import com.example.demo.admin.repositories.adminGeneralRepository;
 import com.example.demo.admin.repositories.adminGenreRepository;
 import com.example.demo.admin.repositories.adminMovieRepository;
+import com.example.demo.user.UserData;
+import com.example.demo.user.UserRepository;
+import com.example.demo.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -39,7 +52,13 @@ public class AdminController {
     @Autowired
     private adminMovieRepository movieRepo;
 
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserRepository userRepo;
+
     @GetMapping("/dashboard")
+    @RequiredRole({"admin"})
     public String dashboard(Model model) {
 
         List<movieData> movies = movieRepo.getAllMovies(null);
@@ -48,10 +67,48 @@ public class AdminController {
         model.addAttribute("totalMovies", movies.size());
         model.addAttribute("totalUsers", customers.size());
 
+        // Example labels and data fetched from the database
+        List<String> labels = List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        List<Integer> salesData = List.of(1200, 1900, 3000, 5000, 4000, 6000, 7000, 8000, 9000, 10000, 11000, 12000);
+
+        int currYear = LocalDate.now().getYear();
+        int totalRentals = generalRepo.getTotalRentalsInYear(currYear);
+
+        model.addAttribute("labels", labels);
+        model.addAttribute("salesData", salesData);
+
+        model.addAttribute("totalRentals", totalRentals);
+        int totalSales = generalRepo.getTotalSalesInYear(currYear);
+        model.addAttribute("totalSales", totalSales);
+
         return "Admin/homepageAdmin"; // Mengarahkan ke halaman dashboard admin
     }
 
+    @RequestMapping("/dashboard")
+    public String dashboard(@RequestParam int year, Model model, HttpSession session) {
+        
+        List<movieData> movies = movieRepo.getAllMovies(null);
+        List<customerData> customers = generalRepo.getAllCustomers();
+
+        model.addAttribute("totalMovies", movies.size());
+        model.addAttribute("totalUsers", customers.size());
+        
+        int totalRentals = generalRepo.getTotalRentalsInYear(year);
+
+        model.addAttribute("totalRentals", totalRentals);
+
+        int totalSales = generalRepo.getTotalSalesInYear(year);
+        model.addAttribute("totalSales", totalSales);
+
+        List<Integer> monthlySale = generalRepo.getMonthlySales(year);
+        List<String> labels = List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        model.addAttribute("labels", labels);
+        model.addAttribute("monthlySale", monthlySale);
+        return "Admin/homepageAdmin";
+    }
+
     @GetMapping("/movies")
+    @RequiredRole({"admin"})
     public String manageMovies(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<movieData> movies = new ArrayList<>();
@@ -72,6 +129,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/detail")
+    @RequiredRole({"admin"})
     public String movieDetail(@RequestParam("movieId") int id,
             @RequestParam(value = "filter", required = false) String filter, Model model) {
 
@@ -107,6 +165,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/add-movies")
+    @RequiredRole({"admin"})
     public String addMovies(HttpSession session, Model model) {
         List<genreData> genres = genreRepo.getAllGenres(null);
         model.addAttribute("movieGenres", genres);
@@ -118,6 +177,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/update")
+    @RequiredRole({"admin"})
     public String updateMovie(@RequestParam("movieId") int id, HttpSession session, Model model) {
         movieData movieDetail = movieRepo.getMovieById(id);
 
@@ -221,6 +281,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/remove")
+    @RequiredRole({"admin"})
     public String removeMovies(@RequestParam("movieId") int id) {
         movieRepo.removeMovie(id);
 
@@ -228,6 +289,7 @@ public class AdminController {
     }
 
     @GetMapping("/movies/restore")
+    @RequiredRole({"admin"})
     public String retoreMovies(@RequestParam("movieId") int id) {
 
         movieRepo.restoreMovie(id);
@@ -236,6 +298,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors")
+    @RequiredRole({"admin"})
     public String manageActors(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<actorData> actors = new ArrayList<>();
@@ -256,11 +319,13 @@ public class AdminController {
     }
 
     @GetMapping("/actors/add-actors")
+    @RequiredRole({"admin"})
     public String addActor() {
         return "Admin/addActor"; // Mengarahkan ke halaman tambah film
     }
 
     @GetMapping("/actors/remove")
+    @RequiredRole({"admin"})
     public String removeActor(@RequestParam("actorId") int id) {
         actorRepo.removeActor(id);
 
@@ -268,6 +333,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors/restore")
+    @RequiredRole({"admin"})
     public String restoreActor(@RequestParam("actorId") int id) {
         actorRepo.restoreActor(id);
 
@@ -286,6 +352,7 @@ public class AdminController {
     }
 
     @GetMapping("/actors/update")
+    @RequiredRole({"admin"})
     public String updateActor(@RequestParam("actorId") int id, HttpSession session, Model model) {
         actorData actor = actorRepo.getActorById(id);
 
@@ -311,6 +378,7 @@ public class AdminController {
     }
 
     @GetMapping("/genres")
+    @RequiredRole({"admin"})
     public String manageGenres(@RequestParam(value = "filter", required = false) String filter, Model model) {
 
         List<genreData> genres = new ArrayList<>();
@@ -331,11 +399,13 @@ public class AdminController {
     }
 
     @GetMapping("/genres/add-genres")
+    @RequiredRole({"admin"})
     public String addGenre() {
         return "Admin/addGenres"; // Mengarahkan ke halaman tambah film
     }
 
     @GetMapping("/genres/remove")
+    @RequiredRole({"admin"})
     public String removeGenre(@RequestParam("genreId") int id) {
         genreRepo.removeGenre(id);
 
@@ -343,6 +413,7 @@ public class AdminController {
     }
 
     @GetMapping("/genres/restore")
+    @RequiredRole({"admin"})
     public String restoreGenre(@RequestParam("genreId") int id) {
         genreRepo.restoreGenre(id);
 
@@ -361,6 +432,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions")
+    @RequiredRole({"admin"})
     public String manageTransactions(
             @RequestParam(name = "startDate", required = false) String startDate,
             @RequestParam(name = "endDate", required = false) String endDate,
@@ -376,6 +448,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/detail")
+    @RequiredRole({"admin"})
     public String detailTransaction(@RequestParam("transactionId") int id, Model model) {
 
         transactionData detail = generalRepo.getTransactionById(id);
@@ -388,6 +461,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/bill")
+    @RequiredRole({"admin"})
     public String billTransaction(@RequestParam("transactionId") int id, HttpSession session, Model model) {
 
         session.setAttribute("currentTransactionId", id);
@@ -402,6 +476,7 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/confirm-pickup")
+    @RequiredRole({"admin"})
     public String confirmPickup(@RequestParam("transactionId") int id, HttpSession session, Model model) {
 
         generalRepo.confirmPickup(id);
@@ -423,6 +498,7 @@ public class AdminController {
     }
 
     @GetMapping("/sales-report")
+    @RequiredRole({"admin"})
     public String salesReport(
             @RequestParam(value = "startDate", required = false) String startDate,
             @RequestParam(value = "endDate", required = false) String endDate,
@@ -444,4 +520,46 @@ public class AdminController {
         return "Admin/salesReport"; // Directing to the sales report page
     }
 
+
+    @GetMapping("/register-new-admin")
+    @RequiredRole({"admin"})
+    public String register() {
+        return "Admin/registerNewAdmin";
+    }
+
+    @PostMapping("/register-new-admin/submit")
+    public String registerUser(@Valid @ModelAttribute UserData userData, Model model, BindingResult bindingResult)
+            throws ParseException {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("error", "Please correct the highlighted errors.");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Phone Number
+        if (userRepo.findByPhone(userData.getPhone()).isPresent()) {
+            model.addAttribute("error", "Number already exists.");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Email
+        if (!userData.getEmail().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+            model.addAttribute("error", "Please enter a valid email address");
+            return "Admin/registerNewAdmin";
+        }
+
+        // Check Passwords
+        if (!userData.getPassword().equals(userData.getConfpassword())) {
+            model.addAttribute("error", "Passwords do not Match!");
+            return "Admin/registerNewAdmin";
+        }
+
+        boolean isRegistered = userService.registerAdmin(userData);
+        if (!isRegistered) {
+            model.addAttribute("error", "Registration failed. Please try again.");
+            return "Admin/registerNewAdmin";
+        }
+
+        return "redirect:/login";
+    }
 }

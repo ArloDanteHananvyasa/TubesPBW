@@ -34,6 +34,24 @@ public class UserJdbc implements UserRepository {
     }
 
     @Override
+    public void registerAdmin(UserData adminData){
+        String sql = """
+                INSERT INTO users (phone, username, name, email, password, role, deleted) VALUES
+                (?, ?, ?, ?, ?, ?, ?)
+                """;
+        jdbcTemplate.update(
+            sql, 
+            adminData.getPhone(),
+            adminData.getUsername(),
+            adminData.getName(),
+            adminData.getEmail(),
+            adminData.getPassword(),
+            "admin",
+            false
+            );
+    }
+
+    @Override
     public Optional<UserData> findByEmail(String email){
         String sql = "SELECT * FROM users WHERE email = ?";
         List<UserData> users = jdbcTemplate.query(

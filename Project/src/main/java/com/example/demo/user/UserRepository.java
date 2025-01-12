@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public interface UserRepository {
     void registerUser(UserData userData);
+    void registerAdmin(UserData adminData);
     Optional<UserData> findByEmail(String email);
     Optional<UserData> findByPhone(String phone);
     List<HomePageData> getMoviesFromLast5Years();
