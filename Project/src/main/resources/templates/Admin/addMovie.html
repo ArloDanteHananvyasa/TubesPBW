@@ -23,45 +23,7 @@
         </div>
 
         <!-- Sidebar Section -->
-        <div class="sidebar">
-            <div class="navigation">
-                <div class="nav-group" id="nav-dashboard">
-                    <img src="/static/Assets/nav-dashboard-gray.svg" />
-                    <a th:href="@{/admin/dashboard}">Dashboard</a>
-                </div>
-
-                <div class="nav-group" id="nav-movies">
-                    <img src="/static/Assets/nav-movies-blue.svg" />
-                    <a th:href="@{/admin/movies}">Movies</a>
-                </div>
-
-                <div class="nav-group" id="nav-actors">
-                    <img src="/static/Assets/nav-actors.png" />
-                    <a th:href="@{/admin/actors}">Actors</a>
-                </div>
-
-                <div class="nav-group" id="nav-genres">
-                    <img src="/static/Assets/nav-genre.svg" />
-                    <a th:href="@{/admin/genres}">Genres</a>
-                </div>
-
-                <div class="nav-group" id="nav-transaksi">
-                    <img src="/static/Assets/nav-transaksi.svg" />
-
-                    <a th:href="@{/admin/transactions}">Transactions</a>
-                </div>
-
-                <div class="nav-group" id="nav-sales">
-                    <img src="/static/Assets/nav-sales.svg" />
-                    <a th:href="@{/admin/sales-report}">Sales Report</a>
-                </div>
-
-                <div class="nav-group" id="nav-log-out">
-                    <img src="/static/Assets/nav-logout.svg" />
-                    <a th:href="@{/logout}">Log Out</a>
-                </div>
-            </div>
-        </div>
+        <th:block th:include="~{Admin/sidebar :: sidebarAdmin}"></th:block>
 
         <div class="main-content">
             <form th:action="@{/admin/movies/add-movies/submit}" th:method="post" enctype="multipart/form-data">
