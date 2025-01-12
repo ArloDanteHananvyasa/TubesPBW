@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS genres CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS admins CASCADE;
 DROP TABLE IF EXISTS payment_method CASCADE;
+DROP TABLE IF EXISTS cart CASCADE;
 
 -- Create Tables:
 CREATE TABLE users (
@@ -94,7 +95,14 @@ CREATE TABLE transaction_details (
     FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id) ON DELETE CASCADE,
     FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE
 );
-
+CREATE TABLE cart (
+    cart_id SERIAL PRIMARY KEY,
+	user_phone VARCHAR(20),
+	movie_id INT,
+	is_active BOOLEAN DEFAULT True,
+    FOREIGN KEY (user_phone) REFERENCES users(phone) ON DELETE CASCADE,
+	FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE
+);
 
 
 -- Dummy Data
@@ -167,7 +175,7 @@ INSERT INTO movies (title, description, release_year, duration, base_price, land
 ('Doctor Strange in the Multiverse of Madness', 'Doctor Strange must navigate alternate realities to stop a multiverse-threatening villain.', '2022', 126, 30000, '/Horizontal/doctor-strange-mom-h.jpg', '/Vertical/doctor-strange-mom-v.jpg', 3, FALSE),
 ('Black Panther: Wakanda Forever', 'The people of Wakanda fight to protect their nation after the death of their king.', '2022', 161, 40000, '/Horizontal/black-panther-wakanda-forever-h.jpg', '/Vertical/black-panther-wakanda-forever-v.jpg', 3, FALSE),
 ('The Lord of the Rings: The Two Towers', 'The journey continues as Frodo and Sam trek towards Mount Doom while Aragorn, Legolas, and Gimli battle the forces of Saruman.', '2002', 179, 35000, '/Horizontal/the-lord-of-the-rings-two-towers-h.jpg', '/Vertical/the-lord-of-the-rings-two-towers-v.jpg', 3, FALSE),
-('The Lord of the Rings: The Return of the King', 'The final battle for Middle-earth begins as Frodo and Sam approach Mount Doom to destroy the One Ring.', '2003', 201, 35000, '/Horizontal/the-lord-of-the-rings-return-of-kings-h.jpg', 'D:/Codes/TubesPBW/TheReelDeal/Vertical/the-lord-of-the-rings-return-of-kings-v.jpg', 3, FALSE),
+('The Lord of the Rings: The Return of the King', 'The final battle for Middle-earth begins as Frodo and Sam approach Mount Doom to destroy the One Ring.', '2003', 201, 35000, '/Horizontal/the-lord-of-the-rings-return-of-kings-h.jpg', '/Vertical/the-lord-of-the-rings-return-of-kings-v.jpg', 3, FALSE),
 ('Indiana Jones and the Raiders of the Lost Ark', 'Archaeologist Indiana Jones races against the Nazis to find the Ark of the Covenant.', '1981', 115, 23000, '/Horizontal/indiana-jones-lost-ark-h.jpg', '/Vertical/indiana-jones-lost-ark-v.jpg', 3, FALSE),
 ('Indiana Jones and the Temple of Doom', 'Indiana Jones must rescue a group of children from an evil cult in India.', '1984', 118, 25000, '/Horizontal/indiana-jones-temple-of-doom-h.jpg', '/Vertical/indiana-jones-temple-of-doom-v.jpg', 3, FALSE),
 ('Indiana Jones and the Last Crusade', 'Indiana Jones teams up with his father to find the Holy Grail before the Nazis can get to it.', '1989', 127, 24000, '/Horizontal/indiana-jones-last-crusade-h.jpg', '/Vertical/indiana-jones-last-crusade-v.jpg', 3, FALSE),
@@ -597,3 +605,32 @@ GROUP BY
 	movies.description;
 
 
+
+
+
+INSERT INTO cart (user_phone, movie_id, is_active) VALUES
+('08781827391', 1, TRUE),
+('080981233125', 2, TRUE),
+('08158092834', 3, TRUE),
+('0812387123', 4, TRUE),
+('0812937918', 5, FALSE),
+('0812937918', 6, TRUE),
+('08781827391', 7, TRUE),
+('080981233125', 8, TRUE),
+('08158092834', 9, FALSE),
+('0812387123', 10, TRUE),
+('0812937918', 11, TRUE),
+('0812937918', 12, FALSE),
+('08781827391', 13, TRUE),
+('080981233125', 14, TRUE),
+('08158092834', 15, TRUE),
+('0812387123', 16, FALSE),
+('0812937918', 17, TRUE),
+('08781827391', 18, TRUE),
+('080981233125', 19, TRUE),
+('08158092834', 20, FALSE),
+('0812387123', 21, TRUE),
+('0812937918', 22, TRUE),
+('08781827391', 23, FALSE),
+('080981233125', 24, TRUE),
+('08158092834', 25, TRUE);

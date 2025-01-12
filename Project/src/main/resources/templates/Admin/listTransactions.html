@@ -7,7 +7,8 @@
   <title>Manage Movies</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/AdminStyle/listMoviesStyle.css" />
+  <link rel="stylesheet" href="/AdminStyle/listTransactionStyle.css" />
+
 </head>
 
 <body>
@@ -23,70 +24,42 @@
     </div>
 
     <!-- Sidebar Section -->
-    <div class="sidebar">
-      <div class="navigation">
-        <div class="nav-group" id="nav-dashboard">
-          <img src="/static/Assets/nav-dashboard-gray.svg" />
-          <a th:href="@{/admin/dashboard}">Dashboard</a>
-        </div>
-
-        <div class="nav-group" id="nav-movies">
-          <img src="/static/Assets/nav-movies-blue.svg" />
-          <a th:href="@{/admin/movies}">Movies</a>
-        </div>
-
-        <div class="nav-group" id="nav-actors">
-          <img src="/static/Assets/nav-actors.png" />
-          <a th:href="@{/admin/actors}">Actors</a>
-        </div>
-
-        <div class="nav-group" id="nav-genres">
-          <img src="/static/Assets/nav-genre.svg" />
-          <a th:href="@{/admin/genres}">Genres</a>
-        </div>
-
-        <div class="nav-group" id="nav-genres">
-          <img src="/static/Assets/nav-genre.svg" />
-          <a th:href="@{/admin/transactions}">Transactions</a>
-        </div>
-
-        <div class="nav-group" id="nav-sales">
-          <img src="/static/Assets/nav-sales.svg" />
-          <a th:href="@{/admin/sales-report}">Sales Report</a>
-        </div>
-
-        <div class="nav-group" id="nav-log-out">
-          <img src="/static/Assets/nav-logout.svg" />
-          <a th:href="@{/logout}">Log Out</a>
-        </div>
-
-        <form th:action="@{/admin/transactions}" th:method="get">
-          <p>Filter by Order Date:</p>
-          <label for="startDate">Start Date:</label>
-          <input type="date" name="startDate" id="startDate" th:value="${startDate}">
-          <label for="endDate">End Date:</label>
-          <input type="date" name="endDate" id="endDate" th:value="${endDate}">
-          <button type="submit">Apply Filter</button>
-        </form>
-      </div>
-    </div>
+    <th:block th:include="~{Admin/sidebar :: sidebarAdmin}"></th:block>
 
     <div class="main-content">
-      <div class="cari-add-produk">
-        <div class="cari-produk">
-          <form th:action="@{/admin/transactions}" th:method="get">
-            <p>Filter by Order Date:</p>
-            <label for="startDate">Start Date:</label>
-            <input type="date" name="startDate" id="startDate" th:value="${startDate}">
-            <label for="endDate">End Date:</label>
-            <input type="date" name="endDate" id="endDate" th:value="${endDate}">
-            <button type="submit">Apply Filter</button>
-          </form>
-        </div>
+
+      <div class="filter">
+        <h2>Filter by Order Date</h2>
+
+        <form th:action="@{/admin/transactions}" th:method="get">
+          <div class="form-container">
+            <div class="left-group">
+              <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" name="startDate" id="startDate" th:value="${startDate}">
+              </div>
+
+
+            </div>
+
+            <div class="right-group">
+              <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" name="endDate" id="endDate" th:value="${endDate}">
+              </div>
+            </div>
+
+            <div class="button">
+              <button type="submit">Apply Filter</button>
+            </div>
+          </div>
+
+        </form>
       </div>
 
+      <!-- Transactions -->
       <div class="list-movies">
-        <table>
+        <table id="available-table">
           <tr>
             <th>No.</th>
             <th>Customer Name</th>
@@ -95,7 +68,7 @@
             <th>Due Date</th>
             <th>Confirm Return and Pay</th>
           </tr>
-          <tr th:each="transaction, iterStat : ${transactions}">
+          <tr class="movie-row" th:each="transaction, iterStat : ${transactions}">
             <td th:text="${iterStat.index + 1}"></td>
             <td th:text="${transaction.customerName}"></td>
             <td>
@@ -119,7 +92,7 @@
       </div>
 
       <div class="page-navigation-container">
-        <div class="page-navigation">
+        <div class="page-navigation" id="available-pagination">
           <p class="_1">1</p>
           <p class="_2">2</p>
           <p class="_3">3</p>
@@ -203,19 +176,98 @@
             </div>
           </div>
         </div>
-        <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+
         <form th:action="@{/admin/transactions/bill/complete}" th:method="post">
+          <strong>Payment Method:</strong><br />
           <select name="paymentMethod">
             <option value="1">Cash</option>
             <option value="2">QRIS</option>
             <option value="3">Debit</option>
             <option value="4">Credit</option>
           </select>
-          <button type="submit">Finalize Payment</button>
+          <div class="button-container">
+            <button type="submit">Finalize Payment</button>
+            <a th:href="@{/admin/transactions}" class="close-button"><button>Close</button></a>
+          </div>
+
         </form>
+
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const moviesPerPage = 10;
+
+      function setupPagination(tableId, paginationId) {
+        const allMovies = [...document.querySelectorAll(`#${tableId} .movie-row`)];
+        const pagination = document.getElementById(paginationId);
+        let currentPage = 1;
+        const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+
+        function updateMovies(page) {
+          const start = (page - 1) * moviesPerPage;
+          const end = Math.min(start + moviesPerPage, allMovies.length);
+
+          allMovies.forEach((row, index) => {
+            row.style.display = index >= start && index < end ? "" : "none";
+          });
+        }
+
+        function updatePagination(page) {
+          pagination.innerHTML = "";
+
+          //Previous Button
+          if (page > 1) {
+            const prev = document.createElement("p");
+            prev.textContent = "Previous";
+            prev.classList.add("prev");
+            prev.addEventListener("click", () => {
+              currentPage--;
+              updateMovies(currentPage);
+              updatePagination(currentPage);
+            });
+            pagination.appendChild(prev);
+          }
+
+          //Page Number
+          const startPage = Math.max(1, page - 1);
+          const endPage = Math.min(totalPages, page + 1);
+          for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement("p");
+            pageButton.textContent = i;
+            pageButton.className = `page-${i}`;
+            if (i === page) pageButton.classList.add("active");
+            pageButton.addEventListener("click", () => {
+              currentPage = i;
+              updateMovies(currentPage);
+              updatePagination(currentPage);
+            });
+            pagination.appendChild(pageButton);
+          }
+
+          //Next Button
+          if (page < totalPages) {
+            const next = document.createElement("p");
+            next.textContent = "Next";
+            next.classList.add("next");
+            next.addEventListener("click", () => {
+              currentPage++;
+              updateMovies(currentPage);
+              updatePagination(currentPage);
+            });
+            pagination.appendChild(next);
+          }
+        }
+
+        updateMovies(currentPage);
+        updatePagination(currentPage);
+      }
+
+      setupPagination("available-table", "available-pagination");
+    });
+  </script>
 
 </body>
 

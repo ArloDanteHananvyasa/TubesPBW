@@ -12,70 +12,70 @@
 
 <body>
   <div class="page-container">
-    <div class="navigation">
-      <img src="/static/Assets/logo.png" />
-
-      <div class="nav-search">
-        <div class="left-nav">
-          <a th:href="@{/customer/homepage}">Home</a>
-          <a th:href="@{/customer/movies}">Movies</a>
-          <a th:href="@{/customer/cart}">My Cart</a>
-          <a th:href="@{/customer/myRentals}">My Rentals</a>
-          <a th:href="@{/customer/profile}">Profile</a>
-          <a th:href="@{/logout}">Log Out</a>
-        </div>
-
-        <div class="right-nav">
-          <img src="/static/Assets/search-icon.png" />
-          <input type="text" class="search-bar" placeholder="Search movies title, actors, genres" />
-        </div>
-      </div>
-    </div>
+    <!-- Navigation -->
+    <th:block th:include="~{Customer/navigation :: navigationCustomer}"></th:block>
 
     <div class="rent-container">
       <h1>Movie Rental</h1>
+      <form th:action="@{/customer/rentMovie/{title}}" method="post">
+        <div class="input-container">
+          <div class="input-left">
+            <div class="input-group">
+              <!-- username ngambil dari session -->
+              <!-- <label for="customer-name">Username</label>
+              <input type="text" id="customer-name" name="customer-name" required placeholder="Enter your username" /> -->
+            </div>
+            <div class="input-group">
+              <span>Movie Title</span>
+              <!-- ambil dari database -->
+              <p th:text="${movie.title}"></p>
+              <input type="hidden" id="titleInput" name="titleInput" th:value="${movie.title}">
+            </div>
 
-      <div class="input-container">
-        <div class="input-left">
-          <div class="input-group">
-            <label for="customer-name">Username</label>
-            <input type="text" id="customer-name" name="customer-name" required placeholder="Enter your username" />
-          </div>
-          <div class="input-group">
-            <label for="choose-movie">Movie Title</label>
-            <select id="choose-movie" name="choose-movie" required>
-              <option value="" disabled selected>Choose a movie</option>
-              <option>Avatar:The way of water</option>
-            </select>
-          </div>
+            <!-- gajadi dipake, karna mendingan pake pickupdate + return date, terus durationnya ntar ngitung dari situ (cuma dipake buat calculate harga lagian) -->
+            <!-- <div class="input-group">
+              <label for="jumlah">Rent duration (days)</label>
+              <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Ex : 5" required />
+            </div> -->
 
-          <div class="input-group">
-            <label for="jumlah">Rent duration (days)</label>
-            <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Ex : 5" required />
-          </div>
-        </div>
-
-        <div class="input-right">
-          <div class="input-group">
-            <label for="tanggal">Rent date</label>
-            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
-          </div>
-          <div class="input-group">
-            <label for="tanggal">Pick up date</label>
-            <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
-          </div>
-
-          <div class="input-group">
-            <label for="hargaTotal">Total</label>
-            <div class="total-group">
-              <span>Rp. </span><input type="text" id="hargaTotal" name="hargaTotal" readonly />
+            <!-- KENAPA RP. NYA JADI DIATAS WOII, PADAHAL DIPINDAHIN KE BAGIAN KIRI DOANG -->
+            <div class="input-group">
+              <label for="hargaTotal">Total</label>
+              <div class="total-group">
+                <span>Rp. </span><input type="text" id="hargaTotal" name="hargaTotal" readonly />
+              </div>
             </div>
           </div>
+
+          <div class="input-right">
+            <!-- <div class="input-group">
+              <label for="tanggal">Rent date</label>
+              <input type="date" id="tanggal" name="tanggal" th:value="${tanggal}" required />
+            </div> -->
+            <div class="input-group">
+              <label for="pickUpDate">Pick up date</label>
+              <input type="date" id="pickUpDate" name="pickUpDate" th:value="${[pickUpDate]}" required />
+            </div>
+
+            <div class="input-group">
+              <label for="returnDate">Return date</label>
+              <input type="date" id="returnDate" name="returnDate" th:value="${[returnDate]}" required />
+            </div>
+
+            <div th:if="${errors}" style="color: red;">
+              <ul>
+                <li th:each="error : ${errors}">[[${error}]]</li>
+              </ul>
+            </div>
+
+
+          </div>
+
+
         </div>
+        <button type="submit">Add to Cart</button>
+      </form>
 
-
-      </div>
-      <button type="submit">Confirm Order</button>
     </div>
 
     <div class="table">
@@ -85,13 +85,18 @@
           <tr>
             <th>No.</th>
             <th>Movie Title</th>
-            <th>Rent Duration</th>
+            <th>Pick Up Date</th>
             <th>Return Date</th>
+            <th>Price</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody th:each="row, stat : ${listCart}">
           <tr>
-            <td></td>
+            <td th:text="${stat.index + 1}"></td>
+            <td th:text="${row.title}"></td>
+            <td th:text="${row.pickup_date}"></td>
+            <td th:text="${row.due_date}"></td>
+            <td th:text="${row.total_price}"></td>
           </tr>
         </tbody>
       </table>
@@ -101,7 +106,7 @@
   <footer>ⓒ All Rights Reserved. 2024 The Reel Deal</footer>
 </body>
 
-<script>
+<script th:inline="javascript">
   document.addEventListener("DOMContentLoaded", function () {
     const navigation = document.querySelector(".navigation");
 
@@ -112,6 +117,37 @@
         navigation.classList.remove("blurred"); // Remove blur effect when not scrolling
       }
     });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const pickUpDateInput = document.getElementById("pickUpDate");
+    const returnDateInput = document.getElementById("returnDate");
+    const hargaTotalInput = document.getElementById("hargaTotal");
+
+    // Assuming the base price is fetched dynamically, replace with a server-side rendered value if needed
+    const basePrice = /*[[${movie.base_price}]]*/ 100; // Example base price (replace dynamically)
+
+    // Function to calculate and update the total price
+    function updateTotalPrice() {
+      const pickUpDate = new Date(pickUpDateInput.value);
+      const returnDate = new Date(returnDateInput.value);
+
+      if (pickUpDate && returnDate && returnDate >= pickUpDate) {
+        const rentDuration = (returnDate - pickUpDate) / (1000 * 60 * 60 * 24); // Convert ms to days
+        console.log(rentDuration)
+        if (rentDuration == 0) {
+          rentDuration = 1
+        }
+        const totalPrice = rentDuration * basePrice;
+        hargaTotalInput.value = totalPrice.toLocaleString("id-ID"); // Format as Indonesian Rupiah
+      } else {
+        hargaTotalInput.value = ""; // Clear total if dates are invalid
+      }
+    }
+
+    // Attach event listeners to update total price when dates change
+    pickUpDateInput.addEventListener("change", updateTotalPrice);
+    returnDateInput.addEventListener("change", updateTotalPrice);
   });
 </script>
 

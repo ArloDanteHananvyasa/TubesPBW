@@ -24,6 +24,17 @@ public class UserService {
         }
     }
 
+    public boolean registerAdmin(UserData user){
+        try{
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.registerAdmin(user);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public UserData login(String email, String password){
         if(userRepository.findByEmail(email).isPresent()){
             UserData user = userRepository.findByEmail(email).get();
