@@ -2550,3 +2550,788 @@ Consider defining a bean of type 'com.example.demo.user.UserRepository' in your 
 2025-01-12T18:39:29.727+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-01-12T18:39:29.733+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.868 seconds (process running for 2527.074)
 2025-01-12T18:39:29.734+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:40:21.633+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-12T18:40:21.634+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-12T18:40:21.637+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-01-12T18:40:38.105+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:38.105+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:40:38.105+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.105+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.161+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:40:38.161+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:40:38.161+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:38.162+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:40:38.163+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.163+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.208+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:40:38.208+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:40:38.209+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:40:38.209+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:40:38.209+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:40:38.209+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:40:38.209+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:40:38.326+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false ORDER BY RANDOM() LIMIT 5]
+2025-01-12T18:40:38.326+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.326+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:38.374+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5) AND deleted = false]
+2025-01-12T18:40:38.375+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.375+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.420+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:38.420+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:38.420+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:38.420+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:38.421+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%' AND deleted = false]
+2025-01-12T18:40:38.422+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.422+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:38.470+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:38.471+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%' AND deleted = false]
+2025-01-12T18:40:38.471+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:38.471+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:38.517+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:38.518+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:38.522+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-1] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-1][Customer/homepage] Deprecated attribute {th:include,data-th-include} found in template Customer/homepage, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:43.955+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:43.956+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_moviegenres WHERE title = ? AND deleted = false]
+2025-01-12T18:40:43.956+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:43.956+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:44.025+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:44.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:44.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_movieactors WHERE title = ?]
+2025-01-12T18:40:44.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:44.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:44.074+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:44.074+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:44.074+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:44.074+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'actors_names' to property 'actors_names' of type 'java.lang.String'
+2025-01-12T18:40:44.075+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:44.075+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM movies WHERE title = ?]
+2025-01-12T18:40:44.075+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:44.075+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:44.122+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:44.122+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:44.122+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:44.122+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:44.122+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:44.123+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'base_price' to property 'base_price' of type 'int'
+2025-01-12T18:40:44.123+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:44.123+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:44.123+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'stock' to property 'stock' of type 'int'
+2025-01-12T18:40:44.123+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:44.125+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-5] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-5][Customer/MoviesDetails/Avatar/avatar] Deprecated attribute {th:include,data-th-include} found in template Customer/MoviesDetails/Avatar/avatar, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:46.909+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-4] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-4][Customer/profile] Deprecated attribute {th:include,data-th-include} found in template Customer/profile, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:51.578+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:51.578+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:40:51.578+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.578+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.636+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:40:51.636+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.637+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:40:51.685+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:40:51.783+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false ORDER BY RANDOM() LIMIT 5]
+2025-01-12T18:40:51.783+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.783+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.842+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5) AND deleted = false]
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.843+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:51.899+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:51.900+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%' AND deleted = false]
+2025-01-12T18:40:51.900+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.900+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:51.947+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%' AND deleted = false]
+2025-01-12T18:40:51.948+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:51.948+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:51.991+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:51.993+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-5] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-5][Customer/homepage] Deprecated attribute {th:include,data-th-include} found in template Customer/homepage, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:54.018+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-4] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-4][Customer/profile] Deprecated attribute {th:include,data-th-include} found in template Customer/profile, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:55.772+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:55.772+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT cart.movie_id, title, movies.base_price, movies.portraitposter
+FROM CART
+INNER JOIN movies ON cart.movie_id = movies.movie_id
+WHERE user_phone = ? AND is_active = true
+]
+2025-01-12T18:40:55.772+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:55.772+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:55.845+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-5] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-5][Customer/Cart] Deprecated attribute {th:include,data-th-include} found in template Customer/Cart, line 17, col 19. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:57.094+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:40:57.094+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:57.094+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:57.148+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:57.149+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:57.153+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM genres WHERE deleted = false]
+2025-01-12T18:40:57.153+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:57.153+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:57.196+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genre_id' to property 'genre_id' of type 'int'
+2025-01-12T18:40:57.196+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:40:57.196+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:57.198+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-1] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-1][Customer/movieList] Deprecated attribute {th:include,data-th-include} found in template Customer/movieList, line 17, col 15. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:40:57.267+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:40:57.267+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:57.267+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:57.357+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:58.317+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:58.317+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_moviegenres WHERE title = ? AND deleted = false]
+2025-01-12T18:40:58.317+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:58.317+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:58.372+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_movieactors WHERE title = ?]
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:58.373+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'actors_names' to property 'actors_names' of type 'java.lang.String'
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM movies WHERE title = ?]
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:40:58.424+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:40:58.467+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'base_price' to property 'base_price' of type 'int'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'stock' to property 'stock' of type 'int'
+2025-01-12T18:40:58.468+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:40:58.469+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-10] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-10][Customer/MoviesDetails/Avatar/avatar] Deprecated attribute {th:include,data-th-include} found in template Customer/MoviesDetails/Avatar/avatar, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:46:38.073+07:00  INFO 6940 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 205 class path changes (0 additions, 1 deletion, 204 modifications)
+2025-01-12T18:46:38.073+07:00  INFO 6940 --- [demo] [Thread-53] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T18:46:38.092+07:00  INFO 6940 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T18:46:38.094+07:00  INFO 6940 --- [demo] [Thread-53] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:46:38.182+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 6940 (D:\TubesPBW\Project\build\classes\java\main started by Renggana in D:\TubesPBW\Project)
+2025-01-12T18:46:38.182+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T18:46:38.346+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T18:46:38.349+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-01-12T18:46:38.447+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T18:46:38.448+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T18:46:38.448+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T18:46:38.464+07:00  INFO 6940 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T18:46:38.464+07:00  INFO 6940 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 276 ms
+2025-01-12T18:46:38.504+07:00  INFO 6940 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T18:46:38.506+07:00  INFO 6940 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T18:46:38.513+07:00  INFO 6940 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T18:46:38.513+07:00 DEBUG 6940 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:46:38.562+07:00  WARN 6940 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T18:46:38.563+07:00  INFO 6940 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@15284687']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T18:46:38.564+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@35149814) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@24145516)
+2025-01-12T18:46:38.564+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@13885db) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2ab3b1d9)
+2025-01-12T18:46:38.576+07:00  INFO 6940 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T18:46:38.577+07:00  INFO 6940 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:46:38.640+07:00  WARN 6940 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T18:46:38.770+07:00  WARN 6940 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T18:46:38.885+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T18:46:38.894+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T18:46:38.898+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.744 seconds (process running for 2956.239)
+2025-01-12T18:46:38.899+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:46:52.603+07:00  INFO 6940 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 205 class path changes (1 addition, 0 deletions, 204 modifications)
+2025-01-12T18:46:52.605+07:00  INFO 6940 --- [demo] [Thread-57] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T18:46:52.625+07:00  INFO 6940 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T18:46:52.627+07:00  INFO 6940 --- [demo] [Thread-57] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:46:52.697+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 6940 (D:\TubesPBW\Project\build\classes\java\main started by Renggana in D:\TubesPBW\Project)
+2025-01-12T18:46:52.697+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T18:46:52.817+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T18:46:52.820+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2025-01-12T18:46:52.899+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T18:46:52.900+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T18:46:52.900+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T18:46:52.913+07:00  INFO 6940 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T18:46:52.913+07:00  INFO 6940 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 215 ms
+2025-01-12T18:46:52.940+07:00  INFO 6940 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T18:46:52.942+07:00  INFO 6940 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T18:46:52.947+07:00  INFO 6940 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T18:46:52.947+07:00 DEBUG 6940 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:46:53.001+07:00  WARN 6940 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T18:46:53.002+07:00  INFO 6940 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@3adf5106']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T18:46:53.002+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@67060d5d) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@3e596c02)
+2025-01-12T18:46:53.002+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@62e08eac) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@58a73404)
+2025-01-12T18:46:53.015+07:00  INFO 6940 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T18:46:53.016+07:00  INFO 6940 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:46:53.077+07:00  WARN 6940 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T18:46:53.193+07:00  WARN 6940 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T18:46:53.275+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T18:46:53.282+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T18:46:53.285+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.605 seconds (process running for 2970.627)
+2025-01-12T18:46:53.286+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:47:36.744+07:00  INFO 6940 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 205 class path changes (0 additions, 1 deletion, 204 modifications)
+2025-01-12T18:47:36.753+07:00  INFO 6940 --- [demo] [Thread-61] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T18:47:36.776+07:00  INFO 6940 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T18:47:36.781+07:00  INFO 6940 --- [demo] [Thread-61] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:47:36.855+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 6940 (D:\TubesPBW\Project\build\classes\java\main started by Renggana in D:\TubesPBW\Project)
+2025-01-12T18:47:36.856+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T18:47:36.987+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T18:47:36.991+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2025-01-12T18:47:37.073+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T18:47:37.074+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T18:47:37.074+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T18:47:37.090+07:00  INFO 6940 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T18:47:37.091+07:00  INFO 6940 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 234 ms
+2025-01-12T18:47:37.122+07:00  INFO 6940 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T18:47:37.124+07:00  INFO 6940 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T18:47:37.129+07:00  INFO 6940 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T18:47:37.130+07:00 DEBUG 6940 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:47:37.191+07:00  WARN 6940 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T18:47:37.192+07:00  INFO 6940 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@42a3789f']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T18:47:37.192+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@6a9f68ce) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@33ce646f)
+2025-01-12T18:47:37.192+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@729677f7) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@131e5758)
+2025-01-12T18:47:37.204+07:00  INFO 6940 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T18:47:37.204+07:00  INFO 6940 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:47:37.264+07:00  WARN 6940 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T18:47:37.360+07:00  WARN 6940 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T18:47:37.432+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T18:47:37.442+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T18:47:37.445+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.61 seconds (process running for 3014.787)
+2025-01-12T18:47:37.446+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:47:47.511+07:00  INFO 6940 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-01-12T18:47:47.512+07:00  INFO 6940 --- [demo] [Thread-65] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T18:47:47.525+07:00  INFO 6940 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T18:47:47.526+07:00  INFO 6940 --- [demo] [Thread-65] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:47:47.590+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 6940 (D:\TubesPBW\Project\build\classes\java\main started by Renggana in D:\TubesPBW\Project)
+2025-01-12T18:47:47.591+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T18:47:47.731+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T18:47:47.734+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-01-12T18:47:47.816+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T18:47:47.817+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T18:47:47.817+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T18:47:47.833+07:00  INFO 6940 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T18:47:47.833+07:00  INFO 6940 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 241 ms
+2025-01-12T18:47:47.860+07:00  INFO 6940 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T18:47:47.861+07:00  INFO 6940 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T18:47:47.868+07:00  INFO 6940 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T18:47:47.868+07:00 DEBUG 6940 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:47:47.925+07:00  WARN 6940 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T18:47:47.926+07:00  INFO 6940 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@32396ffa']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T18:47:47.926+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@6c788f50) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@5547ca54)
+2025-01-12T18:47:47.926+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@624a6fa6) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@56096e96)
+2025-01-12T18:47:47.937+07:00  INFO 6940 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T18:47:47.937+07:00  INFO 6940 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:47:47.993+07:00  WARN 6940 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T18:47:48.084+07:00  WARN 6940 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T18:47:48.150+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T18:47:48.157+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T18:47:48.160+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.588 seconds (process running for 3025.501)
+2025-01-12T18:47:48.160+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:48:02.992+07:00  INFO 6940 --- [demo] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 204 class path changes (0 additions, 0 deletions, 204 modifications)
+2025-01-12T18:48:02.993+07:00  INFO 6940 --- [demo] [Thread-69] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-12T18:48:03.007+07:00  INFO 6940 --- [demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-12T18:48:03.009+07:00  INFO 6940 --- [demo] [Thread-69] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:48:03.086+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 21.0.5 with PID 6940 (D:\TubesPBW\Project\build\classes\java\main started by Renggana in D:\TubesPBW\Project)
+2025-01-12T18:48:03.087+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-01-12T18:48:03.255+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-12T18:48:03.258+07:00  INFO 6940 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-01-12T18:48:03.360+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-12T18:48:03.360+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-12T18:48:03.361+07:00  INFO 6940 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-12T18:48:03.375+07:00  INFO 6940 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-12T18:48:03.375+07:00  INFO 6940 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 287 ms
+2025-01-12T18:48:03.419+07:00  INFO 6940 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-12T18:48:03.421+07:00  INFO 6940 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-12T18:48:03.435+07:00  INFO 6940 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-12T18:48:03.436+07:00 DEBUG 6940 --- [demo] [restartedMain] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:03.505+07:00  WARN 6940 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-12T18:48:03.507+07:00  INFO 6940 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.DriverManagerDataSource@625d2b72']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-12T18:48:03.507+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(2003, org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@23b8a077) replaced previous registration(org.hibernate.type.descriptor.sql.internal.ArrayDdlTypeImpl@227b19bc)
+2025-01-12T18:48:03.507+07:00 DEBUG 6940 --- [demo] [restartedMain] o.h.t.d.sql.spi.DdlTypeRegistry          : addDescriptor(6, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5a2a7ebf) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@3799a654)
+2025-01-12T18:48:03.522+07:00  INFO 6940 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-12T18:48:03.522+07:00  INFO 6940 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-12T18:48:03.583+07:00  WARN 6940 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-12T18:48:03.715+07:00  WARN 6940 --- [demo] [restartedMain] o.s.w.s.resource.ResourceHandlerUtils    : Appended trailing slash to static resource location: file:/D:\TubesPBW\Project\moviePosters/
+2025-01-12T18:48:03.796+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-12T18:48:03.803+07:00  INFO 6940 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-12T18:48:03.806+07:00  INFO 6940 --- [demo] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.744 seconds (process running for 3041.147)
+2025-01-12T18:48:03.807+07:00  INFO 6940 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-12T18:48:09.797+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-12T18:48:09.797+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-12T18:48:09.800+07:00  INFO 6940 --- [demo] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-01-12T18:48:09.833+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:09.833+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_moviegenres WHERE title = ? AND deleted = false]
+2025-01-12T18:48:09.834+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:09.834+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:09.904+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:09.905+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:09.905+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:09.906+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:09.908+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:09.908+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_movieactors WHERE title = ?]
+2025-01-12T18:48:09.908+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:09.908+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'actors_names' to property 'actors_names' of type 'java.lang.String'
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM movies WHERE title = ?]
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:09.962+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'base_price' to property 'base_price' of type 'int'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'stock' to property 'stock' of type 'int'
+2025-01-12T18:48:10.008+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:10.067+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-1] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-1][Customer/MoviesDetails/Avatar/avatar] Deprecated attribute {th:include,data-th-include} found in template Customer/MoviesDetails/Avatar/avatar, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:48:14.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:14.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:48:14.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.434+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.487+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM users WHERE email = ?]
+2025-01-12T18:48:14.488+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.490+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'phone' to property 'phone' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'username' to property 'username' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'email' to property 'email' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'password' to property 'password' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'role' to property 'role' of type 'java.lang.String'
+2025-01-12T18:48:14.541+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'java.lang.String'
+2025-01-12T18:48:14.642+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false ORDER BY RANDOM() LIMIT 5]
+2025-01-12T18:48:14.642+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.642+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:14.688+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:14.689+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5) AND deleted = false]
+2025-01-12T18:48:14.689+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.689+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%' AND deleted = false]
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.734+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.779+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:14.779+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:14.779+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:14.780+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:14.781+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%' AND deleted = false]
+2025-01-12T18:48:14.781+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:14.781+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:14.830+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:14.833+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-2] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-2][Customer/homepage] Deprecated attribute {th:include,data-th-include} found in template Customer/homepage, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:48:17.252+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false ORDER BY RANDOM() LIMIT 5]
+2025-01-12T18:48:17.253+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:17.253+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE CAST(release_year AS INTEGER) >= (EXTRACT(YEAR FROM CURRENT_DATE) - 5) AND deleted = false]
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:17.449+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:17.500+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:17.501+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Adventure%' AND deleted = false]
+2025-01-12T18:48:17.502+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:17.502+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:17.566+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:17.567+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:17.568+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE genres_names LIKE '%Sci-Fi%' AND deleted = false]
+2025-01-12T18:48:17.568+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:17.568+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:17.629+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:17.630+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:17.630+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:17.631+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-5] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-5][Customer/homepage] Deprecated attribute {th:include,data-th-include} found in template Customer/homepage, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:48:18.192+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:18.193+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:18.193+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:18.246+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:18.247+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:18.251+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM genres WHERE deleted = false]
+2025-01-12T18:48:18.251+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:18.251+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:18.307+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genre_id' to property 'genre_id' of type 'int'
+2025-01-12T18:48:18.307+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'name' to property 'name' of type 'java.lang.String'
+2025-01-12T18:48:18.307+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-6] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:18.311+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-6] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-6][Customer/movieList] Deprecated attribute {th:include,data-th-include} found in template Customer/movieList, line 17, col 15. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:48:18.395+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:18.396+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:18.396+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:18.558+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:18.558+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:18.558+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:18.560+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:19.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:19.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_moviegenres WHERE title = ? AND deleted = false]
+2025-01-12T18:48:19.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:19.433+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:19.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:19.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:19.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM view_movieactors WHERE title = ?]
+2025-01-12T18:48:19.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:19.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:19.545+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:19.545+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:19.545+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:19.545+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'actors_names' to property 'actors_names' of type 'java.lang.String'
+2025-01-12T18:48:19.546+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2025-01-12T18:48:19.546+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT * FROM movies WHERE title = ?]
+2025-01-12T18:48:19.546+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:19.546+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:19.595+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:19.595+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'base_price' to property 'base_price' of type 'int'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'stock' to property 'stock' of type 'int'
+2025-01-12T18:48:19.596+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:19.598+07:00  WARN 6940 --- [demo] [http-nio-8080-exec-7] o.t.s.p.StandardIncludeTagProcessor      : [THYMELEAF][http-nio-8080-exec-7][Customer/MoviesDetails/Avatar/avatar] Deprecated attribute {th:include,data-th-include} found in template Customer/MoviesDetails/Avatar/avatar, line 17, col 17. Please use {th:insert,data-th-insert} instead, this deprecated attribute will be removed in future versions of Thymeleaf.
+2025-01-12T18:48:20.815+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false AND genres_names LIKE '%Sci-Fi%']
+2025-01-12T18:48:20.815+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:20.815+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:20.879+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:20.880+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-10] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:22.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:22.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:22.026+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:22.189+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:22.413+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false AND genres_names LIKE '%Fantasy%']
+2025-01-12T18:48:22.413+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:22.413+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:22.463+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:23.708+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:23.708+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:23.708+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:23.768+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:24.601+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false AND genres_names LIKE '%Adventure%']
+2025-01-12T18:48:24.602+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:24.602+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:24.662+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:25.436+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:25.436+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:25.436+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:25.493+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:25.494+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-2] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:26.254+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false AND genres_names LIKE '%Thriller%']
+2025-01-12T18:48:26.254+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:26.254+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:26.311+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:26.311+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:26.311+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:26.311+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:26.311+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:26.312+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:26.312+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:26.312+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:26.312+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-8] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:26.990+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:26.990+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:26.990+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:27.049+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-7] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:27.741+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE 1=1 AND deleted = false AND genres_names LIKE '%Sci-Fi%']
+2025-01-12T18:48:27.741+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:27.741+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:27.806+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:27.807+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:27.807+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-1] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'
+2025-01-12T18:48:28.597+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing SQL query [SELECT * FROM view_moviegenres WHERE deleted = false]
+2025-01-12T18:48:28.597+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2025-01-12T18:48:28.597+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.j.d.DriverManagerDataSource          : Creating new JDBC DriverManager Connection to [jdbc:postgresql://localhost:5432/TheReelDeal]
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'movie_id' to property 'movie_id' of type 'int'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'title' to property 'title' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'description' to property 'description' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'genres_names' to property 'genres_names' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'release_year' to property 'release_year' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'duration' to property 'duration' of type 'int'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'landscapeposter' to property 'landscapeposter' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'portraitposter' to property 'portraitposter' of type 'java.lang.String'
+2025-01-12T18:48:28.664+07:00 DEBUG 6940 --- [demo] [http-nio-8080-exec-5] o.s.jdbc.core.BeanPropertyRowMapper      : Mapping column 'deleted' to property 'deleted' of type 'boolean'

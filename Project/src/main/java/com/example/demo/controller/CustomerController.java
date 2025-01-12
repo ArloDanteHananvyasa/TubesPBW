@@ -131,12 +131,6 @@ public class CustomerController {
         return "redirect:/customer/homepage";
     }
 
-    @GetMapping("/profile")
-    @RequiredRole({"user"})
-    public String profile() {
-        return "Customer/profile"; // Mengarahkan ke halaman profil customer
-    }
-
     @GetMapping("/movies")
     public String movieList(Model model) {
         List<HomePageData> movies = userRepository.getAllMovies();
