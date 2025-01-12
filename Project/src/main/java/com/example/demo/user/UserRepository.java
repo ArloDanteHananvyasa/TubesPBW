@@ -26,6 +26,7 @@ public interface UserRepository {
     void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, LocalDate returnDate, LocalDate transactionDate, int rent_duration);
     int getTotalCartPrice(String phoneNum);
     void removeFromCart(String phoneNum, int movieId);
-
+    List<TransactionData> getRentalsCurrByUser(String phoneNum);
+    List<TransactionData> getRentalsHistoryByUser(String phoneNum);
 
 }

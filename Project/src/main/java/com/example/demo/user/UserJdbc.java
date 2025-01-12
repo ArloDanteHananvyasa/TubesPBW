@@ -270,5 +270,48 @@ public void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, 
         jdbcTemplate.update(sql, phoneNum, movieId);
     }
 
+    @Override
+    public List<TransactionData> getRentalsCurrByUser(String phoneNum){
+        String sql = """
+            SELECT movies.title, transactions.pickup_date, transactions.due_date
+            FROM
+            transactions INNER JOIN
+            transaction_details on transactions.transaction_id = transaction_details.transaction_id INNER JOIN
+            movies on transaction_details.movie_id = movies.movie_id
+            WHERE
+            phone = ? AND return_date IS NULL
+            ORDER BY transactions.due_date
+                """;
+            List<TransactionData> currTrans = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+                TransactionData trans = new TransactionData(
+                    resultSet.getString("title"),
+                    resultSet.getObject("pickup_date", LocalDate.class),
+                    resultSet.getObject("due_date", LocalDate.class)
+                );
+                return trans;
+            }, phoneNum);
+        return currTrans;
+    }
 
+    @Override
+    public List<TransactionData> getRentalsHistoryByUser(String phoneNum){
+        String sql = """
+            SELECT movies.title, transactions.pickup_date, transactions.due_date, transactions.return_date
+            FROM
+            transactions INNER JOIN
+            transaction_details on transactions.transaction_id = transaction_details.transaction_id INNER JOIN
+            movies on transaction_details.movie_id = movies.movie_id
+            where phone = ? AND return_date IS NOT NULL
+                """;
+            List<TransactionData> historyTrans = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+                TransactionData trans = new TransactionData(
+                    resultSet.getString("title"),
+                    resultSet.getObject("pickup_date", LocalDate.class),
+                    resultSet.getObject("due_date", LocalDate.class),
+                    resultSet.getObject("return_date", LocalDate.class)
+                );
+                return trans;
+            }, phoneNum);
+        return historyTrans;
+    }
 }

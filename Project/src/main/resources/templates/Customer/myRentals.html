@@ -25,29 +25,22 @@
         <thead>
           <tr>
             <th>Movie Title</th>
-            <th>Rental Date</th>
+            <th>Pick Up Date</th>
             <th>Return Date</th>
             <th>Status</th>
-            <th>Action</th>
+            <th>Days Left</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Movie Title 1</td>
-            <td>2024-01-01</td>
-            <td>2024-01-08</td>
-            <td>Sedang Disewa</td>
-            <td><button class="return-button">Return Movie</button></td>
+        <tbody th:each="rentalsCurr : ${rentalsCurr}">
+          <tr th:classappend="${rentalsCurr.status.equals('Overdue')} ? 'overdue-row' : ''">
+            <td th:text="${rentalsCurr.title}">Movie Title 1</td>
+            <td th:text="${rentalsCurr.pickup_date}">2024-01-01</td>
+            <td th:text="${rentalsCurr.due_date}">2024-01-08</td>
+            <td th:text="${rentalsCurr.status}">Sedang Disewa</td>
+            <td th:text="${rentalsCurr.daysTillDue}"></td>
           </tr>
-          <tr>
-            <td>Movie Title 2</td>
-            <td>2024-01-05</td>
-            <td>2024-01-12</td>
-            <td>Sedang Disewa</td>
-            <td><button class="return-button">Return Movie</button></td>
-          </tr>
-          <!-- Tambahkan lebih banyak baris sesuai kebutuhan -->
         </tbody>
+        
       </table>
 
       <div class="history-container" id="history-container">
@@ -56,17 +49,15 @@
           <thead>
             <tr>
               <th>Movie Title</th>
-              <th>Rental Date</th>
+              <th>Pick Up Date</th>
               <th>Return Date</th>
-              <th>Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody th:each="rentalsHist : ${rentalsHistory}">
             <tr>
-              <td>Avengers: Endgame</td>
-              <td>Rental Date: 2023-12-01</td>
-              <td>Return Date: 2023-12-08</td>
-              <td>Status: Dikembalikan</td>
+              <td th:text="${rentalsHist.title}">Avengers: Endgame</td>
+              <td th:text="${rentalsHist.pickup_date}">Pick Up Date: 2023-12-01</td>
+              <td th:text="${rentalsHist.return_date}">Return Date: 2023-12-08</td>
             </tr>
           </tbody>
         </table>

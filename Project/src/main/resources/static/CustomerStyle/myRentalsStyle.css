@@ -168,3 +168,8 @@ footer {
   position: relative;
   bottom: 0;
 }
+
+.overdue-row {
+  background-color:  #b30000;; /* Light red background */
+  /* color:   #ffcccc         Dark red text */
+}

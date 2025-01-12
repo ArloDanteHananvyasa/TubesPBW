@@ -50,6 +50,11 @@
                         </div>
                         <span>Total Price:</span> <input type="text" id="totalPrice" name="totalPrice" readonly />
                         <button class="checkout-btn" type="submit">Proceed to Checkout</button>
+                        <div th:if="${errors}" style="color: red;">
+                            <ul>
+                              <li th:each="error : ${errors}">[[${error}]]</li>
+                            </ul>
+                        </div>
                     </form>
                 </div>
             </div>
