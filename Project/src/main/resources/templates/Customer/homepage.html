@@ -32,11 +32,6 @@
                   </p>
 
                   <div class="button-container">
-                    <a th:href="@{'/customer/rentMovie/' + ${wheelMovie.title}}">
-                      <button type="button" class="play-button">
-                        <b>Rent Now</b>
-                      </button>
-                    </a>
 
                     <button type="button" class="detail-button" th:attr="data-title=${wheelMovie.title}"
                       onclick="redirectToDetails(this)">
@@ -62,7 +57,7 @@
         <!-- Container untuk film -->
         <div class="movies-container">
           <div th:each="movie : ${latestMovies}" class="latest-movies">
-            <a th:href="@{/customer/details(title=${movie.title})}"><img th:src="${movie.portraitposter}" /></a>
+            <a th:href="@{'/customer/details/' + ${movie.title}}"><img th:src="${movie.portraitposter}" /></a>
             <p class="title" th:text="${movie.title}">Movie Title</p>
             <p class="genre" th:text="${movie.genres_names}">Genre</p>
           </div>
@@ -81,7 +76,8 @@
         <div class="movies-container">
           <div th:each="adventureMovie : ${adventureMovies}">
             <div class="movies">
-              <a th:href="@{/customer/details(title=${adventureMovie.title})}"><img th:src="${adventureMovie.portraitposter}"/></a>
+              <a th:href="@{'/customer/details/' + ${adventureMovie.title}}"><img
+                  th:src="${adventureMovie.portraitposter}" /></a>
               <p class="title" th:text="${adventureMovie.title}">Movie Title</p>
               <p class="genre" th:text="${adventureMovie.genres_names}">Genre</p>
             </div>
@@ -100,7 +96,8 @@
         <div class="movies-container">
           <div th:each="scifiMovie : ${scifiMovies}">
             <div class="movies">
-              <a th:href="@{/customer/details(title=${scifiMovie.title})}"><img th:src="${scifiMovie.portraitposter}"/></a>
+              <a th:href="@{'/customer/details/' + ${scifiMovie.title}}"><img
+                  th:src="${scifiMovie.portraitposter}" /></a>
               <p class="title" th:text="${scifiMovie.title}">Movie Title</p>
               <p class="genre" th:text="${scifiMovie.genres_names}">Genre</p>
             </div>

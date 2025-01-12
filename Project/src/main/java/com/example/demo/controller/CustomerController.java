@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,7 @@ import com.example.demo.user.UserRepository;
 import jakarta.servlet.http.HttpSession;
 @Controller
 
-//@RequestMapping(/custoemer), gini aja terus hapus yg /customer di getmapping yg lain (tapi ntar aja takut eror) - Radif
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class CustomerController {
         return userRepository.searchTitle("%" + title + "%");
     }
     
-    @GetMapping("/customer/homepage")
+    @GetMapping("/homepage")
     @RequiredRole({"user"})
     public String homepage(Model model) {
         List<HomePageData> wheelMovies = userRepository.getMovieWheel();
@@ -58,7 +59,7 @@ public class CustomerController {
         return "Customer/homepage"; // Mengarahkan ke halaman utama customer
     }
 
-    @GetMapping("/customer/details/{title}")
+    @GetMapping("/details/{title}")
     @RequiredRole({"user"})
     public String details(@PathVariable String title, Model model, HttpSession session) {
         
@@ -84,7 +85,7 @@ public class CustomerController {
         return "Customer/MoviesDetails/Avatar/avatar";
     }
 
-    @PostMapping("/customer/details/{title}")
+    @PostMapping("/details/{title}")
     public String detailsPost(@PathVariable String title, @RequestParam String titleInput, Model model, HttpSession session) {
         Logger logger = LoggerFactory.getLogger(this.getClass());
         
@@ -118,22 +119,32 @@ public class CustomerController {
         return "redirect:/customer/homepage";
     }
 
-    @GetMapping("/customer/profile")
+    @GetMapping("/profile")
     @RequiredRole({"user"})
     public String profile() {
         return "Customer/profile"; // Mengarahkan ke halaman profil customer
     }
 
-    @GetMapping("/customer/myRentals")
+    @GetMapping("/myRentals")
     @RequiredRole({"user"})
     public String myRentals() {
         return "Customer/myRentals"; // Mengarahkan ke halaman riwayat sewa
     }
 
-    @GetMapping("/customer/movies")
-    @RequiredRole({"user"})
-    public String movieList() {
+    @GetMapping("/movies")
+    public String movieList(Model model) {
+        List<HomePageData> movies = userRepository.getAllMovies();
+        model.addAttribute("movies", movies);
         return "Customer/movieList"; // Mengarahkan ke halaman daftar film
+    }
+
+    @GetMapping("/movies/filter")
+    @ResponseBody
+    public List<HomePageData> filterMovies(@RequestParam(required = false) List<String> genres){
+        if (genres == null || genres.isEmpty() || genres.contains("All")) {
+            return userRepository.getAllMovies();
+        }
+        return userRepository.getMoviesByGenres(genres.toArray(new String[0]));
     }
 
     // //bakal ada request param rent duration sama pickupdate
@@ -212,7 +223,7 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/customer/cart")
+    @GetMapping("/cart")
     @RequiredRole({"user"})
     public String cart(Model model, HttpSession session) {
         UserData user = (UserData)session.getAttribute("user");
@@ -229,7 +240,7 @@ public class CustomerController {
         return "Customer/Cart"; // Mengarahkan ke halaman keranjang
     }
 
-    @PostMapping("/customer/cart")
+    @PostMapping("/cart")
     @RequiredRole({"user"})
     public String handleCheckout(@RequestParam LocalDate pickUpDate, @RequestParam LocalDate returnDate, HttpSession session){
         UserData user = (UserData)session.getAttribute("user");

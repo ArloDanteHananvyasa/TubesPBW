@@ -23,7 +23,7 @@
                 <!-- ini jadiin masing row 2, tapi terus nambahnya turun bukan kesamping -->
                 <div class="cart-group-container" th:each="cart : ${listCart}">
                     <div class="cart-group" th:attr="data-price=${cart.base_price}">
-                        <img src="/static/Assets/Movies Poster/Vertical/aquman-lost-kingdom.jpg" />
+                        <img th:src="${cart.portraitPoster}"/>
                         <div class="cart-text">
                             <p th:text="${cart.title}"></p>
                             <p><strong>Price/day:</strong> <span th:text="${cart.formattedBasePrice}"></span></p>

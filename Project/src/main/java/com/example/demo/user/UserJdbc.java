@@ -132,7 +132,7 @@ public class UserJdbc implements UserRepository {
     @Override
     public List<CartData> getCartByUser(String phoneNum){
         String sql = """
-            SELECT title, movies.base_price
+            SELECT title, movies.base_price, movies.portraitposter
             FROM CART 
             INNER JOIN movies ON cart.movie_id = movies.movie_id
             WHERE user_phone = ? AND is_active = true
@@ -141,7 +141,8 @@ public class UserJdbc implements UserRepository {
             return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
                 CartData cart = new CartData(
                     resultSet.getString("title"),
-                    resultSet.getInt("base_price")
+                    resultSet.getInt("base_price"),
+                    resultSet.getString("portraitPoster")
                     
                 );
                 return cart;
@@ -168,7 +169,8 @@ public class UserJdbc implements UserRepository {
         List<CartData> cartList = jdbcTemplate.query(sql, (resultSet, rowNum) -> {
             CartData cart = new CartData(
                 resultSet.getString("title"),
-                resultSet.getInt("base_price")
+                resultSet.getInt("base_price"),
+                resultSet.getString("portraitPoster")
             );
             return cart;
         }, phoneNum, movieId);

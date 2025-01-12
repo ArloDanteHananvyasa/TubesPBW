@@ -144,7 +144,7 @@
       movies.forEach((movie) => {
         const movieElement = `
           <div class="latest-movies">
-            <a href="/customer/details?title=${encodeURIComponent(movie.title)}"><img src="${movie.portraitposter}" /></a>
+            <a href="/customer/details/${movie.title}"><img src="${movie.portraitposter}" /></a>
             <p class="title">${movie.title}</p>
             <p class="genre">${movie.genres_names}</p>
           </div>
