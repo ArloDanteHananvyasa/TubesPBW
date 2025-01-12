@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,4 +18,14 @@ public interface UserRepository {
     List<HomePageData> getAllMovies();
 
     List<HomePageData> searchTitle(String title);
+    void addMovieToCart(String phoneNum, int movieId);
+    List<CartData> getCartByUser(String phoneNum);
+    HomePageData getMovieByTitleFromMovies(String title);
+    boolean isMovieInCart(String phoneNum, int movieId);
+    boolean isCartEmpty(String phoneNum);
+    void checkoutCart(String phoneNum, int totalPrice, LocalDate pickUpDate, LocalDate returnDate, LocalDate transactionDate, int rent_duration);
+    int getTotalCartPrice(String phoneNum);
+    void removeFromCart(String phoneNum, int movieId);
+
+
 }
