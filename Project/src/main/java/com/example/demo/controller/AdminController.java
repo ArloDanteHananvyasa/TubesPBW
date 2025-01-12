@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,44 @@ public class AdminController {
         model.addAttribute("totalMovies", movies.size());
         model.addAttribute("totalUsers", customers.size());
 
+        // Example labels and data fetched from the database
+        List<String> labels = List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        List<Integer> salesData = List.of(1200, 1900, 3000, 5000, 4000, 6000, 7000, 8000, 9000, 10000, 11000, 12000);
+
+        int currYear = LocalDate.now().getYear();
+        int totalRentals = generalRepo.getTotalRentalsInYear(currYear);
+
+        model.addAttribute("labels", labels);
+        model.addAttribute("salesData", salesData);
+
+        model.addAttribute("totalRentals", totalRentals);
+        int totalSales = generalRepo.getTotalSalesInYear(currYear);
+        model.addAttribute("totalSales", totalSales);
+
         return "Admin/homepageAdmin"; // Mengarahkan ke halaman dashboard admin
+    }
+
+    @RequestMapping("/dashboard")
+    public String dashboard(@RequestParam int year, Model model, HttpSession session) {
+        
+        List<movieData> movies = movieRepo.getAllMovies(null);
+        List<customerData> customers = generalRepo.getAllCustomers();
+
+        model.addAttribute("totalMovies", movies.size());
+        model.addAttribute("totalUsers", customers.size());
+        
+        int totalRentals = generalRepo.getTotalRentalsInYear(year);
+
+        model.addAttribute("totalRentals", totalRentals);
+
+        int totalSales = generalRepo.getTotalSalesInYear(year);
+        model.addAttribute("totalSales", totalSales);
+
+        List<Integer> monthlySale = generalRepo.getMonthlySales(year);
+        List<String> labels = List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        model.addAttribute("labels", labels);
+        model.addAttribute("monthlySale", monthlySale);
+        return "Admin/homepageAdmin";
     }
 
     @GetMapping("/movies")
